@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_frontend_id" inherit_id="website.assets_frontend" name="Event">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/cp_event_rating/static/src/js/rating.js"/>
+        </xpath>
+    </template>
+
+</odoo>

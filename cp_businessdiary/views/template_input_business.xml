@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="input_business">
+        <form action="/page/business_diary" method="post" role="form" nctype="multipart/form-data">
+            <t t-call="website.layout">
+                <div class="container">
+                    <div class="col-md-12">
+                        <br/>
+                        <fieldset>
+                            <legend>Business Details</legend>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Profession
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" name="txtprofession"/>
+                                </div>
+                                <div class="col-md-3">
+                                    Designation
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="desig" style="width:175px">
+                                        <t t-foreach="designations" t-as="desig_data" class="form-control inline-item">
+                                            <option t-att-value="desig_data.id">
+                                                <span t-esc='desig_data.name'/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Organization
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" name="txtorg"/>
+                                </div>
+                                <div class="col-md-3">
+                                    Email
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" name="txtemail"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Mobile
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" name="txtmobile"/>
+                                </div>
+                                <div class="col-md-3">
+                                    phone
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" name="txtphone"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                        </fieldset>
+                        <div class="row">
+                            <fieldset>
+                                <legend>Business Address Details</legend>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        Street
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" name="txtstreet"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        Street2
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" name="txtstreet2"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        City
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="city" style="width:175px">
+                                            <t t-foreach="city" t-as="city_data" class="form-control inline-item">
+                                                <option t-att-value="city_data.name">
+                                                    <span t-esc='city_data.name'/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        State
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="state" style="width:175px">
+                                            <t t-foreach="state" t-as="state_data" class="form-control inline-item">
+                                                <option t-att-value="state_data.id">
+                                                    <span t-esc='state_data.name'/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <br/>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        Zip
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" name="txtzip"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        Country
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="country" style="width:175px">
+                                            <t t-foreach="country" t-as="country_data" class="form-control inline-item">
+                                                <option t-att-value="country_data.id">
+                                                    <span t-esc='country_data.name'/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <br/>
+                                </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <input type="submit" value="Add To My Diary"></input>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                </div>
+            </t>
+        </form>
+    </template>
+
+</odoo>

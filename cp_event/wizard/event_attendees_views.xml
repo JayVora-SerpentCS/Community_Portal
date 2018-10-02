@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_event_attendees_form" model="ir.ui.view">
+        <field name="name">Event Attendees</field>
+        <field name="model">event.attendees</field>
+        <field name="arch" type="xml">
+            <form string="Event Attendees">
+                <group>
+                    <field name="event_id"/>
+                    <field name="attendees_csv" filename='file_name'/>
+                    <field name="file_name" invisible="True"/>
+                </group>
+                <footer>
+                    <button name="add_attendees" string="Added Attendees" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_event_attendees_form" model="ir.actions.act_window">
+        <field name="name">Event Attendees</field>
+        <field name="res_model">event.attendees</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem name="Events Attendees"
+              id="menu_event_attendees_registration"
+              parent="event.event_main_menu"
+              action="action_view_event_attendees_form"
+         />
+
+</odoo>

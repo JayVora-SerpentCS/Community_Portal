@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="web_news_form">
+        <field name="name">website_blog_configurator_form</field>
+        <field name="model">website.blog.configurator</field>
+        <field name="arch" type="xml">
+            <form string="News" class="oe_form_configuration">
+                <header>
+                    <button string="Apply" type="object" name="execute" class="oe_highlight" />
+                    or
+                    <button string="Cancel" type="object" name="cancel" class="oe_link" />
+                </header>
+                <sheet>
+                    <group col="4">
+                        <group string="General Information" colspan="4" col="4">
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="is_active"/>
+                            <field name="blog_display_website"/>
+                            <field name="back_color" />
+                            <field name="font_color" />
+                            <field name="display_blog_on"/>
+                            <field name="blog_display_position" required="1"/>
+                            <field name="website_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="bg_image" widget="image" class="oe_avatar oe_left" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="website_blog_config_action">
+        <field name="name">Blog Configurator</field>
+        <field name="res_model">website.blog.configurator</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <menuitem name="Configurations" id="website_blog_config_menu_1" parent="website_blog.menu_website_blog_root"/>
+    <menuitem name="Website Blog Configuration" id="website_blogcc_config_menu_1" action="website_blog_config_action" parent="website_blog_config_menu_1"/>
+
+</odoo>

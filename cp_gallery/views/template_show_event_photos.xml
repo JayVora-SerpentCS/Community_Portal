@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_show_event_photos" name="Photo Gallery">
+        <t t-call="website.layout">
+            <t t-set="v" t-value="0"/>
+            <div class="container-fluid">
+                <div class="container">
+                    <center>
+                        <h1>
+                            <b>
+                                <t t-esc="name"/>
+                            </b>
+                        </h1>
+                    </center>
+                    <div id="links">
+                        <t t-foreach="gallery_photos.photo_ids" t-as="gal_pics">
+                            <a t-attf-href="data:image/gif;base64, #{gal_pics.images}" title="image">
+                                <img width="250px" id="myImg"
+                                     height="200px"
+                                     alt="event image"
+                                     t-attf-src="data:image/gif;base64, #{gal_pics.images}"
+                                     class=""
+                                />
+                            </a>
+                        </t>
+                    </div>
+                    <div id="blueimp-gallery" class="blueimp-gallery">
+                        <div class="slides" style="background:transparent !important;"></div>
+                        <h3 class="title"></h3>
+                        <a class="prev">‹</a>
+                        <a class="next">›</a>
+                        <a class="close">×</a>
+                        <a class="play-pause"></a>
+                        <ol class="indicator"></ol>
+                    </div>
+
+                    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+                        <div class="slides" style="background:transparent !important;"></div>
+                        <h3 class="title"></h3>
+                        <a class="prev">‹</a>
+                        <a class="next">›</a>
+                        <a class="close">×</a>
+                        <a class="play-pause"></a>
+                        <ol class="indicator"></ol>
+                    </div>
+
+                </div>
+            </div>
+            <script type="text/javascript"
+                    src="/cp_gallery/static/src/js/blueimp-gallery.min.js"/>
+            <script>
+                document.getElementById('links').onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+                };
+
+                blueimp.Gallery(
+                document.getElementById('links').getElementsByTagName('a'),
+                {
+                container: '#blueimp-gallery-carousel',
+                carousel: true
+                }
+                );
+            </script>
+        </t>
+    </template>
+
+</odoo>

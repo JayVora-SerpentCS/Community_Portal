@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_job_pos,access.job.pos,model_job_position,grp_admin_cmt,1,0,1,0
+access_job_pos_mem,access.job.pos.mem,model_job_position,grp_members_cmt,1,1,1,1
+access_job_hist,access.job.hist,model_jobpos_history,grp_members_cmt,1,0,1,1

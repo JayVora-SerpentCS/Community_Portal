@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="edu_marketing" model="education.field">
+            <field name="name">Advertising/Marketing</field>
+            <field name="code">Adv. Marketing</field>
+        </record>
+
+        <record id="edu_administrative" model="education.field">
+            <field name="name">Administrative Services</field>
+            <field name="code">Admin Service</field>
+        </record>
+
+        <record id="edu_architecture" model="education.field">
+            <field name="name">Architecture</field>
+            <field name="code">Architecture</field>
+        </record>
+
+        <record id="edu_armed_forces" model="education.field">
+            <field name="name">Armed Forces</field>
+            <field name="code">Armed Forces</field>
+        </record>
+
+        <record id="edu_arts" model="education.field">
+            <field name="name">Arts</field>
+            <field name="code">Arts</field>
+        </record>
+
+        <record id="edu_commerce" model="education.field">
+            <field name="name">Commerce</field>
+            <field name="code">commerce</field>
+        </record>
+
+        <record id="edu_computer_it" model="education.field">
+            <field name="name">Computer/IT</field>
+            <field name="code">Comp. IT</field>
+        </record>
+
+        <record id="edu_education" model="education.field">
+            <field name="name">Education</field>
+            <field name="code">Education</field>
+        </record>
+
+        <record id="edu_engineering_technology" model="education.field">
+            <field name="name">Engineering/Technology</field>
+            <field name="code">Engineering Techno</field>
+        </record>
+
+        <record id="edu_fashion" model="education.field">
+            <field name="name">Fashion</field>
+            <field name="code">Fashion</field>
+        </record>
+
+        <record id="edu_finance" model="education.field">
+            <field name="name">Finance</field>
+            <field name="code">Finance</field>
+        </record>
+
+        <record id="edu_fine_arts" model="education.field">
+            <field name="name">Fine Arts</field>
+            <field name="code">Fine Arts</field>
+        </record>
+
+        <record id="edu_home_science" model="education.field">
+            <field name="name">Home Science</field>
+            <field name="code">Home Science</field>
+        </record>
+
+        <record id="edu_law" model="education.field">
+            <field name="name">Law</field>
+            <field name="code">Law</field>
+        </record>
+
+        <record id="edu_management" model="education.field">
+            <field name="name">Management</field>
+            <field name="code">Management</field>
+        </record>
+
+        <record id="edu_medicine" model="education.field">
+            <field name="name">Medicine</field>
+            <field name="code">Medicine</field>
+        </record>
+
+        <record id="edu_nursing_health_sciences" model="education.field">
+            <field name="name">Nursing/Health Sciences</field>
+            <field name="code">Nursing</field>
+        </record>
+
+        <record id="edu_office_administration" model="education.field">
+            <field name="name">Office Administration</field>
+            <field name="code">Office_admin</field>
+        </record>
+
+        <record id="edu_science" model="education.field">
+            <field name="name">Science</field>
+            <field name="code">Science</field>
+        </record>
+
+        <record id="edu_shipping" model="education.field">
+            <field name="name">Shipping</field>
+            <field name="code">Shipping</field>
+        </record>
+
+        <record id="edu_traveltourism" model="education.field">
+            <field name="name">Travel &amp; Tourism</field>
+            <field name="code">Travel Tourism</field>
+        </record>
+
+        <record id="edu_others" model="education.field">
+            <field name="name">Others</field>
+            <field name="code">Others</field>
+        </record>
+
+    </data>
+</odoo>

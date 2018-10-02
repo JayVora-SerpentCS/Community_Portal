@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- My Account Page Inherited -->
+    <template id="website_portal.account" name="Account">
+        <t t-call="website.layout">
+            <t t-if="partner">
+                <div class="col-md-12" style="background: linear-gradient(to left, #abbaab , #ffffff);">
+                    <div class="col-md-3 mt32">
+                        <t t-if="partner.image">
+                            <span class="saved-image" t-field="partner.image" t-field-options='{"widget": "image"}'/>
+                        </t>
+                        <div class="panel panel-default about_me">
+                            <div class="panel-body">
+                                <span class="fa fa-user"/>
+                                <span t-field="partner.comment"/>
+                                <br />
+                                <span class="fa fa-mobile"/>
+                                <span t-field="partner.mobile"/>
+                                <br />
+                                <span class="fa fa-phone"/>
+                                <span t-field="partner.phone"/>
+                                <br />
+                                <span class="fa fa-envelope"/>
+                                <span t-field="partner.email"/>
+                                <br />
+                                <span class="fa fa-home"/>
+                                <span t-field="partner.street"/>
+                                <span t-field="partner.street2"/>
+                                <span t-field="partner.city_id.name"/>, 
+                                <span t-field="partner.state_id.name"/>
+                                <span t-field="partner.country_id.name"/>
+                                <br />
+                                <t t-if="partner.category_id">
+                                    <span class="fa fa-tags"/>
+                                    <t t-foreach="partner.category_id" t-as="category">
+                                        <span t-field="category.name"/>,
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 mt32">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-tasks fa-2x"></i> Profile Completion</h4>
+                                        <hr/>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" t-att-style="style">
+                                                <span>
+                                                    <t t-esc="percentage" /> Profile Completed
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-pencil-square-o fa-2x"></i> Edit Profile Information</h4>
+                                        <hr/>
+                                        <a href="/my/account" style="text-decoration: none !important;">
+                                            <input class="btn btn_change center-block" type="button" name="change" value="Change"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11">
+                            <div class="col-md-6">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-users fa-2x"></i> No. Of Siblings</h4>
+                                        <hr/>
+                                        <div class="col-md-5" width="33px">
+                                            <span class="fa fa-male fa-2x"/>
+                                            <br /><br />
+                                            <span class="fa fa-female fa-2x"/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span>
+                                                <span t-esc="partner.male_married"></span>&#160;&#160;<img src="/website_community_portal/static/src/img/married.png" style="width: 34px;height: 30px;"/> 
+                                                &#160;&#160;&#160;&#160;<span t-esc="partner.male_not_married"></span>&#160;&#160;<img src="/website_community_portal/static/src/img/man1.png" style="width: 34px;height: 30px;"/>
+                                            </span>
+                                            <br/><br />
+                                            <span>
+                                                <span t-esc="partner.female_married"></span>&#160;&#160;<img src="/website_community_portal/static/src/img/married.png" style="width: 34px;height: 30px;"/> 
+                                                &#160;&#160;&#160;&#160;<span t-esc="partner.female_not_married"></span>&#160;&#160;<img src="/website_community_portal/static/src/img/woman.png" style="width: 46px;height: 35px;"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-birthday-cake fa-2x"></i> Birth</h4>
+                                        <hr />
+                                        <div class="col-md-5">
+                                            <img src="/website_community_portal/static/src/img/cake.png" style="width: 46px;height: 35px;"/>
+                                            <br />
+                                            <img src="/website_community_portal/static/src/img/age.png" style="width: 60px;height: 60px;"/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span t-esc="partner.dob"></span>
+                                            <br /><br />
+                                            <span t-esc="partner.age"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-5">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-male fa-2x"></i><i class="fa fa-female fa-2x"></i> Appearance</h4>
+                                        <hr />
+                                        <div class="col-md-5">
+                                            <b>Height</b>
+                                            <br />
+                                            <b>Skin Tone</b>
+                                            <br />
+                                            <b>Blood Group</b>
+                                            <br />
+                                            <b>Body Type</b>
+                                            <br />
+                                            <b>Body Weight</b>
+                                            <br />
+                                            <b>Disability</b>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span t-esc="partner.height.name"></span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.skin_tone == 'very_fair'">Very Fair</span>
+                                                <span t-if="partner.skin_tone == 'fair'">Fair</span>
+                                                <span t-if="partner.skin_tone == 'wheatish'">Wheatish</span>
+                                                <span t-if="partner.skin_tone == 'dark'">Dark</span>
+                                            </span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.blood_group == 'a-'">A-</span>
+                                                <span t-if="partner.blood_group == 'a+'">A+</span>
+                                                <span t-if="partner.blood_group == 'b-'">B-</span>
+                                                <span t-if="partner.blood_group == 'b+'">B+</span>
+                                                <span t-if="partner.blood_group == 'ab-'">AB-</span>
+                                                <span t-if="partner.blood_group == 'ab+'">AB+</span>
+                                                <span t-if="partner.blood_group == 'o-'">O-</span>
+                                                <span t-if="partner.blood_group == 'o+'">O+</span>
+                                            </span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.body_type == 'average'">Average</span>
+                                                <span t-if="partner.body_type == 'slim'">Slim</span>
+                                                <span t-if="partner.body_type == 'athletic'">Athletic</span>
+                                                <span t-if="partner.body_type == 'heavy'">Heavy</span>
+                                            </span>
+                                            <br />
+                                            <span>
+                                                <span t-esc="partner.body_weight"></span> kg
+                                            </span>
+                                            <br/>
+                                            <span>
+                                                <span t-if="partner.any_disability == 'none'">None</span>
+                                                <span t-if="partner.any_disability == 'disability'">Physical Disability</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-users fa-2x"></i>  Parent's Details</h4>
+                                        <hr />
+                                        <div class="col-md-5">
+                                            <b>Father's Name</b>
+                                            <br />
+                                            <b>Father's Status</b>
+                                            <br />
+                                            <span class="f_with_as">
+                                                <b>With</b>
+                                                <br />
+                                                <b>As</b>
+                                                <br />
+                                            </span>
+                                            <span class="f_nature_of_business">
+                                                <b>Nature Of Business</b>
+                                                <br />
+                                            </span>
+                                            <b>Mother's Name</b>
+                                            <br />
+                                            <b>Mother's Status</b>
+                                            <br />
+                                            <span class="m_with_as">
+                                                <b>With</b>
+                                                <br />
+                                                <b>As</b>
+                                                <br />
+                                            </span>
+                                            <span class="m_nature_of_business">
+                                                <b>Nature Of Business</b>
+                                                <br />
+                                            </span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span t-esc="partner.father_id.name"></span>
+                                            <br />
+                                            <span class="f_status">
+                                                <span class="employed" t-if="partner.father_status == 'employed'">Employed</span>
+                                                <span t-if="partner.father_status == 'business'">Business</span>
+                                                <span t-if="partner.father_status == 'retired'">Retired</span>
+                                                <span t-if="partner.father_status == 'not_employed'">Not Employed</span>
+                                                <span t-if="partner.father_status == 'passed_away'">Passed Away</span>
+                                                <span t-if="partner.father_status == 'professional'">Professional</span>
+                                            </span>
+                                            <br/>
+                                            <span class="f_with_as">
+                                                <span t-esc="partner.f_company_name"></span>
+                                                <br />
+                                                <span t-esc="partner.f_job_title"></span>
+                                                <br />
+                                            </span>
+                                            <span class="f_nature_of_business">
+                                                <span t-esc="partner.f_nature_of_business"></span>
+                                                <br />
+                                            </span>
+                                            <span t-esc="partner.mother_id.name"></span>
+                                            <br />
+                                            <span class="m_status">
+                                                <span t-if="partner.mother_status == 'homemaker'">Homemaker</span>
+                                                <span t-if="partner.mother_status == 'employed'">Employed</span>
+                                                <span t-if="partner.mother_status == 'business'">Business</span>
+                                                <span t-if="partner.mother_status == 'retired'">Retired</span>
+                                                <span t-if="partner.mother_status == 'not_employed'">Not Employed</span>
+                                                <span t-if="partner.mother_status == 'passed_away'">Passed Away</span>
+                                                <span t-if="partner.mother_status == 'professional'">Professional</span>
+                                            </span>
+                                            <br/>
+                                            <span class="m_with_as">
+                                                <span t-esc="partner.m_company_name"></span>
+                                                <br />
+                                                <span t-esc="partner.m_job_title"></span>
+                                            </span>
+                                            <span class="m_nature_of_business">
+                                                <span t-esc="partner.m_nature_of_business"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-7">
+                                <div class="panel panel-default panel_shadow" style="height: 232px !important;">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-child fa-2x"></i> Status</h4>
+                                        <hr/>
+                                        <div class="col-md-5">
+                                            <b>Gender </b>
+                                            <br/>
+                                            <span class="marital_status">
+                                                <b>Marital Status </b>
+                                                <br/>
+                                            </span>
+                                            <span class="have_children">
+                                                <b>Have Children </b>
+                                                <br/>
+                                            </span>
+                                            <span class="no_of_children">
+                                                <b>No. Of Children</b>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span t-esc="'Male' if partner.gender == 'male' else 'Female'"></span>
+                                            <br />
+                                            <span class="marital_status">
+                                                <span t-if="partner.marital == 'single'">Single</span>
+                                                <span t-if="partner.marital == 'married'">Married</span>
+                                                <span t-if="partner.marital == 'widowed'">Widowed</span>
+                                                <span t-if="partner.marital == 'divorced'">Divorced</span>
+                                                <span t-if="partner.marital == 'awting_divorced'">Awaiting Divorced</span>
+                                            </span>
+                                            <br />
+                                            <span class="have_children">
+                                                <span t-if="partner.children == 'yes_living'">Yes, Living Together</span>
+                                                <span t-if="partner.children == 'yes_not_living'">Yes, Not Living Together</span>
+                                                <span t-if="partner.children == 'no'">No</span>
+                                            </span>
+                                            <br />
+                                            <span class="no_of_children">
+                                                <span t-esc="partner.no_of_children"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-home fa-2x"></i> Family Status</h4>
+                                        <hr/>
+                                        <div class="col-md-6">
+                                            <b>Family Location</b>
+                                            <br />
+                                            <b>Family Type</b>
+                                            <br />
+                                            <b>Family Values</b>
+                                            <br />
+                                            <b>Affluence Level</b>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span t-esc="partner.family_location.name"></span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.family_type == 'joint'">Joint</span>
+                                                <span t-if="partner.family_type == 'nuclear'">Nuclear</span>
+                                            </span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.family_values == 'traditional'">Traditional</span>
+                                                <span t-if="partner.family_values == 'moderate'">Moderate</span>
+                                                <span t-if="partner.family_values == 'liberal'">Liberal</span>
+                                            </span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.affluence_level == 'affluent'">Affluent</span>
+                                                <span t-if="partner.affluence_level == 'upper_middle_class'">Upper Middle Class</span>
+                                                <span t-if="partner.affluence_level == 'middle_class'">Middle Class</span>
+                                                <span t-if="partner.affluence_level == 'lower_middle_class'">Lower Middle Class</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-5">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-life-ring fa-2x"></i> Life Style</h4>
+                                        <hr />
+                                        <div class="col-md-3">
+                                            <b>Diet</b><br />
+                                            <b>Drink</b><br />
+                                            <b>Smoke</b>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <span>
+                                                <span t-if="partner.diet == 'jain'">Jain</span>
+                                                <span t-if="partner.diet == 'veg'">Vegetarian</span>
+                                            </span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.drink == 'yes'">Yes</span>
+                                                <span t-if="partner.drink == 'no'">No</span>
+                                                <span t-if="partner.drink == 'occasionally'">Occasionally</span>
+                                            </span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.smoke == 'yes'">Yes</span>
+                                                <span t-if="partner.smoke == 'no'">No</span>
+                                                <span t-if="partner.smoke == 'occasionally'">Occasionally</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-graduation-cap fa-2x"></i> Education &amp; Career</h4>
+                                        <hr />
+                                        <div class="col-md-5">
+                                            <b>Education</b><br />
+                                            <b>In</b><br />
+                                            <b>Working With</b><br />
+                                            <b>Annual Income</b>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <span>
+                                                <span t-if="partner.education == 'masters'">Masters</span>
+                                                <span t-if="partner.education == 'bachelors'">Bachelors</span>
+                                                <span t-if="partner.education == 'doctorate'">Doctorate</span>
+                                                <span t-if="partner.education == 'diploma'">Diploma</span>
+                                                <span t-if="partner.education == 'undergraduate'">Undergraduate</span>
+                                                <span t-if="partner.education == 'associate_degree'">Masters</span>
+                                                <span t-if="partner.education == 'honours_degree'">Honours Degree</span>
+                                                <span t-if="partner.education == 'trade_school'">Trade School</span>
+                                                <span t-if="partner.education == 'high_school'">High School</span>
+                                                <span t-if="partner.education == 'lessthan_highschool'">Less Than High School</span>
+                                            </span>
+                                            <br/>
+                                            <span t-esc="partner.education_in_id.name"></span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.work_with == 'pvt_company'">Private Company</span>
+                                                <span t-if="partner.work_with == 'govt'">Government/Public Sector</span>
+                                                <span t-if="partner.work_with == 'defense_civil'">Defense/Civil Services</span>
+                                                <span t-if="partner.work_with == 'business_selfemp'">Business/Self Employed</span>
+                                                <span t-if="partner.work_with == 'not_working'">Not Working</span>
+                                            </span>
+                                            <br />
+                                            <span>
+                                                <span t-if="partner.annual_income == 'upto_1lakh'">Upto INR 1 Lakh</span>
+                                                <span t-if="partner.annual_income == '1lakh_to_2lakh'">INR 1 Lakh to 2 Lakh</span>
+                                                <span t-if="partner.annual_income == '2lakh_to_4lakh'">INR 2 Lakh to 4 Lakh</span>
+                                                <span t-if="partner.annual_income == '4lakh_to_7lakh'">INR 4 Lakh to 7 Lakh</span>
+                                                <span t-if="partner.annual_income == '7lakh_to_10lakh'">INR 7 Lakh to 10 Lakh</span>
+                                                <span t-if="partner.annual_income == '10lakh_to_15lakh'">INR 10 Lakh to 15 Lakh</span>
+                                                <span t-if="partner.annual_income == '15lakh_to_20lakh'">INR 15 Lakh to 20 Lakh</span>
+                                                <span t-if="partner.annual_income == '20lakh_to_30lakh'">INR 20 Lakh to 30 Lakh</span>
+                                                <span t-if="partner.annual_income == '30lakh_to_50lakh'">INR 30 Lakh to 50 Lakh</span>
+                                                <span t-if="partner.annual_income == '50lakh_to_75lakh'">INR 50 Lakh to 75 Lakh</span>
+                                                <span t-if="partner.annual_income == '75lakh_to_1crore'">INR 75 Lakh to 1 Crore</span>
+                                                <span t-if="partner.annual_income == '1crore_and_above'">INR 1 Crore and Above</span>
+                                                <span t-if="partner.annual_income == 'not_applicable'">Not applicable</span>
+                                                <span t-if="partner.annual_income == 'do_not_specify'">Do not want to specify</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-magic fa-2x"></i> Astrological Details</h4>
+                                        <hr />
+                                        <div class="col-md-6">
+                                            <b>Country Of Birth</b><br />
+                                            <b>City of Birth</b><br />
+                                            <b>Time of Birth</b><br />
+                                            <b>Manglik</b>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span t-esc="partner.dob_country.name"/><br />
+                                            <span t-esc="partner.dob_city.name"/><br />
+                                            <span t-esc="partner.birth_time"/><br />
+                                            <span>
+                                                <span t-if="partner.manglik == 'yes'">Yes</span>
+                                                <span t-if="partner.manglik == 'no'">No</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-arrows fa-2x"></i> Religion Background</h4>
+                                        <hr />
+                                        <div class="col-md-6">
+                                            <b>Religion</b><br />
+                                            <b>Community</b><br />
+                                            <b>Sub Community</b><br />
+                                            <b>Mother Tongue</b><br />
+                                            <b>Can Speak</b>
+                                            <b>Gotra</b>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span t-esc="partner.religion"/><br />
+                                            <span t-esc="partner.community.name"/><br />
+                                            <span t-esc="partner.sub_community.name"/><br />
+                                            <span t-esc="partner.mother_tongue.name"/><br/>
+                                            <t t-foreach="partner.can_speak" t-as="speak">
+                                                <span t-esc="speak.name"/>
+                                            </t><br />
+                                            <span t-esc="partner.gotra_id.name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="assets_frontend_slider" name="website assets for frontend" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <link href="/website_image_carousel_snippet/static/src/css/website_client_carousel_snippet.css" rel="stylesheet" type="text/css"/>
+        </xpath>
+    </template>
+</odoo>
+

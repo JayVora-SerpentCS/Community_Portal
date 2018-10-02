@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherited Template For User NavBar -->
+        <template id="user_navbar_inherited" name="User Navbar Inherited" inherit_id="website.user_navbar">
+            <xpath expr="//nav[@id='oe_main_menu_navbar']" position="attributes">
+                <attribute name="t-if">uid == 1</attribute>
+            </xpath>
+        </template>
+
+        <!-- Inherited Template For WebSite Layout -->
+        <template id="website_layout_inherited" inherit_id="website.layout" name="Main layout Extended">
+            <xpath expr="//header/div" position="replace">
+                <div class="navbar navbar-default" style="margin-bottom: 0px;">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/" t-field="res_company.name"/>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-top-collapse">
+                            <ul class="nav navbar-nav navbar-right" id="top_menu">
+                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                    <t t-if="(submenu.user_logged and request.uid !=  %(base.public_user)d) or (submenu.user_not_logged and request.uid == %(base.public_user)d)">
+                                         <t t-call="website.submenu"/></t>
+                                    </t>
+                                <li class="divider" t-ignore="true" t-if="website.user_id != user_id"/>
+                                <li class="dropdown" t-ignore="true" t-if="website.user_id != user_id">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <b>
+                                            <span class="menu_list" t-esc="user_id.name"/>
+                                            <span class="caret menu_list"></span>
+                                        </b>
+                                    </a>
+                                    <ul class="dropdown-menu js_usermenu" role="menu">
+                                        <li>
+                                            <a href="/my/home" role="menuitem">My Account</a>
+                                        </li>
+                                        <li class="divider"/>
+                                        <li>
+                                            <a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- <li class="dropdown" t-if="not uid">
+                                    <a href="/web/login" id="button-signin">
+                                        <span class="menu_list">LOG IN</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown" t-if="not uid">
+                                    <a href="/signup" id="button-signup">
+                                        <button class="btn btn_signup center-block">SIGN UP</button>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+       <!--<template id="web_inherit_base" inherit_id="website.login_layout"-->
+            <!--name="Website Login Layout">-->
+            <!--<xpath expr='//div[@class="oe_website_login_container"]'-->
+                <!--position="attributes">-->
+                <!--<attribute name="class">signup_bg</attribute>-->
+            <!--</xpath>-->
+        <!--</template>-->
+
+    <template id="inherit_base_module" inherit_id="web.login" name="Login">
+    <xpath expr="//form/div/button" position="after">
+            <a class="com_signup" t-attf-href="/signup" id="button-signup">
+               SIGN UP
+            </a>
+            <p style="color: blue;margin-right: 50px;">If you have not signup?</p>
+    </xpath>
+    
+    </template>
+
+        <!-- Partner Grid View -->
+        <template id="partner_grid" name="Partner Grid View">
+            <t t-call="website.layout">
+                <div class="container-fluid grid_partner_bg">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12 mt16">
+                                <form class="navbar-form" style="text-align: center;" role="search" action="/partners">
+                                    <div class="input-group add-on" style="">
+
+                                        <input type="text" class="form-control" placeholder="Search..." name="srch-term" id="srch-term" style="font-family: inherit;"/>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="submit" style="background-color: #999999;">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                            <button style="" id="filter" type="button" class="ml32 btn btn-default btn-info" data-dismiss="modal">Filter</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div align="center" class="col-md-12" style="">
+                                <t t-call="website.pager" />
+                            </div>
+                            <div class="col-md-4" style="">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="wrap" t-attf-class="wrapper">
+                        <div class="container">
+                            <div class="oe_structure" />
+                            <div id="filter_view" hidden="true" class="panel panel-default" style="margin-left: 12%; width: 75%;background: rgba(163, 82, 169, 0.22);"><br/>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <span><strong>Gender</strong></span>
+                                        <label class="radio-inline"><input type="radio" name="radioName" value="male"/>Male</label>
+                                        <label class="radio-inline"><input type="radio" name="radioName" value="female"/>Female</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span><strong>Marital Status</strong></span>
+                                        <select id="m_status" class="selectpicker">
+                                            <option value="single">Single</option>
+                                            <option value="married">Married</option>
+                                            <option value="widowed">Widowed</option>
+                                            <option value="divorced">Divorced</option>
+                                            <option value="awting_divorced">Awting Divorced</option>
+                                        </select>
+                                    </div>
+                                </div><br/><br/>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <span><strong>Body Type</strong></span>
+                                        <select id="body_type" class="selectpicker">
+                                            <option value="average">Average</option>
+                                            <option value="slim">Slim</option>
+                                            <option value="athletic">Athletic</option>
+                                            <option value="heavy">Heavy</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span><strong>Working With</strong></span>
+                                        <select id="work_with" class="selectpicker">
+                                            <option value="pvt_company">Private Company</option>
+                                            <option value="govt">Government/Public Sector</option>
+                                            <option value="defense_civil">Defense/Civil Services</option>
+                                            <option value="business_selfemp">Business/Self Employed</option>
+                                            <option value="not_working">Not Working</option>
+                                        </select>
+                                    </div>
+                                </div><br/><br/>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <span><strong>Annual Income</strong></span>
+                                        <select id="annual_income" class="selectpicker">
+                                            <option value="upto_1lakh">Upto INR 1 Lakh</option>
+                                            <option value="1lakh_to_2lakh">INR 1 Lakh to 2 Lakh</option>
+                                            <option value="2lakh_to_4lakh">INR 2 Lakh to 4 Lakh</option>
+                                            <option value="4lakh_to_7lakh">INR 4 Lakh to 7 Lakh</option>
+                                            <option value="7lakh_to_10lakh">INR 7 Lakh to 10 Lakh</option>
+                                            <option value="10lakh_to_15lakh">INR 10 Lakh to 15 Lakh</option>
+                                            <option value="15lakh_to_20lakh">INR 15 Lakh to 20 Lakh</option>
+                                            <option value="20lakh_to_30lakh">INR 20 Lakh to 30 Lakh</option>
+                                            <option value="30lakh_to_50lakh">INR 30 Lakh to 50 Lakh</option>
+                                            <option value="50lakh_to_75lakh">INR 50 Lakh to 75 Lakh</option>
+                                            <option value="75lakh_to_1crore">INR 75 Lakh to 1 Crore</option>
+                                            <option value="1crore_and_above">INR 1 Crore and Above</option>
+                                            <option value="not_applicable">Not applicable</option>
+                                            <option value="do_not_specify">Do not want to specify</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span><strong>Skin Tone</strong></span>
+                                        <select id="skin_tone" class="selectpicker">
+                                            <option value="very_fair">Very Fair</option>
+                                            <option value="fair">Fair</option>
+                                            <option value="wheatish">Wheatish</option>
+                                            <option value="dark">Dark</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br/><br/>
+                                <div align="center" style="margin-left: -8%;">
+                                    <button id="submit" type="button" class="btn btn-default btn-success" data-dismiss="modal">Submit</button>
+                                    <button id="close" type="button" class="btn btn-default btn-danger" data-dismiss="modal">Close</button>
+                                </div><br/>
+                            </div>
+                            <t t-if="partners">
+                                <t t-foreach="partners" t-as="partner">
+                                    <!--<div class="col-md-3 div_grid">-->
+                                        <!--<a t-attf-href="/partners/#{slug(partner)}">-->
+                                            <!--<img itemprop="image" class="partner_img img-responsive"-->
+                                            <!--t-attf-src="/website/image/res.partner/#{partner.id}/image#{''}" />-->
+                                        <!--</a>-->
+                                        <!--<div class="partner_name">-->
+                                            <!--<a t-attf-href="/partners/#{slug(partner)}" style="text-decoration: none;">-->
+                                                <!--<strong>-->
+                                                    <!--<span class="partner_title" t-field='partner.name' />-->
+                                                <!--</strong>-->
+                                            <!--</a>-->
+                                            <!--<br/>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <div class="col-md-3">
+            <div class="product-item" style="border-radius:5%">
+              <div class="pi-img-wrapper">
+                <img style="border-radius: 10%;" itemprop="image" class="partner_img img-responsive"
+                                            t-attf-src="/website/image/res.partner/#{partner.id}/image#{''}" />
+                <div style="border-radius: 10%;">
+                  <a t-attf-href="/partners/#{slug(partner)}" style="text-decoration: none;" class="btn">View Profile</a>
+                  <!--<a href="#" class="btn">View</a>-->
+                </div>
+              </div>
+                <br/>
+              <h3 style="height: 36px; pi-price"><a t-attf-href="/partners/#{slug(partner)}" style="text-decoration: none;">
+                                                <strong>
+                                                    <span class="partner_title" t-field='partner.name' />
+                                                </strong>
+                                            </a></h3>
+              <!--<div class="pi-price"><span class="partner_title" t-field='partner.email' /></div>-->
+              <!--<a href="javascript:;" class="btn add2cart">Add to cart</a>-->
+            </div>
+        </div>
+                                </t>
+                            </t>
+
+
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+                </div>
+
+            </t>
+        </template>
+
+        <template id="signup" name="Signup">
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure oe_empty signup_bg">
+                    <t t-if="not uid">
+                        <div class="row centered-form">
+                            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4 panel_margin">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading mt16 mb16" style="color: green;padding: 5px;">
+                                        <h1 class="panel-title signuppanel_title">Please sign up Here</h1>
+                                    </div>
+                                    <b style="color: #00B9FF;margin-left: 15px;">Enter your personal details to register.</b>
+                                    <div class="panel-body">
+                                        <form name="signup_form" role="form">
+                                            <div id="form_1">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <input type="text" name="name" id="name" required="True" class="form-control input-sm" placeholder="Full Name"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <input type="email" name="email" id="email" required="True" class="form-control input-sm" placeholder="Email Address"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="password" name="password" id="password" required="True" class="form-control input-sm" placeholder="Password"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="password" name="password_confirmation" id="password_confirmation" required="True" class="form-control input-sm" placeholder="Confirm Password"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                            </div>
+                                            <div id="form_2">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <input type="text" name="dob" id="dob" required="True" class="form-control input-sm" placeholder="Date Of Birth" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        <div class="form-group input-group" id="gender_block">
+                                                            <span>Gender: &amp;nbsp;</span>
+                                                            <input type="radio" name="gender" value="male" /> Male &amp;nbsp;
+                                                            <input type="radio" name="gender" value="female"/> Female
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="mob_no" id="mob_no" required="True" placeholder="Mobile Number"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span style="margin-left: 3px;"> City </span>
+                                                <br />
+                                                <div class="form-group">
+                                                    <select name="city" class="form-control inline-item" id="city" required="True" placeholder="Select City">
+                                                        <t t-if="cities">
+                                                            <t t-foreach="cities" t-as="city">
+                                                                <option t-att-value="city.id">
+                                                                    <t t-esc='city.name'/>
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <span style="margin-left: 3px;"> State </span>
+                                                <br />
+                                                <div class="form-group">
+                                                    <select name="state" class="form-control inline-item" id="state" required="True" placeholder="Select State">
+                                                        <t t-if="states">
+                                                            <t t-foreach="states" t-as="state">
+                                                                <option t-att-value="state.id">
+                                                                    <t t-esc='state.name'/>
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <span style="margin-left: 3px;"> Country </span>
+                                                <br />
+                                                <div class="form-group">
+                                                    <select name="country" class="form-control inline-item" id="country" required="True" placeholder="Country">
+                                                        <t t-if="countries">
+                                                            <t t-foreach="countries" t-as="country">
+                                                                <option t-att-value="country.id">
+                                                                    <t t-esc='country.name'/>
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row" id="error_message">
+                                            <div class="alert alert-danger" role="alert">
+                                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                <span class="sr-only">Error:</span>
+                                                Enter all details.
+                                            </div>
+                                        </div>
+                                        <div class="row" id="error_email">
+                                            <div class="alert alert-danger" role="alert">
+                                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                <span class="sr-only">Error:</span>
+                                                Enter A Valid Email Address.
+                                            </div>
+                                        </div>
+                                        <div class="row" id="error_password">
+                                            <div class="alert alert-danger" role="alert">
+                                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                <span class="sr-only">Error:</span>
+                                                Password doesn't match.
+                                            </div>
+                                        </div>
+                                        <button type="submit" id='btn_next' class="btn btn-info btn-block">Next</button>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <button id='btn_back' class="btn btn-info btn-block"> Back</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <button type="submit" id='signup_submit' class="btn btn-info btn-block fa fa-user fa-fw sign">Register</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+</odoo>

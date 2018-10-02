@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gallery_gallery,access_gallery_gallery,model_gallery_gallery,,1,1,1,1
+access_gallery_photos,access_gallery_photos,model_gallery_photos,,1,1,1,1

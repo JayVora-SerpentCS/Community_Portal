@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <report
+        id="filter_rep"
+        model="places.place"
+        string="Community Place Report"
+        report_type="qweb-pdf"
+        name="cp_places.filter_place"
+    />
+</odoo>

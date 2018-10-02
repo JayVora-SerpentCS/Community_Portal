@@ -1,0 +1,411 @@
+
+/*  =======================================================================
+
+    MEDIA QUERY :
+
+======================================================================= */
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .form-inline {
+        width: 200px;
+        margin-left: 70px;
+    }
+    .signup_bg {
+        height: 675px !important;
+    }
+    .centered-form .panel {
+        margin-left: 30px;
+    }
+    .menu_list {
+        color: white !important;
+    }
+    .menu_list:hover {
+        color: grey !important;
+    }
+    .saved-image img {
+        height: 240px !important;
+        width: 240px !important;
+    }
+    .about_member {
+        width: 242px !important;
+    }
+}
+
+
+/*  =======================================================================
+
+    CUSTOM STYLE :
+
+======================================================================= */
+
+.saved-image img {
+    height: 290px;
+    width: 289px;
+    margin-top: 0px;
+    border: 2px solid #5da4d9;
+    margin-left: 0px;
+}
+
+.home_img {
+    width: 100%;
+    height: 690px;
+}
+
+.partner_name{
+    position: absolute;
+    bottom: -2px;
+    width: 259px;
+    font-weight: bold;
+    background: rgba(50,50,50,0.9);
+    min-height: 40px;
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+.partner_name a{
+    color: #fff;
+}
+
+.partner_name a:hover{
+    color: #fff;
+}
+
+.partner_title{
+    padding-left: 15px;
+}
+
+.partner_age{
+    padding-left: 15px;
+}
+
+.div_grid{
+    border: 1px solid #ddd;
+    height:260px;
+    width:260px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin:5px;
+}
+
+.partner_img{
+    height: 260px;
+    /* width: 260px; */
+}
+
+.signup_bg{
+    background-image: url("/website_community_portal/static/src/img/couple_1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height:700px;
+}
+
+.centered-form{
+    width:100%;
+}
+
+.centered-form .panel{
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.signuppanel_title{
+    margin-left: 10px;
+}
+
+.panel_margin {
+    margin-top:  160px;
+}
+
+.btn_confirm {
+    background-color: #1968FF;
+    border-radius: 0px;
+    color: white;
+    width: 200px;
+    height: 40px;
+}
+
+.btn_confirm:hover {
+    background-color: #233FC7;
+    color: white;
+}
+
+.btn_decline {
+    background-color: #1968FF;
+    border-radius: 0px;
+    color: white;
+    width: 200px;
+    height: 40px;
+}
+
+.btn_decline:hover {
+    background-color: #233FC7;
+    color: white;
+}
+
+.btn_change {
+    background-color: #1968FF;
+    border-radius: 0px;
+    color: white;
+    width: 386px;
+    height: 40px;
+}
+
+.btn_change:hover {
+    color: white;
+    background-color: #233FC7;
+    text-decoration: none !important;
+}
+
+.btn_edit {
+    background-color: #1968FF;
+    border-radius: 0px;
+    color: white;
+    width: 386px;
+    height: 40px;
+}
+
+.btn_edit:hover {
+    color: white;
+    background-color: #233FC7;
+    text-decoration: none !important;
+}
+
+.btn_start {
+    background-color: #1968FF;
+    border-radius: 0px;
+    color: white;
+    width: 160px;
+    height: 40px;
+}
+
+.btn_start:hover {
+    color: white;
+    background-color: #233FC7;
+    text-decoration: none;
+}
+
+.btn_signup {
+    background-color: #1968FF;
+    border-radius: 0px;
+    color: white;
+    width: 100px;
+    height: 35px;
+}
+
+.btn_signup:hover {
+    color: white;
+    background-color: #233FC7;
+    text-decoration: none;
+}
+
+#button-signup {
+    margin-top: -7px !important;
+}
+
+.btn_change_image {
+    background-color: #1968FF;
+    border-radius: 0px;
+    color: white;
+    width: 318px;
+    height: 40px;
+}
+
+.btn_change_image:hover {
+    color: white;
+}
+
+.btn_back{
+    background-color: #1968FF;;
+    border-radius: 0px;
+    color: white;
+    width: 118px;
+    height: 40px;
+}
+
+.btn_back:hover{
+    color: white;
+    background-color: #233FC7;
+}
+
+.btn-file {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.about_me {
+    line-height: 2.0;
+    background-color: #5da4d9;
+    color: white;
+    border-radius: 0px;
+    width: 289px;
+    border-color: transparent !important;
+}
+
+.about_member {
+    line-height: 2.0;
+    background-color: #5da4d9;
+    color: white;
+    border-radius: 0px;
+    width: 282px;
+    border-color: transparent !important;
+}
+
+.panel_shadow {
+    line-height: 2.0;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.birth_panel {
+    height: 216px !important;
+}
+
+.siblings_panel {
+    height: 216px !important;
+}
+
+.partner_account_view,.grid_partner_bg{
+    background: lightgrey;
+}
+
+/* ===============================================================
+
+    Spouse tree
+
+=============================================================== */
+/* 
+.node {
+  cursor: pointer;
+}
+.link,
+.node rect {
+  fill: none;
+  stroke-width: 1.5px;
+  stroke: #636363;
+}
+.link {
+  stroke: #969696;
+}
+.node rect {
+  fill: white;
+}
+.link path,
+.node rect,
+.node text {
+  -moz-transition: all 500ms linear;
+  -ms-transition: all 500ms linear;
+  -o-transition: all 500ms linear;
+  -webkit-transition: all 500ms linear;
+  transition: all 500ms linear;
+}
+.node .normal rect {
+  fill: #bdbdbd;
+  stroke: none;
+}
+.node .selected rect {
+  fill: none;
+  stroke: #9B0000;
+  stroke-width: 3;
+}
+.node .data rect {
+  stroke: #3182bd;
+}
+.node .datum rect {
+  fill: #d9d9d9;
+  stroke: none;
+}
+.node .null rect {
+  fill: none;
+  stroke: none;
+}
+.node .null text {
+  fill: #636363;
+}
+.node .code text {
+  font-family: monospace;
+}
+.node .key rect {
+  fill: #a1d99b;
+  stroke: none;
+}
+.link .to-key {
+  stroke: #a1d99b;
+}
+.link .to-null {
+  stroke-dasharray: 0.5, 3.5;
+  stroke-linecap: round;
+}
+.link .from-data {
+  stroke: #3182bd;
+}
+code span {
+  -moz-transition: background 250ms linear;
+  -ms-transition: background 250ms linear;
+  -o-transition: background 250ms linear;
+  -webkit-transition: background 250ms linear;
+  transition: background 250ms linear;
+}
+
+ */
+
+
+/*  =======================================================================
+
+    Family tree :
+
+======================================================================= */
+
+svg {
+    margin-top: 32px;
+    border: 2px solid #5da4d9;
+    background:#dcebf7;
+    border-radius: 4px;
+    /* box-shadow: 5px 5px 5px #888888; */
+}
+.person rect {
+    fill: #fff;
+    stroke: #5da4d9;
+    stroke-width: 1px;
+}
+
+.person {
+    font: 13px sans-serif;
+    cursor: pointer;
+}
+path.siblings{
+    stroke: #888888;
+}
+
+.link {
+    fill: none;
+    stroke: #5da4d9;
+    stroke-width: 1.5px;
+}
+.paginate_button
+{
+padding: 6px;
+border: 1px solid black;
+background-color: gray;
+color: white;
+padding: 14px 25px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+cursor:pointer;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+
+}
+#gallery-table_paginate{
+    text-align:-moz-left;
+    color:white;
+}
+#gallery-table_filter{
+    text-align:-moz-left;
+}
+#gallery-table_length{
+    text-align:-moz-left;
+
+}

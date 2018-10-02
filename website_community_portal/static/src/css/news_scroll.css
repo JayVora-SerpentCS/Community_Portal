@@ -1,0 +1,23 @@
+.holder { 
+  overflow:hidden;
+}
+.holder .mask {
+  position: relative;
+  left: 0px;
+  top: 10px;
+  overflow: hidden;
+  right: 1px;
+  height: 180px;
+}
+.holder ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+  position: relative;
+}
+.holder ul li {
+  padding:10px 0px;
+}
+.holder ul li a {
+  text-decoration:none;
+}

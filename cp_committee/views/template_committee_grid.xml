@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="template_committee_grid" name="Committees List">
+        <t t-call="website.layout">
+            <link rel="stylesheet"
+                  href="/cp_committee/static/src/css/member_grid.css"/>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css"
+                  type="text/css"/>
+            <link rel="stylesheet"
+                  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"/>
+            <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.0.0-beta.3/dist/css/bootstrap-material-design.min.css"/>-->
+
+            <div class="grid_partner_bg">
+                <br/>
+                <br/>
+                <div class="container">
+                    <form name="frm">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <t t-foreach="job_pos_data" t-as="jobs">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-header card-header-custom">
+                                                <h5 class="card-header text-center bg-dark text-white">
+                                                    <span t-field="jobs.name"/>
+                                                </h5>
+                                            </div>
+
+                                            <div class="card-body card-body-custom">
+                                                <div class="image_ava">
+                                                    <t t-if="jobs.responsible_person_id.image">
+                                                    <img id="myImg"
+                                                         class="images img-thumbnail rounded mx-auto d-block mt16"
+                                                         height="200px" alt="image"
+                                                         t-attf-src="data:image/gif;base64, #{jobs.responsible_person_id.image}"
+                                                         style="padding-bottom: 5px width:100%"/>
+                                                    </t>
+                                                    <t t-if="not jobs.responsible_person_id.image">
+                                                        <img id="myImg"
+                                                         class="images img-thumbnail rounded mx-auto d-block mt16"
+                                                         height="200px" alt="image"
+                                                         src="/cp_committee/static/img/avtar_img.png"
+                                                         style="padding-bottom: 5px width:100%"/>
+                                                    </t>
+
+                                                </div>
+                                                <h4 class="card-title text-center">
+                                                    <span t-field="jobs.responsible_person_id.name"/>
+                                                </h4>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </t>
+
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <br/>
+                <br/>
+            </div>
+        </t>
+    </template>
+
+</odoo>

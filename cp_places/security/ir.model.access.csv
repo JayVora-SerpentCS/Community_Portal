@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_place_place_admin,access.place.place.admin,model_places_place,grp_admin_place,1,1,1,1
+access_place_place_member,access.place.place.member,model_places_place,grp_members_place,1,1,1,1
+access_place_photos_admin,access.place.photos.admin,model_places_photos,grp_admin_place,1,1,1,1
+access_place_photos_member,access.place.photos.member,model_places_photos,grp_members_place,1,1,1,1
+access_place_type_admin,access.place.type.admin,model_places_type,grp_admin_place,1,1,1,1
+access_place_type_member,access.place.type.member,model_places_type,grp_members_place,1,1,1,1

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="menu_member" name="Members" inherit_id="website_community_portal.website_layout_inherited">
+        <xpath expr="//ul[@id='top_menu']//li[1]" position="before">
+            <t t-if="request.session.uid">
+                <li>
+                    <a href="/partners">
+                        <span>Members</span>
+                    </a>
+                </li>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

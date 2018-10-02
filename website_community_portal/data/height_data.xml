@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="partner_height_ftin0" model="partner.height">
+            <field name="code">4ft 1in</field>
+            <field name="name">4ft 1in</field>
+        </record>
+
+        <record id="partner_height_ftin1" model="partner.height">
+            <field name="code">4ft 2in</field>
+            <field name="name">4ft 2in</field>
+        </record>
+
+        <record id="partner_height_ftin2" model="partner.height">
+            <field name="code">4ft 3in</field>
+            <field name="name">4ft 3in</field>
+        </record>
+
+        <record id="partner_height_ftin3" model="partner.height">
+            <field name="code">4ft 4in</field>
+            <field name="name">4ft 4in</field>
+        </record>
+
+        <record id="partner_height_ftin4" model="partner.height">
+            <field name="code">4ft 5in</field>
+            <field name="name">4ft 5in</field>
+        </record>
+
+        <record id="partner_height_ftin5" model="partner.height">
+            <field name="code">4ft 6in</field>
+            <field name="name">4ft 6in</field>
+        </record>
+
+        <record id="partner_height_ftin6" model="partner.height">
+            <field name="code">4ft 7in</field>
+            <field name="name">4ft 7in</field>
+        </record>
+
+        <record id="partner_height_ftin7" model="partner.height">
+            <field name="code">4ft 8in</field>
+            <field name="name">4ft 8in</field>
+        </record>
+
+        <record id="partner_height_ftin8" model="partner.height">
+            <field name="code">4ft 9in</field>
+            <field name="name">4ft 9in</field>
+        </record>
+
+        <record id="partner_height_ftin9" model="partner.height">
+            <field name="code">4ft 10in</field>
+            <field name="name">4ft 10in</field>
+        </record>
+
+        <record id="partner_height_ftin10" model="partner.height">
+            <field name="code">4ft 11in</field>
+            <field name="name">4ft 11in</field>
+        </record>
+
+        <record id="partner_height_ftin11" model="partner.height">
+            <field name="code">5ft 1in</field>
+            <field name="name">5ft 1in</field>
+        </record>
+
+        <record id="partner_height_ftin12" model="partner.height">
+            <field name="code">5ft 2in</field>
+            <field name="name">5ft 2in</field>
+        </record>
+
+        <record id="partner_height_ftin13" model="partner.height">
+            <field name="code">5ft 3in</field>
+            <field name="name">5ft 3in</field>
+        </record>
+
+        <record id="partner_height_ftin14" model="partner.height">
+            <field name="code">5ft 4in</field>
+            <field name="name">5ft 4in</field>
+        </record>
+
+        <record id="partner_height_ftin15" model="partner.height">
+            <field name="code">5ft 5in</field>
+            <field name="name">5ft 5in</field>
+        </record>
+
+        <record id="partner_height_ftin16" model="partner.height">
+            <field name="code">5ft 6in</field>
+            <field name="name">5ft 6in</field>
+        </record>
+
+        <record id="partner_height_ftin17" model="partner.height">
+            <field name="code">5ft 7in</field>
+            <field name="name">5ft 7in</field>
+        </record>
+
+        <record id="partner_height_ftin18" model="partner.height">
+            <field name="code">5ft 8in</field>
+            <field name="name">5ft 8in</field>
+        </record>
+
+        <record id="partner_height_ftin19" model="partner.height">
+            <field name="code">5ft 9in</field>
+            <field name="name">5ft 9in</field>
+        </record>
+
+        <record id="partner_height_ftin20" model="partner.height">
+            <field name="code">5ft 10in</field>
+            <field name="name">5ft 10in</field>
+        </record>
+
+        <record id="partner_height_ftin21" model="partner.height">
+            <field name="code">5ft 11in</field>
+            <field name="name">5ft 11in</field>
+        </record>
+
+        <record id="partner_height_ft0" model="partner.height">
+            <field name="code">6ft</field>
+            <field name="name">6ft</field>
+        </record>
+
+        <record id="partner_height_ftin22" model="partner.height">
+            <field name="code">6ft 1in</field>
+            <field name="name">6ft 1in</field>
+        </record>
+
+        <record id="partner_height_ftin23" model="partner.height">
+            <field name="code">6ft 2in</field>
+            <field name="name">6ft 2in</field>
+        </record>
+
+        <record id="partner_height_ftin24" model="partner.height">
+            <field name="code">6ft 3in</field>
+            <field name="name">6ft 3in</field>
+        </record>
+
+        <record id="partner_height_ftin25" model="partner.height">
+            <field name="code">6ft 4in</field>
+            <field name="name">6ft 4in</field>
+        </record>
+
+        <record id="partner_height_ftin26" model="partner.height">
+            <field name="code">6ft 5in</field>
+            <field name="name">6ft 5in</field>
+        </record>
+
+        <record id="partner_height_ftin27" model="partner.height">
+            <field name="code">6ft 6in</field>
+            <field name="name">6ft 6in</field>
+        </record>
+
+        <record id="partner_height_ftin28" model="partner.height">
+            <field name="code">6ft 7in</field>
+            <field name="name">6ft 7in</field>
+        </record>
+
+        <record id="partner_height_ftin29" model="partner.height">
+            <field name="code">6ft 8in</field>
+            <field name="name">6ft 8in</field>
+        </record>
+
+        <record id="partner_height_ftin30" model="partner.height">
+            <field name="code">6ft 9in</field>
+            <field name="name">6ft 9in</field>
+        </record>
+
+        <record id="partner_height_ftin31" model="partner.height">
+            <field name="code">6ft 10in</field>
+            <field name="name">6ft 10in</field>
+        </record>
+
+        <record id="partner_height_ftin32" model="partner.height">
+            <field name="code">6ft 11in</field>
+            <field name="name">6ft 11in</field>
+        </record>
+
+        <record id="partner_height_ft1" model="partner.height">
+            <field name="code">7ft</field>
+            <field name="name">7ft</field>
+        </record>
+
+    </data>
+</odoo>

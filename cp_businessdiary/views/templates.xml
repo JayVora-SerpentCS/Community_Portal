@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="business_diary" name="Business Diary">
+        <t t-call="website.layout">
+            <div class="partner_account_view col-md-12">
+                <form class="navbar-form" role="search" action="/page/business_diary">
+                    <div class="container">
+                        <div align="center" class="col-md-6">,
+                            <t t-call="website.pager"/>
+                        </div>
+                        <div align="center" class="col-md-6">
+                            <div class="col-md-5 pull-right mt16">
+                                <div class="input-group add-on">
+                                    <input type="text" class="form-control" placeholder="Search..." name="srch-term"
+                                           id="srch-term"/>
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" style="height: 34px;">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="partner_account_view col-md-12">
+                        <div class="col-md-12 mt16">
+                            <div class="col-xs-12">
+                                <t t-if="business_info">
+                                    <t t-foreach="business_info"
+                                       t-as="partner">
+                                        <div class="col-md-3 div_grid">
+                                            <a t-attf-href="/business_diary/#{slug(partner)}">
+                                                <img itemprop="image" class="partner_img img-responsive"
+                                                     t-attf-src="/website/image/res.partner/#{partner.id}/image#{''}"/>
+                                            </a>
+                                            <div class="partner_name">
+                                                <a t-attf-href="/business_diary/#{slug(partner)}"
+                                                   style="text-decoration: none;">
+                                                    <strong>
+                                                        <span class="partner_title" t-field='partner.name'/>
+                                                        <br/>
+                                                        <span class="partner_title" t-field='partner.mobile'/>
+                                                    </strong>
+                                                </a>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="business_diary_1" name="Partner Account">
+        <t t-call="website.layout">
+            <div class="container-fluid grid_partner_bg">
+                <div id="wrap" t-attf-class="wrapper">
+                    <t t-set="v" t-value="0"/>
+                    <div class="container">
+                        <div class="oe_structure"/>
+                        <div class="table-responsive panel panel-default panel_shadow" style="margin-top: 11px;">
+                            <div class="col-md-3 col-lg-3" align="center">
+                                <span style="height:109px" t-field="partner.image"
+                                      t-field-options='{"widget": "image"}'/>
+                            </div>
+                            <div class="col-md-6 col-lg-6 panel-title panel-heading" align="center"
+                                 style="margin-top: 53px;">
+                                <b>
+                                    <span t-field="partner.name"/>
+                                </b>
+                            </div>
+                            <table class="table table-user-information table-responsive">
+                                <tbody>
+                                    <t t-if="main_profession.profession">
+                                        <tr>
+                                            <td>
+                                                <b>Business/Profession/Job</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="main_profession.profession"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-if="main_profession.organization">
+                                        <tr>
+                                            <td>
+                                                <b>Organization</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="main_profession.organization"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-if="main_profession.designation_id">
+                                        <tr>
+                                            <td>
+                                                <b>Designation</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="main_profession.designation_id"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-if="partner.email">
+                                        <tr>
+                                            <td>
+                                                <b>Email</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="partner.email"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t>
+                                        <tr>
+                                            <td>
+                                                <b>Workplace Address</b>
+                                            </td>
+                                            <td>
+                                                <t t-if="main_profession.street">
+                                                    <b>Street:</b>
+                                                    <span t-field="main_profession.street"/>
+                                                    <br/>
+                                                </t>
+                                                <t t-if="main_profession.street2">
+                                                    <b>Street2:</b>
+                                                    <span t-field="main_profession.street2"/>
+                                                    <br/>
+                                                </t>
+                                                <t t-if="main_profession.city">
+                                                    <b>city:</b>
+                                                    <span t-field="main_profession.city"/>
+                                                    <br/>
+                                                </t>
+                                                <t t-if="main_profession.state_id">
+                                                    <b>State:</b>
+                                                    <span t-field="main_profession.state_id"/>
+                                                    <br/>
+                                                </t>
+                                                <t t-if="main_profession.zip">
+                                                    <b>Zip:</b>
+                                                    <span t-field="main_profession.zip"/>
+                                                    <br/>
+                                                </t>
+                                                <t t-if="main_profession.country_id">
+                                                    <b>Country:</b>
+                                                    <span t-field="main_profession.country_id"/>
+                                                    <br/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-if="partner.mobile">
+                                        <tr>
+                                            <td>
+                                                <b>Contact Number</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="partner.mobile"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-if="partner.phone">
+                                        <tr>
+                                            <td>
+                                                <b>Phone Number</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="partner.phone"/>
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <!-- Remarks Details-->
+                                    <t t-if="main_profession.remarks">
+                                        <tr>
+                                            <td>
+                                                <b>Remarks</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="main_profession.remarks"/>
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12">
+                            <t t-foreach="partner.business_detail_ids" t-as="obd">
+                                <t t-if="obd.show_to_diary==True">
+                                    <t t-if="v==1">
+                                        <div class="col-md-6 panel panel-default panel_shadow">
+                                            <table>
+                                                <tr>
+                                                    <td style="width: 30%;">
+                                                        <span style="height:109px" t-field="obd.photo"
+                                                              t-field-options='{"widget": "image"}'/>
+                                                    </td>
+                                                    <td class="panel-title panel-heading">
+                                                        <b>
+                                                            <span t-field="obd.organization"/>
+                                                        </b>
+                                                    </td>
+                                                </tr>
+                                                <t t-if="obd.profession">
+                                                    <tr>
+                                                        <td>
+                                                            <b>Profession</b>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="obd.profession"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                                <t t-if="obd.designation_id">
+                                                    <tr>
+                                                        <td>
+                                                            <b>Designation:</b>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="obd.designation_id"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                                <t t-if="obd.organization">
+                                                    <tr>
+                                                        <td>
+                                                            <b>Organization:</b>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="obd.organization"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                                <tr>
+                                                    <td>
+                                                        <b>Address:</b>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="main_profession.street">
+                                                            <b>Street:</b>
+                                                            <span t-field="main_profession.street"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="main_profession.street2">
+                                                            <b>Street2:</b>
+                                                            <span t-field="main_profession.street2"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="main_profession.city">
+                                                            <b>city:</b>
+                                                            <span t-field="main_profession.city"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="main_profession.state_id">
+                                                            <b>State:</b>
+                                                            <span t-field="main_profession.state_id"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="main_profession.zip">
+                                                            <b>Zip:</b>
+                                                            <span t-field="main_profession.zip"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="main_profession.country_id">
+                                                            <b>Country:</b>
+                                                            <span t-field="main_profession.country_id"/>
+                                                            <br/>
+                                                        </t>
+                                                    </td>
+                                                </tr>
+                                                <t t-if="obd.phone">
+                                                    <tr>
+                                                        <td>
+                                                            <b>Contact:</b>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="obd.phone"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                                <t t-if="obd.remarks">
+                                                    <tr>
+                                                        <td>
+                                                            <b>Remarks</b>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="obd.remarks"/>
+                                                            <br/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </table>
+                                        </div>
+                                    </t>
+                                    <t t-if="v==0">
+                                        <t t-set="v" t-value="1"/>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

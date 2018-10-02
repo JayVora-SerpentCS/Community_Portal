@@ -1,0 +1,38 @@
+.news_1 {
+    list-style: none;
+    position: relative;
+    width:300px;
+    height:250px;
+    padding: 20px;
+}
+.holder_1 { 
+  background-color:#ccc;
+  width:300px;
+  height:250px;
+  overflow:hidden;
+  padding:10px;
+  font-family:Helvetica;
+}
+.holder_1 .mask {
+  position: relative;
+  left: 0px;
+  top: 10px;
+  height:240px;
+  overflow: hidden;
+}
+.holder_1 ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+  position: relative;
+}
+.holder_1 ul li {
+  padding:10px 0px;
+}
+.holder_1 ul li a {
+  color:darkred;
+  text-decoration:none;
+}
+.p {
+	word-wrap: break-word:
+}

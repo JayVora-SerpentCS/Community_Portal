@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--  Inherited Template To Edit profile From Detail View -->
+    <template id="template_insert_place">
+        <t t-call="website.layout">
+            <form method="post" id="portal_form">
+                <input type="hidden" name="partner" class="form-control"/>
+                <div class="col-md-4">
+                    <div class="panel panel-default panel_shadow">
+                        <div class="panel-body">
+                            <h4>Profile Photo</h4>
+                            <hr />
+                            <img id='preview_image' class="saved-image center-block" height='290' width='289'/>
+                            <span class="btn big-btn btn-file center-block">
+                                <span class="fileinput btn btn_change_image">
+                                    <i class="fa fa-camera"/> Change Image
+                                </span>
+                                <input name="profile_photo" id="profile_photo" type="file" class="img img-responsive" accept="image/*" t-att-name="prefix" onchange="handle(this.files)"/>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Place Name</h4>
+                                <hr />
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" required="true"/>
+                                </div>
+
+                                <h4>Address</h4>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </t>
+    </template>
+
+</odoo>

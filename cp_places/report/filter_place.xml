@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="filter_place">
+        <t t-call="report.external_layout">
+            <div class="page">
+                <div class="header">
+                    <br/>
+                   <div><center><h1>Places</h1></center></div>
+                    <br></br>
+                    <div class="row zero_min_height" >
+                        <div class="col-xs-12">
+                            <div style="border-bottom:2px solid black;"></div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-stripped">
+                    <tr>
+                        <th>Place Name</th>
+                        <th>Place Type</th>
+                        <th>Address Line1</th>
+                        <th>Address Line2</th>
+                        <th>State</th>
+                        <th>Website</th>
+                        <th>Phone</th>
+                    </tr>
+                    <t t-foreach="docs" t-as="rec">
+                        <tr>
+                            <td>
+                                <span t-field="rec.place_name"/>
+                            </td>
+                            <td>
+                                <span t-field="rec.place_type_id.name"/>
+                            </td>
+                            <td>
+                                <span t-field="rec.street"/>
+                            </td>
+                            <td>
+                                <span t-field="rec.street2"/>
+                            </td>
+                            <td>
+                                <span t-field="rec.state_id.name"/>
+                            </td>
+                            <td>
+                                <span t-field="rec.website"/>
+                            </td>
+                            <td>
+                                <span t-field="rec.phone"/>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+        </t>
+    </template>
+
+</odoo>

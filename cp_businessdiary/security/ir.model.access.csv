@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_business_diary,access.business.diary,model_business_diary,grp_members,1,1,1,1
+access_business_diary_ad,access.business.diary.ad,model_business_diary,grp_admin,1,1,1,1
+access_designations,access.desig.desig,model_designations,grp_members,1,1,1,1
+access_designations_ad,access.desig.desig.ad,model_designations,grp_admin,1,1,1,1

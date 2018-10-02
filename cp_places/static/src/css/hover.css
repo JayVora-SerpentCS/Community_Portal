@@ -1,0 +1,14 @@
+.zoom:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+}
+
+.body  {
+    background-image: url("cp_places/website_background.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.whole_image{
+    padding-left:35px;
+}

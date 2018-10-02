@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="see_jobs_view_tree">
+        <field name="name">see.jobs.view.tree</field>
+        <field name="model">job.position</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="sequence" string="Job Sequence Number"/>
+                <field name="name"/>
+                <field name="responsible_person_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="see_jobs_view_form">
+        <field name="name">see.jobs.view.form</field>
+        <field name="model">job.position</field>
+        <field name="arch" type="xml">
+            <form string="aa">
+                <sheet>
+                    <group col="4" colspan="5">
+                        <field name="sequence" string="Job Sequence Number"/>
+                        <field name="name"/>
+                        <field name="responsible_person_id"
+                               context="{'custom':True}"/>
+                        <field name="manager_id"
+                               options='{"no_open": True, "no_create": True}'/>
+                    </group>
+                    <h1>Job Position History</h1>
+                    <group>
+                        <field name="job_pos_hist_ids" nolabel="1"
+                               mode="tree" widget="one2many_list"
+                               group="grp_admin1">
+                            <tree editable="bottom">
+                                <field name="before_date"/>
+                                <field name="before"/>
+                                <field name="after_date"/>
+                                <field name="after"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_job_pos">
+        <field name="name">Jobs Position</field>
+        <field name="res_model">job.position</field>
+        <field name="view_type">form</field>
+        <field name="context">{'update_partner':True}</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Committee Management" id="menu_committee_management"
+              parent="sales_team.menu_base_partner"/>
+    <menuitem name="Job Positions" id="allocate_job_pos"
+              action="cp_committee.action_job_pos"
+              parent="menu_committee_management"/>
+    <menuitem name="Users Management" id="main_menu_users"
+              parent="sales_team.menu_base_partner"/>
+    <menuitem name="Users" id="res_users_show"
+              action="base.action_res_users" parent="main_menu_users"/>
+
+</odoo>

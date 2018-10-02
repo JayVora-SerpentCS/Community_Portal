@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_city,access_res_city,model_res_city,,1,1,0,0
+access_partner_height,access_partner_height,model_partner_height,,1,1,0,0
+access_web_news,access_web_news,model_web_news,,1,1,0,0
+access_education_field,access_education_field,model_education_field,,1,1,0,0
+access_mother_tongue,access_mother_tongue,model_mother_tongue,,1,1,0,0
+access_language_language,access_language_language,model_language_language,,1,1,0,0
+access_community_community,access_community_community,model_community_community,,1,1,0,0
+access_sub_community,access_sub_community,model_sub_community,,1,1,0,0
+access_gotra_gotra,access_gotra_gotra,model_gotra_gotra,,1,1,0,0

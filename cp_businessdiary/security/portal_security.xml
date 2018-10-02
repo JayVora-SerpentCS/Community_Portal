@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="category_portal_groups" model="ir.module.category">
+        <field name="name">Community Portal Rights</field>
+    </record>
+    <record id="grp_admin" model="res.groups">
+		<field name="name">Community Portal Admin</field>
+		<field name="category_id"
+			   ref="cp_businessdiary.category_portal_groups"/>
+	</record>
+    <record id="grp_members" model="res.groups">
+		<field name="name">Community Portal Member</field>
+		<field name="category_id"
+			   ref="cp_businessdiary.category_portal_groups"/>
+	</record>
+	<record id="grp_all" model="res.groups">
+		<field name="name">Community Portal Default</field>
+		<field name="category_id"
+			   ref="cp_businessdiary.category_portal_groups"/>
+	</record>
+
+</odoo>

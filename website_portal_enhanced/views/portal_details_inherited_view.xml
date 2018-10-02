@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--  Inherited Template To Edit profile From Detail View -->
+    <template id="inherited_user_detail_view" inherit_id="website_portal.details">
+        <xpath expr="//form" position="replace">
+            <form method="post" id="portal_form">
+                <input type="hidden" name="partner" class="form-control" t-att-value='partner.id'/>
+                <div class="col-md-4">
+                    <div class="panel panel-default panel_shadow">
+                        <div class="panel-body">
+                            <h4>Profile Photo</h4>
+                            <hr />
+                            <img id='preview_image' class="saved-image center-block" height='290' width='289'/>
+                            <span class="btn big-btn btn-file center-block">
+                                <span class="fileinput btn btn_change_image">
+                                    <i class="fa fa-camera"/> Change Image
+                                </span>
+                                <input name="profile_photo" id="profile_photo" type="file" class="img img-responsive" accept="image/*" t-att-name="prefix" onchange="handle(this.files)"/>
+                                <input type='hidden' id='image_src' name='image' t-att-value='image or partner.image'></input>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel_shadow">
+                        <div class="panel-body">
+                            <h4 style="color: cornflowerblue;">About Me</h4>
+                            <hr />
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="comment">About Me</label>
+                                    <input type="textarea" rows="5" cols="30" name="comment" class="form-control" t-att-value="partner.comment" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel_shadow">
+                        <div class="panel-body">
+                            <h4 style="color: cornflowerblue;">Achievement</h4>
+                            <hr />
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="comment">Achievement</label>
+                                    <input type="textarea" rows="5" cols="30" name="achievement" class="form-control" t-att-value="partner.achievement" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Your Name</h4>
+                                <hr />
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" t-att-value="partner.name" required="true"/>
+                                </div>
+                                <h4>Address</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="street">Street One</label>
+                                        <input type="text" name="street" id="street" t-att-value="partner.street" class="form-control input-sm" placeholder="Street1"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="street2">Street Two</label>
+                                        <input type="text" name="street2" id="street2" t-att-value="partner.street2" class="form-control input-sm" placeholder="Street2"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="city">City</label>
+                                        <select name="city_id" class="form-control">
+                                            <t t-foreach="cities" t-as="city">
+                                                <option t-att-value="city.id" style="display:none;" t-att-selected="city.id == partner.city_id.id">
+                                                    <t t-esc="city.name" />
+                                                </option>
+                                                <option t-att-value="city.id">
+                                                    <t t-esc="city.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="state">State</label>
+                                        <select name="state" class="form-control">
+                                            <t t-foreach="states" t-as="state">
+                                                <option t-att-value="state.id" style="display:none;" t-att-selected="state.id == partner.state_id.id">
+                                                    <t t-esc="state.name" />
+                                                </option>
+                                                <option t-att-value="state.id">
+                                                    <t t-esc="state.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="country">Country</label>
+                                        <select name="country" class="form-control">
+                                            <t t-foreach="countries" t-as="country">
+                                                <option t-att-value="country.id" style="display:none;" t-att-selected="country.id == partner.country_id.id">
+                                                    <t t-esc="country.name" />
+                                                </option>
+                                                <option t-att-value="country.id">
+                                                    <t t-esc="country.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="zip">Zip</label>
+                                        <input type="text" name="zip" id="zip" t-att-value="partner.zip" class="form-control input-sm" placeholder="123"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Personal Details</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="phone">Phone No.</label>
+                                        <input type="text" name="phone" id="phone" t-att-value="partner.phone" class="form-control input-sm" placeholder="Phone No."/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="mobile">Mobile No.</label>
+                                        <input type="text" name="mobile" id="mobile" t-att-value="partner.mobile" class="form-control input-sm" placeholder="Mobile No."/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="email">Email</label>
+                                        <input type="email" name="email" id="email" t-att-value="partner.email" class="form-control input-sm" placeholder="abc@abc.com"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="category_id">Tags</label>
+                                        <select name="category_id" class="form-control select_select2" multiple="multiple">
+                                            <t t-if='selected_tags'>
+                                                    <t t-foreach="category_id or []" t-as="tag">
+                                                        <option t-att-value="tag.id" style="display:none;" t-att-selected="tag in selected_tags">
+                                                            <t t-esc="tag.name" />
+                                                        </option>
+                                                    </t>
+                                            </t>
+                                            <t t-if='not selected_tags'>
+                                                <t t-foreach="category_id or []" t-as="tag">
+                                                    <option t-att-value="tag.id" style="display:none;">
+                                                        <t t-esc="tag.name" />
+                                                    </option>
+                                                </t> 
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Status</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="gender">Gender</label>
+                                        <select name="gender" class="form-control">
+                                            <option value="male" t-att-selected="'selected' if partner.gender == 'male' else null">Male</option>
+                                            <option value="female" t-att-selected="'selected' if partner.gender == 'female' else null">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="marital">Marital Status</label>
+                                        <select name="marital" id="marital" class="form-control marital">
+                                            <option value="single" t-att-selected="'selected' if partner.marital == 'single' else null">Single</option>
+                                            <option value="married" t-att-selected="'selected' if partner.marital == 'married' else null">Married</option>
+                                            <option value="widowed" t-att-selected="'selected' if partner.marital == 'widowed' else null">Widowed</option>
+                                            <option value="divorced" t-att-selected="'selected' if partner.marital == 'divorced' else null">Divorced</option>
+                                            <option value="awting_divorced" t-att-selected="'selected' if partner.marital == 'awting_divorced' else null">Awaiting Divorced</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 marital_children">
+                                    <div class="form-group">
+                                        <label class="control-label" for="children">Have Children</label>
+                                        <select name="children" id="children" class="form-control have_children">
+                                            <option value="yes_living" t-att-selected="'selected' if partner.children == 'yes_living' else null">Yes, living together</option>
+                                            <option value="yes_not_living" t-att-selected="'selected' if partner.children == 'yes_not_living' else null">Yes, not living together</option>
+                                            <option value="no" t-att-selected="'selected' if partner.children == 'no' else null">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 no_of_children">
+                                    <label class="control-label" for="no_of_children">No. Of Children</label>
+                                    <input type="text" name="no_of_children" id="no_of_children" t-att-value="partner.no_of_children" class="form-control input-sm" placeholder="1"/>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Appearance</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="partner_height">Member Height</label>
+                                        <select name="partner_height" class="form-control">
+                                            <t t-foreach="heights" t-as="height">
+                                                <option t-att-value="height.id" style="display:none;" t-att-selected="height.id == partner.height.id">
+                                                    <t t-esc="height.name" />
+                                                </option>
+                                                <option t-att-value="height.id">
+                                                    <t t-esc="height.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="body_weight">Body Weight (in KG)</label>
+                                        <input type="text" name="body_weight" id="body_weight" t-att-value="partner.body_weight" class="form-control input-sm"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="body_type">Body Type</label>
+                                        <select name="body_type" class="form-control">
+                                            <option value="average" t-att-selected="'selected' if partner.body_type == 'average' else null">Average</option>
+                                            <option value="slim" t-att-selected="'selected' if partner.body_type == 'slim' else null">Slim</option>
+                                            <option value="athletic" t-att-selected="'selected' if partner.body_type == 'athletic' else null">Athletic</option>
+                                            <option value="heavy" t-att-selected="'selected' if partner.body_type == 'heavy' else null">Heavy</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="skin_tone">Skin Tone</label>
+                                        <select name="skin_tone" class="form-control">
+                                            <option value="very_fair" t-att-selected="'selected' if partner.skin_tone == 'very_fair' else null">Very Fair</option>
+                                            <option value="fair" t-att-selected="'selected' if partner.skin_tone == 'fair' else null">Fair</option>
+                                            <option value="wheatish" t-att-selected="'selected' if partner.skin_tone == 'wheatish' else null">Wheatish</option>
+                                            <option value="dark" t-att-selected="'selected' if partner.skin_tone == 'dark' else null">Dark</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="any_disability">Any Disability?</label>
+                                        <select name="any_disability" class="form-control">
+                                            <option value="none" t-att-selected="'selected' if partner.any_disability == 'none' else null">None</option>
+                                            <option value="disability" t-att-selected="'selected' if partner.any_disability == 'disability' else null">Physical Disability</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="blood_group">Blood Group</label>
+                                        <select name="blood_group" class="form-control">
+                                            <option value="a+" t-att-selected="'selected' if partner.blood_group == 'a+' else null">A+</option>
+                                            <option value="a-" t-att-selected="'selected' if partner.blood_group == 'a-' else null">A-</option>
+                                            <option value="b+" t-att-selected="'selected' if partner.blood_group == 'b+' else null">B+</option>
+                                            <option value="b-" t-att-selected="'selected' if partner.blood_group == 'b-' else null">B-</option>
+                                            <option value="ab+" t-att-selected="'selected' if partner.blood_group == 'ab+' else null">AB+</option>
+                                            <option value="ab-" t-att-selected="'selected' if partner.blood_group == 'ab-' else null">AB-</option>
+                                            <option value="o+" t-att-selected="'selected' if partner.blood_group == 'o+' else null">O+</option>
+                                            <option value="o-" t-att-selected="'selected' if partner.blood_group == 'o-' else null">O-</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Parent's Status</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="father_name">Father's Name</label>
+                                        <select name="father_name" id="father_name" class="form-control">
+                                            <t t-foreach="portal_user" t-as="father">
+                                                <option t-att-value="father.id" style="display:none;" t-att-selected="father.id == partner.father_id.id">
+                                                    <t t-esc="father.name" />
+                                                </option>
+                                                <option t-att-value="father.id">
+                                                    <t t-esc="father.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="father_status">Father's Status</label>
+                                        <select name="father_status" id="father_status" class="form-control father_status">
+                                            <option value="select" t-att-selected="'selected' if partner.father_status == 'select' else null">Select</option>
+                                            <option value="employed" t-att-selected="'selected' if partner.father_status == 'employed' else null">Employed</option>
+                                            <option value="business" t-att-selected="'selected' if partner.father_status == 'business' else null">Business</option>
+                                            <option value="retired" t-att-selected="'selected' if partner.father_status == 'retired' else null">Retired</option>
+                                            <option value="not_employed" t-att-selected="'selected' if partner.father_status == 'not_employed' else null">Not Employed</option>
+                                            <option value="passed_away" t-att-selected="'selected' if partner.father_status == 'passed_away' else null">Passed Away</option>
+                                            <option value="professional" t-att-selected="'selected' if partner.father_status == 'professional' else null">Professional</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 father_with_as">
+                                    <div class="form-group">
+                                        <label class="control-label" for="with">With</label>
+                                        <input type="text" name="f_company_name" id="f_company_name" class="form-control" t-att-value="partner.f_company_name" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 father_with_as">
+                                    <div class="form-group">
+                                        <label class="control-label" for="f_job_title">As</label>
+                                        <input type="text" name="f_job_title" id="f_job_title" class="form-control" t-att-value="partner.f_job_title" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 father_nature_of_business">
+                                    <div class="form-group">
+                                        <label class="control-label" for="f_nature_of_business">Nature Of Business</label>
+                                        <input type="text" name="f_nature_of_business" id="f_nature_of_business" class="form-control" t-att-value="partner.f_nature_of_business" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="mother_name">Mother's Name</label>
+                                        <select name="mother_name" id="mother_name" class="form-control">
+                                            <t t-foreach="portal_user" t-as="mother">
+                                                <option t-att-value="mother.id" style="display:none;" t-att-selected="mother.id == partner.mother_id.id">
+                                                    <t t-esc="mother.name" />
+                                                </option>
+                                                <option t-att-value="mother.id">
+                                                    <t t-esc="mother.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="mother_status">Mother's Status</label>
+                                        <select name="mother_status" id="mother_status" class="form-control mother_status">
+                                            <option value="select" t-att-selected="'selected' if partner.mother_status == 'select' else null">Select</option>
+                                            <option value="homemaker" t-att-selected="'selected' if partner.mother_status == 'homemaker' else null">Homemaker</option>
+                                            <option value="employed" t-att-selected="'selected' if partner.mother_status == 'employed' else null">Employed</option>
+                                            <option value="business" t-att-selected="'selected' if partner.mother_status == 'business' else null">Business</option>
+                                            <option value="retired" t-att-selected="'selected' if partner.mother_status == 'retired' else null">Retired</option>
+                                            <option value="not_employed" t-att-selected="'selected' if partner.mother_status == 'not_employed' else null">Not Employed</option>
+                                            <option value="passed_away" t-att-selected="'selected' if partner.mother_status == 'passed_away' else null">Passed Away</option>
+                                            <option value="professional" t-att-selected="'selected' if partner.mother_status == 'homemaker' else null">Professional</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mother_with_as">
+                                    <div class="form-group">
+                                        <label class="control-label" for="m_company_name">With</label>
+                                        <input type="text" name="m_company_name" id="m_company_name" class="form-control" t-att-value="partner.m_company_name" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mother_with_as">
+                                    <div class="form-group">
+                                        <label class="control-label" for="m_job_title">As</label>
+                                        <input type="text" name="m_job_title" id="m_job_title" class="form-control" t-att-value="partner.m_job_title" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mother_nature_of_business">
+                                    <div class="form-group">
+                                        <label class="control-label" for="m_nature_of_business">Nature Of Business</label>
+                                        <input type="text" name="m_nature_of_business" id="m_nature_of_business" class="form-control" t-att-value="partner.m_nature_of_business" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>No. of Siblings</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="col-md-2">
+                                        <b>Male</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="male_married">Married</label>
+                                        <input type="text" name="male_married" id="male_married" class="form-control" t-att-value="partner.male_married" />
+                                        <label class="control-label" for="male_not_married">Not Married</label>
+                                        <input type="text" name="male_not_married" id="male_not_married" class="form-control" t-att-value="partner.male_not_married" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-2">
+                                        <b>Female</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="female_married">Married</label>
+                                        <input type="text" name="female_married" id="female_married" class="form-control" t-att-value="partner.female_married" />
+                                        <label class="control-label" for="female_not_married">Not Married</label>
+                                        <input type="text" name="female_not_married" id="female_not_married" class="form-control" t-att-value="partner.female_not_married" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Family Status</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="family_location">Family Location</label>
+                                        <select name="family_location" class="form-control">
+                                            <t t-foreach="cities" t-as="city">
+                                                <option t-att-value="city.id" style="display:none;" t-att-selected="city.id == partner.city_id.id">
+                                                    <t t-esc="city.name" />
+                                                </option>
+                                                <option t-att-value="city.id">
+                                                    <t t-esc="city.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="family_type">Family Type</label>
+                                        <select name="family_type" class="form-control">
+                                            <option value="joint" t-att-selected="'selected' if partner.family_type == 'joint' else null">Joint</option>
+                                            <option value="nuclear" t-att-selected="'selected' if partner.family_type == 'nuclear' else null">Nuclear</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="family_values">Family Values</label>
+                                        <select name="family_values" class="form-control">
+                                            <option value="traditional" t-att-selected="'selected' if partner.family_values == 'traditional' else null">Traditional</option>
+                                            <option value="moderate" t-att-selected="'selected' if partner.family_values == 'moderate' else null">Moderate</option>
+                                            <option value="liberal" t-att-selected="'selected' if partner.family_values == 'liberal' else null">Liberal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="affluence_level">Affluence Level</label>
+                                        <select name="affluence_level" class="form-control">
+                                            <option value="affluent" t-att-selected="'selected' if partner.affluence_level == 'affluent' else null">Affluent</option>
+                                            <option value="upper_middle_class" t-att-selected="'selected' if partner.affluence_level == 'upper_middle_class' else null">Upper Middle Class</option>
+                                            <option value="middle_class" t-att-selected="'selected' if partner.affluence_level == 'middle_class' else null">Middle Class</option>
+                                            <option value="lower_middle_class" t-att-selected="'selected' if partner.affluence_level == 'lower_middle_class' else null">Lower Middle Class</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Education &amp; Career</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="education">Education</label>
+                                        <select name="education" class="form-control">
+                                            <option value="masters" t-att-selected="'selected' if partner.education == 'masters' else null">Masters</option>
+                                            <option value="bachelors" t-att-selected="'selected' if partner.education == 'bachelors' else null">Bachelors</option>
+                                            <option value="doctorate" t-att-selected="'selected' if partner.education == 'doctorate' else null">Doctorate</option>
+                                            <option value="diploma" t-att-selected="'selected' if partner.education == 'diploma' else null">Diploma</option>
+                                            <option value="undergraduate" t-att-selected="'selected' if partner.education == 'undergraduate' else null">Undergraduate</option>
+                                            <option value="associate_degree" t-att-selected="'selected' if partner.education == 'associate_degree' else null">Associate Degree</option>
+                                            <option value="honours_degree" t-att-selected="'selected' if partner.education == 'honours_degree' else null">Honours degree</option>
+                                            <option value="trade_school" t-att-selected="'selected' if partner.education == 'trade_school' else null">Trade school</option>
+                                            <option value="high_school" t-att-selected="'selected' if partner.education == 'high_school' else null">High School</option>
+                                            <option value="lessthan_highschool" t-att-selected="'selected' if partner.education == 'lessthan_highschool' else null">Less than high school</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label label-optional" for="education_in_id">In</label>
+                                        <select name="education_in_id" class="form-control">
+                                            <t t-foreach="educations" t-as="education">
+                                                <option t-att-value="education.id" style="display:none;" t-att-selected="education.id == partner.education_in_id.id">
+                                                    <t t-esc="education.name" />
+                                                </option>
+                                                <option t-att-value="education.id">
+                                                    <t t-esc="education.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="work_with">Working With</label>
+                                        <select name="work_with" class="form-control">
+                                            <option value="pvt_company" t-att-selected="'selected' if partner.work_with == 'pvt_company' else null">Private Company</option>
+                                            <option value="govt" t-att-selected="'selected' if partner.work_with == 'govt' else null">Government/Public Sector</option>
+                                            <option value="defense_civil" t-att-selected="'selected' if partner.work_with == 'defense_civil' else null">Defense/Civil Services</option>
+                                            <option value="business_selfemp" t-att-selected="'selected' if partner.work_with == 'business_selfemp' else null">Business/Self Employed</option>
+                                            <option value="not_working" t-att-selected="'selected' if partner.work_with == 'not_working' else null">Not Working</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="annual_income">Annual Income</label>
+                                        <select name="annual_income" class="form-control">
+                                            <option value="upto_1lakh" t-att-selected="'selected' if partner.annual_income == 'upto_1lakh' else null">Upto INR 1 Lakh</option>
+                                            <option value="1lakh_to_2lakh" t-att-selected="'selected' if partner.annual_income == '1lakh_to_2lakh' else null">INR 1 Lakh to 2 Lakh</option>
+                                            <option value="2lakh_to_4lakh" t-att-selected="'selected' if partner.annual_income == '2lakh_to_4lakh' else null">INR 2 Lakh to 4 Lakh</option>
+                                            <option value="4lakh_to_7lakh" t-att-selected="'selected' if partner.annual_income == '4lakh_to_7lakh' else null">INR 4 Lakh to 7 Lakh</option>
+                                            <option value="7lakh_to_10lakh" t-att-selected="'selected' if partner.annual_income == '7lakh_to_10lakh' else null">INR 7 Lakh to 10 Lakh</option>
+                                            <option value="10lakh_to_15lakh" t-att-selected="'selected' if partner.annual_income == '10lakh_to_15lakh' else null">INR 10 Lakh to 15 Lakh</option>
+                                            <option value="15lakh_to_20lakh" t-att-selected="'selected' if partner.annual_income == '15lakh_to_20lakh' else null">INR 15 Lakh to 20 Lakh</option>
+                                            <option value="20lakh_to_30lakh" t-att-selected="'selected' if partner.annual_income == '20lakh_to_30lakh' else null">INR 20 Lakh to 30 Lakh</option>
+                                            <option value="30lakh_to_50akh" t-att-selected="'selected' if partner.annual_income == '30lakh_to_50akh' else null">INR 30 Lakh to 50 Lakh</option>
+                                            <option value="50lakh_to_75lakh" t-att-selected="'selected' if partner.annual_income == '50lakh_to_75lakh' else null">INR 50 Lakh to 75 Lakh</option>
+                                            <option value="75lakh_to_1crore" t-att-selected="'selected' if partner.annual_income == '75lakh_to_1crore' else null">INR 75 Lakh to 1 Crore</option>
+                                            <option value="1crore_and_above" t-att-selected="'selected' if partner.annual_income == '1crore_and_above' else null">INR 1 Crore and Above</option>
+                                            <option value="not_applicable" t-att-selected="'selected' if partner.annual_income == 'not_applicable' else null">Not applicable</option>
+                                            <option value="do_not_specify" t-att-selected="'selected' if partner.annual_income == 'do_not_specify' else null">Do not want to specify</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Life Style</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="diet">Diet</label>
+                                        <select name="diet" class="form-control">
+                                            <option value="jain" t-att-selected="'selected' if partner.diet == 'jain' else null">Jain</option>
+                                            <option value="veg" t-att-selected="'selected' if partner.diet == 'veg' else null">Vegetarian</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="drink">Drink</label>
+                                        <select name="drink" class="form-control">
+                                            <option value="yes" t-att-selected="'selected' if partner.drink == 'yes' else null">Yes</option>
+                                            <option value="no" t-att-selected="'selected' if partner.drink == 'no' else null">No</option>
+                                            <option value="occasionally" t-att-selected="'selected' if partner.drink == 'occasionally' else null">Occasionally</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="smoke">Smoke</label>
+                                        <select name="smoke" class="form-control">
+                                            <option value="yes" t-att-selected="'selected' if partner.smoke == 'yes' else null">Yes</option>
+                                            <option value="no" t-att-selected="'selected' if partner.smoke == 'no' else null">No</option>
+                                            <option value="occasionally" t-att-selected="'selected' if partner.smoke == 'occasionally' else null">Occasionally</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Astrological Details</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="dob_country">Country Of Birth</label>
+                                        <select name="dob_country" class="form-control">
+                                            <t t-foreach="countries" t-as="country">
+                                                <option t-att-value="country.id" style="display:none;" t-att-selected="country.id == partner.dob_country.id">
+                                                    <t t-esc="country.name" />
+                                                </option>
+                                                <option t-att-value="country.id">
+                                                    <t t-esc="country.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="dob_city">City Of Birth</label>
+                                        <select name="dob_city" class="form-control">
+                                            <t t-foreach="cities" t-as="city">
+                                                <option t-att-value="city.id" style="display:none;" t-att-selected="city.id == partner.dob_city.id">
+                                                    <t t-esc="city.name" />
+                                                </option>
+                                                <option t-att-value="city.id">
+                                                    <t t-esc="city.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="birth_time">Date Of Birth</label>
+                                        <input type="datetime-local" name="birth_time" id="birth_time" t-att-value="partner.birth_time" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="manglik">Manglik</label>
+                                        <select name="manglik" class="form-control">
+                                            <option value="yes" t-att-selected="'selected' if partner.manglik == 'yes' else null">Yes</option>
+                                            <option value="no" t-att-selected="'selected' if partner.manglik == 'no' else null">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel_shadow">
+                            <div class="panel-body">
+                                <h4>Religion Background</h4>
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="religion">Religion</label>
+                                        <select name="religion" class="form-control">
+                                            <option value="hindu" t-att-selected="'selected' if partner.religion == 'hindu' else null">Hindu</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="community">Community</label>
+                                        <select name="community" class="form-control">
+                                            <t t-foreach="community" t-as="community">
+                                                <option t-att-value="community.id" style="display:none;" t-att-selected="community.id == partner.community.id">
+                                                    <t t-esc="community.name" />
+                                                </option>
+                                                <option t-att-value="community.id">
+                                                    <t t-esc="community.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="sub_community">Sub Community</label>
+                                        <select name="sub_community" class="form-control">
+                                            <t t-foreach="sub_community" t-as="sub_community">
+                                                <option t-att-value="sub_community.id" style="display:none;" t-att-selected="sub_community.id == partner.sub_community.id">
+                                                    <t t-esc="sub_community.name" />
+                                                </option>
+                                                <option t-att-value="sub_community.id">
+                                                    <t t-esc="sub_community.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="mother_tongue">Mother Tongue</label>
+                                        <select name="mother_tongue" class="form-control">
+                                            <t t-foreach="mother_tongue" t-as="mother_tongue">
+                                                <option t-att-value="mother_tongue.id" style="display:none;" t-att-selected="mother_tongue.id == partner.mother_tongue.id">
+                                                    <t t-esc="mother_tongue.name" />
+                                                </option>
+                                                <option t-att-value="mother_tongue.id">
+                                                    <t t-esc="mother_tongue.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="can_speak">Can Speak</label>
+                                        <select name="can_speak" class="form-control js-multiple" multiple="multiple">
+                                            <t t-foreach="can_speak" t-as="can_speak">
+                                                <option t-att-value="can_speak.id" style="display:none;">
+                                                    <t t-esc="can_speak.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="gotra">Gotra</label>
+                                        <select name="gotra" class="form-control">
+                                            <t t-foreach="gotra" t-as="gotra">
+                                                <option t-att-value="gotra.id" style="display:none;" t-att-selected="gotra.id == partner.gotra_id.id">
+                                                    <t t-esc="gotra.name" />
+                                                </option>
+                                                <option t-att-value="gotra.id">
+                                                    <t t-esc="gotra.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb32">
+                        <t t-if="is_user">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn_confirm center-block">Confirm</button>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="/my/home">
+                                    <input class="btn btn_decline center-block" type="button" name="decline" value="Decline"/>
+                                </a>
+                            </div>
+                        </t>
+                        <t t-if="not is_user">
+                            <div class="col-md-6">
+                                <a t-attf-href="/edit_partner/#{slug(partner)}" style="text-decoration: none !important;">
+                                    <input type="submit" class="btn btn_confirm center-block" value="Confirm User"/>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="/partners" style="text-decoration: none !important;">
+                                    <input class="btn btn_decline center-block" type="button" name="decline" value="Decline"/>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </form>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,128 @@
+.client_carousel_section{
+    background-color: aqua !important;
+    height: auto;
+    background-size: 100% 100%;
+}
+.client_carousel_section h2,.client_carousel_section p{
+    color: #fff;
+}
+.client_carousel_section small{
+    color: #666;
+}
+
+.carousel_margin{
+    margin-bottom: 40px;
+}
+.carousel_margin_top{
+    margin-bottom: 40px;
+}
+
+.client_carousel_section #quote-carousel
+{
+  padding: 0 10px 30px 10px;
+  margin-top: 30px;
+}
+/* Control buttons  */
+.client_carousel_section .carousel-control {
+  background: none !important;
+  color: #ef4035 !important;
+  font-size: 2.3em !important;
+  text-shadow: none !important;
+  margin-top: 30px !important;
+}
+
+.client_carousel_section .carousel .carousel-control.left *,
+.client_carousel_section .carousel .carousel-control.right *{
+    top: 10%!important;
+}
+/* Previous button  */
+.client_carousel_section #quote-carousel .carousel-control.left {
+  left: -25px !important;
+}
+/* Next button  */
+.client_carousel_section #quote-carousel .carousel-control.right {
+  right: -35px !important;
+}
+/* Changes the position of the indicators */
+.client_carousel_section #quote-carousel .carousel-indicators {
+  right: 50%;
+  top: auto;
+  bottom: -15px !important;
+  margin-right: -19px;
+}
+/* Changes the color of the indicators */
+.client_carousel_section #quote-carousel .carousel-indicators li {
+  background: #fff;
+}
+.client_carousel_section #quote-carousel .carousel-indicators .active {
+  background: #ef4035;
+}
+.client_carousel_section #quote-carousel img {
+  width: 250px;
+  height: 100px
+}
+/* End carousel */
+.client_carousel_section .item blockquote {
+    border-left: none; 
+    margin: 0;
+}
+.client_carousel_section .item blockquote img {
+    margin-bottom: 10px;
+}
+.client_carousel_section .item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+}
+.client_carousel_section .carousel-inner {
+    width: 93%;
+    padding-left: 3%;
+}
+
+/* Small devices (tablets, up to 768px) */
+@media (max-width: 768px) {
+    .client_carousel_section #quote-carousel .carousel-indicators {
+        bottom: -15px !important;  
+    }
+    .client_carousel_section #quote-carousel .carousel-indicators li {
+        display: inline-block;
+        margin: 0px 5px;
+        width: 15px;
+        height: 15px;
+    }
+    .client_carousel_section #quote-carousel .carousel-indicators li.active {
+        margin: 0px 5px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .client_carousel_section .carousel, .parallax, .blockquote {
+        overflow: visible;
+    }
+}
+@media (min-width: 768px) {
+    .client_carousel_section #quote-carousel {
+        margin-bottom: 0;
+        padding: 0 40px 30px 40px;
+    }
+    .client_carousel_section .carousel-indicators {
+        bottom: -15px !important;
+    }
+}
+
+    .caption-custom{
+            color:white;
+            }
+@media (max-width: 768px) {
+    .ar-left{
+        padding-left:25% !important;
+             }
+             .ar-right{
+              padding-right:25%;
+                 }
+                .btn-carousel{
+                     font-size:9px !important;
+                }
+            }
+

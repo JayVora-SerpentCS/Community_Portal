@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="template_place_detail" name="Partner Account">
+        <title>VNMG::Place Details</title>
+        <t t-call="website.layout">
+            <div class="container-fluid grid_partner_bg">
+                <div id="wrap" t-attf-class="wrapper">
+                    <t t-set="v" t-value="0"/>
+                    <div class="container">
+                        <div class="oe_structure"/>
+                        <div class="table-responsive panel panel-default panel_shadow"
+                             style="margin-top: 11px;">
+                            <br/>
+                            <div class="col-md-3 col-lg-3" align="center">
+                                <span style="height:109px"
+                                      t-field="record.place_image"
+                                      t-field-options='{"widget": "image"}'/>
+                            </div>
+                            <br/>
+
+                            <div class="col-md-6 col-lg-6 panel-title panel-heading"
+                                 align="center" style="margin-top: 53px;">
+                                <b>
+                                    <span t-field="record.place_name"/>
+                                </b>
+                                <a id="place_name"
+                                   t-attf-href="/page/place/?id={{record.place_name}}"
+                                   target="_blank">
+                                    <img t-attf-src="/cp_places/static/description/map.ico"
+                                         style="height: 25px;"/>
+                                </a>
+                            </div>
+
+                            <div>
+                                <table class="table table-user-information table-responsive">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <b>Street</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.street"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Street2</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.street2"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>City</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.city"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>State</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.state_id"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Zip</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.zip"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Country</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.country_id"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Website</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.website"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Phone</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.phone"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Place Type</b>
+                                            </td>
+                                            <td>
+                                                <span t-field="record.place_type_id"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Description</b>
+                                            </td>
+                                            <td>
+                                                <t t-esc="record.place_description"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="oe_structure"/>
+                            <div class="table-responsive panel panel-default panel_shadow">
+                                <div class="col-md-12">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                <t t-esc="record.place_name"/>
+                                                Photos
+                                            </h3>
+                                        </div>
+                                        <div id="slider">
+                                            <t t-foreach="record.place_photos_ids"
+                                               t-as="pics">
+                                                <div class="col-md-3 table-responsive"
+                                                     style="{height: 200px; width: 250px;}">
+                                                    <img width="250px"
+                                                         id="myImg"
+                                                         height="200px"
+                                                         alt="image"
+                                                         t-attf-src="data:image/gif;base64, #{pics.name}"
+                                                         class="images"
+                                                         style="padding-bottom: 20px"/>
+                                                </div>
+                                            </t>
+                                        </div>
+                                        <div id="myModal" class="modal">
+                                            <span class="close">
+                                                Close
+                                            </span>
+                                            <!-- Modal Content (The Image) -->
+
+                                            <img class="modal-content"
+                                                 id="img01"/>
+
+                                            <!-- Modal Caption (Image Text) -->
+                                            <div id="caption">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oe_structure"/>
+                        <div class="table-responsive panel panel-default panel_shadow">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <t t-esc="record.place_name"/>
+                                            Responsible Persons
+                                        </h3>
+                                    </div>
+
+                                    <div id="slider">
+                                        <t t-foreach="record.place_owners_ids"
+                                           t-as="person">
+                                            <div class="col-md-3 table-responsive"
+                                                 style="{height: 200px; width: 250px;}">
+                                                <div class="thumbnail zoom">
+                                                    <img width="250px"
+                                                         id="myImg"
+                                                         height="200px"
+                                                         alt="image"
+                                                         t-attf-src="data:image/gif;base64, #{person.image}"
+                                                         class="images"
+                                                         style="padding-bottom: 5px"/>
+                                                    <div class="caption">
+                                                        <p>
+                                                            <center>
+                                                                <b>
+                                                                    <t t-esc="person.name"/>
+                                                                </b>
+                                                            </center>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+
+                                    <div id="myModal" class="modal">
+                                        <span class="close">
+                                            Close
+                                        </span>
+                                        <!-- Modal Content (The Image) -->
+
+                                        <img class="modal-content"
+                                             id="img01"/>
+
+                                        <!-- Modal Caption (Image Text) -->
+                                        <div id="caption">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

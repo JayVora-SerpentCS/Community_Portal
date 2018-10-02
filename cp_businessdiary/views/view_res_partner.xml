@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_inherited1" model="ir.ui.view">
+        <field name="name">res.partner.form.inherited1</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+                <page string="Business Profile" name="business_profile">
+                    <field name="business_detail_ids" mode="kanban" string="Business Details">
+                        <kanban>
+                            <field name="photo"/>
+                            <field name="profession"/>
+                            <field name="designation_id"/>
+                            <field name="organization"/>
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="city"/>
+                            <field name="state_id"/>
+                            <field name="zip"/>
+                            <field name="country_id"/>
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <t t-set="color" t-value="gray"/>
+                                    <div t-att-class="color + (record.designation_id.raw_value == 1 ? ' oe_kanban_color_alert' : '') + ' oe_kanban_global_click'">
+                                        <a t-if="!read_only_mode" type="delete" class="fa fa-times pull-right"/>
+                                        <div class="o_kanban_image">
+                                            <img t-if="record.photo.raw_value" t-att-src="'data:image/png;base64,'+record.photo.raw_value" style="width:200px"/>
+                                        </div>
+                                        <div class="oe_kanban_details">
+                                            <b><field name="profession"/></b><br/>
+                                            <b><field name="designation_id"/></b>
+                                        </div>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="photo" widget="image" class="oe_avatar" nolabel="1"/>
+                                    <group string="Business Details">
+                                        <field name="profession" placeholder="Business/job/profession"/>
+                                        <field name="designation_id" placeholder="Designation"/>
+                                        <field name="organization" placeholder="Organization name"/>
+                                        <field name="phone" placeholder="Office Number"/>
+                                    </group>
+                                    <group string="Address">
+                                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                        <field name="city" placeholder="City" class="o_address_city"/>
+                                        <field name="state_id" class="o_address_state" placeholder="State"/>
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                        <field name="country_id" placeholder="Country" class="o_address_country"/>
+                                    </group>
+                                    <group>
+                                        <field name="show_to_diary"/>
+                                    </group>
+                                    <group colspan="4">
+                                        <field name="remarks" placeholder="Remarks"/>
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

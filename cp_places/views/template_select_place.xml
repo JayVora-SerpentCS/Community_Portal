@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="template_select_place">
+        <title>
+            VNMG::Places
+        </title>
+        <form action="/page/filter/">
+            <t t-call="website.layout">
+                <div class="grid_partner_bg">
+                    <br/>
+
+                    <div class="container">
+                        <div class="panel panel-primary">
+                         <div class="panel-heading">
+                                    <h2 class="panel-title"><center>Our Community Places</center></h2>
+                                </div><br/>
+                        <center>
+                            State:
+                            <select name="state" style="width:175px">
+                                <t t-foreach="state" t-as="state_data"
+                                   class="form-control inline-item">
+                                    <option t-att-value="state_data.name">
+                                        <span t-esc='state_data.name'/>
+                                    </option>
+                                </t>
+                            </select>
+
+                            Place Type:
+                            <select name="ptype" style="width:175px">
+                                <t t-foreach="place_types"
+                                   t-as="ptypes"
+                                   class="form-control inline-item">
+                                    <option t-att-value="ptypes.name">
+                                        <span t-esc='ptypes.name'/>
+                                    </option>
+                                </t>
+                            </select>
+                            <input type="submit" value="Filter" class="btn-info"/>
+                        </center>
+                        <br/>
+
+                        <div class="body">
+                            <div class="row">
+                                <t t-foreach="record" t-as="p_data">
+                                    <div class="col-md-4 whole_image"
+                                         style="{width:100px;height:100px}">
+                                        <div class="thumbnail zoom">
+                                            <a t-attf-href="/page/place_detail/?id={{p_data.place_name}}">
+                                                <img id="myImg" height="200px"
+                                                     alt="event image"
+                                                     t-attf-src="data:image/gif;base64, #{p_data.place_image}"
+                                                     class="images"
+                                                     style="padding-bottom: 5px width:100%"/>
+                                                <div class="caption">
+                                                    <p>
+                                                        <center>
+                                                            <b>
+                                                                <t t-esc="p_data.place_name"/>
+                                                            </b>
+                                                        </center>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </t>
+        </form>
+    </template>
+
+</odoo>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="places_place_view_form" model="ir.ui.view">
+        <field name="name">places.place.view.form</field>
+        <field name="model">places.place</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <h1>Place Information</h1>
+                    <group col="4" colspan="4">
+                        <field name="place_image" widget="image" nolabel="1" class="oe_avatar"/>
+                    </group>
+                    <group col="4">
+                        <field name="place_name"/>
+                        <field name="name" required="1" widget="gplaces_autocomplete"/>
+                        <field name="partner_latitude"/>
+                        <field name="partner_longitude"/>
+                        <label for="street" string="Address"/>
+                        <div class="o_address_format">
+                            <field name="street" placeholder="Street..." class="o_address_street"/>
+                            <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                            <field name="city" placeholder="City" class="o_address_city"/>
+                            <field name="state_id" class="o_address_state"
+                                   placeholder="State" options='{"no_open": True}'/>
+                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                            <field name="country_id" placeholder="Country"
+                                   class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                        </div>
+                        <field name="phone" widget="phone"/>
+                        <field name="website" widget="url" placeholder="e.g. www.odoo.com"/>
+                        <field name="place_type_id"/>
+                    </group>
+                    <group>
+                        <field name="place_photos_ids" mode="tree"
+                               widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="place_description"/>
+                    </group>
+                    <group>
+                        <h1>Select Responsible Person Of This Place</h1>
+                    </group>
+                    <group>
+                        <field name="place_owners_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="places_place_view_tree" model="ir.ui.view">
+        <field name="name">places.place.view.tree</field>
+        <field name="model">places.place</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="place_name"/>
+                <field name="place_type_id"/>
+                <field name="street"/>
+                <field name="street2"/>
+                <field name="zip"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="places_place_view_search" model="ir.ui.view">
+        <field name="name">places.place.view.search</field>
+        <field name="model">places.place</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="place_name"/>
+                <field name="place_type_id"/>
+                <field name="street"/>
+                <field name="street2"/>
+                <field name="zip"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="places_place_view_map" model="ir.ui.view">
+        <field name="name">places.place.view.map</field>
+        <field name="model">places.place</field>
+        <field name="arch" type="xml">
+            <map string="Map" lat="partner_latitude" lng="partner_longitude">
+                <field name="name"/>
+                <field name="street"/>
+                <field name="street2"/>
+                <field name="city"/>
+                <field name="zip"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+                <field name="partner_latitude"/>
+                <field name="partner_longitude"/>
+                <templates>
+                    <t t-name="map-marker-iw">
+                        <div class="gm-iw-container o_map_global_click">
+                            <div class="gm-iw-title">
+                                <span>
+                                    <t t-esc="record.name.value"/>
+                                </span>
+                            </div>
+                            <div class="gm-iw-content">
+                                <p>
+                                    <span t-esc="record.street.value"/>&#032;
+                                    <span t-esc="record.street2.value"/>
+                                </p>
+                                <p>
+                                    <span t-esc="record.city.value"/>,&#032;
+                                    <span t-esc="record.zip.value"/>
+                                </p>
+                                <p>
+                                    <span t-esc="record.state_id.value"/>,&#032;
+                                    <span  t-esc="record.country_id.value"/>
+                                </p>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </map>
+        </field>
+    </record>
+
+    <record id="view_place_filter" model="ir.ui.view">
+        <field name="name">view.place.filter</field>
+        <field name="model">report.place.types</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <group>
+                    <field name="place_type_id" string="Place Type"/>
+                    <field name="state_id" string="State"/>
+                </group>
+                <footer>
+                    <button name='print_report' type="object" string="View Report"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_place_report1">
+        <field name="name">Select Parameters</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.place.types</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="places_place_action">
+        <field name="name">Places Details</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">places.place</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,map,search</field>
+    </record>
+
+    <menuitem name="Place Management" id="menu_place_management"
+              parent="sales_team.menu_base_partner"/>
+    <menuitem name="Place" id="menu_place"
+              action="cp_places.places_place_action"
+              parent="menu_place_management"/>
+    <menuitem name="Generate Report" id="menu_generate_place_rep"
+              action="act_place_report1"
+              parent="menu_place_management"/>
+
+</odoo>

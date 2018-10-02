@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="gallery_view_tree" model="ir.ui.view">
+        <field name="name">gallery.view.tree</field>
+        <field name="model">gallery.gallery</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="event_id" string="Photos For"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="gallery_view_form" model="ir.ui.view">
+        <field name="name">gallery.view.form</field>
+        <field name="model">gallery.gallery</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="event_id" string="Photos For"/>
+                        <field name="photo_ids" string="Photos For" mode="tree"
+                               widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="images"/>
+                            </tree>
+
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_show_gallery" model="ir.actions.act_window">
+        <field name="name">Gallery</field>
+        <field name="res_model">gallery.gallery</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Community Gallery" id="menu_committee_gallery"
+              parent="sales_team.menu_base_partner"/>
+
+    <menuitem name="Add Photo To Gallery" id="add_photo_menu"
+              action="cp_gallery.action_show_gallery"
+              parent="menu_committee_gallery"/>
+
+</odoo>

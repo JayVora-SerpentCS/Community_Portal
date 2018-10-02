@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Layout and common templates -->
+    <template id="assets_frontend" inherit_id="website.assets_frontend"
+        name="Assets Frontend Inherited">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/website_blog_configurator/static/src/css/custom.css" />
+            <script type="text/javascript" src="/website_blog_configurator/static/src/js/website_blog_configurator.js" />
+            <!-- slick Carousel css-->
+            <link rel="stylesheet" type="text/css" href="/website_blog_configurator/static/src/css/slick.css" />
+            <link rel="stylesheet" type="text/css" href="/website_blog_configurator/static/src/css/slick-theme.css" />
+            <!-- slick Carousel Js-->
+            <script type="text/javascript" src="/website_blog_configurator/static/src/js/slick.min.js"></script>
+        </xpath>
+    </template>
+
+</odoo>

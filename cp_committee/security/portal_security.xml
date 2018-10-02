@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="category_committee_groups" model="ir.module.category">
+        <field name="name">Community Portal Committee Rights</field>
+    </record>
+
+    <record id="grp_admin_cmt" model="res.groups">
+        <field name="name">Committee Admin</field>
+        <field name="category_id" ref="cp_committee.category_committee_groups"/>
+    </record>
+
+    <record id="grp_members_cmt" model="res.groups">
+        <field name="name">Committee Member</field>
+        <field name="category_id" ref="cp_committee.category_committee_groups"/>
+    </record>
+
+    <record id="grp_all_cmt" model="res.groups">
+        <field name="name">Default</field>
+        <field name="category_id" ref="cp_committee.category_committee_groups"/>
+    </record>
+
+</odoo>

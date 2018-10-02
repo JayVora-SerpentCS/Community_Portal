@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_frontend_tree" inherit_id="website.assets_frontend" name="Committee chart assets">
+        <xpath expr="." position="inside">
+            <meta charset="utf-8"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+            <meta name="viewport" content="width=device-width"/>
+            <link rel="stylesheet" href="/cp_committee/static/src/libs/getorgchart/css/getorgchart.css"/>
+            <script type="text/javascript" src="/cp_committee/static/src/libs/getorgchart/js/getorgchart.js"/>
+            <script type="text/javascript" src="/cp_committee/static/src/js/committee_tree.js"/>
+            <script type="text/javascript" src="/cp_committee/static/src/js/jquery.dataTables.js"/>
+            <script type="text/javascript" src="/cp_committee/static/src/js/committee_list.js"/>
+        </xpath>
+    </template>
+
+    <template id="template_committee_chart" name="Committee chart" page="True">
+        <t t-call="website.layout">
+            <div class="container-fluid">
+                <div class="row">
+                    <form name="frm_tree1">
+                        <div id="people">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

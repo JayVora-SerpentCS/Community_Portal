@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- MenuItem For Master Data -->
+        <menuitem id="menu_master_root" name="Master Data"/>
+        <menuitem id="menu_master" name="Configration" parent="menu_master_root" />
+
+        <!-- Tree view of Height -->
+        <record id="view_partner_height_tree" model="ir.ui.view">
+            <field name="name">view.hr.job.title.tree</field>
+            <field name="model">partner.height</field>
+            <field name="arch" type="xml">
+                <tree string="Height" >
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view of Height -->
+        <record id="view_partner_height_form" model="ir.ui.view">
+            <field name="name">view.hr.job.title.form</field>
+            <field name="model">partner.height</field>
+            <field name="arch" type="xml">
+                <form string="Height">
+                    <sheet>
+                        <group colspan="2" col="4">
+                            <field name="name" required="1" placeholder="Name" />
+                            <field name="code" placeholder="Code" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search view of Height -->
+        <record id="view_partner_height_search" model="ir.ui.view">
+            <field name="name">view.hr.job.title.search</field>
+            <field name="model">partner.height</field>
+            <field name="arch" type="xml">
+                <search string="Height">
+                    <field name="name" string="Name" />
+                    <field name="code" string="Code" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Action of Height -->
+        <record id="action_partner_height" model="ir.actions.act_window">
+            <field name="name">Height</field>
+            <field name="res_model">partner.height</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="view_partner_height_search" />
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu of Height -->
+        <menuitem id="menu_partner_height" action="action_partner_height"
+            name="Height" parent="menu_master" sequence="1" />
+
+        <!-- Tree view of education -->
+        <record id="view_education_tree" model="ir.ui.view">
+            <field name="name">view.education.tree</field>
+            <field name="model">education.field</field>
+            <field name="arch" type="xml">
+                <tree string="Height" >
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view of education -->
+        <record id="view_education_form" model="ir.ui.view">
+            <field name="name">view.education.form</field>
+            <field name="model">education.field</field>
+            <field name="arch" type="xml">
+                <form string="Height">
+                    <sheet>
+                        <group colspan="2" col="4">
+                            <field name="name" required="1" placeholder="Name" />
+                            <field name="code" placeholder="Code" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search view of education -->
+        <record id="view_education_search" model="ir.ui.view">
+            <field name="name">view.education.search</field>
+            <field name="model">education.field</field>
+            <field name="arch" type="xml">
+                <search string="Height">
+                    <field name="name" string="Name" />
+                    <field name="code" string="Code" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Action of education -->
+        <record id="action_education" model="ir.actions.act_window">
+            <field name="name">Education</field>
+            <field name="res_model">education.field</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="view_partner_height_search" />
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu of education -->
+        <menuitem id="menu_educations_height" action="action_education"
+            name="Educations" parent="menu_master" sequence="2" />
+
+        <!-- form view language -->
+        <record id="view_lang_form" model="ir.ui.view">
+            <field name="name">view.lang.form</field>
+            <field name="model">language.language</field>
+            <field name="arch" type="xml">
+                <form string="Can Speak">
+                    <sheet>
+                        <group colspan="2" col="4">
+                            <field name="name" required="1" placeholder="Name" />
+                            <field name="code" placeholder="Code" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view of lang -->
+        <record id="view_lang_tree" model="ir.ui.view">
+            <field name="name">view.lang.tree</field>
+            <field name="model">language.language</field>
+            <field name="arch" type="xml">
+                <tree string="Can Speak" >
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search view of Language -->
+        <record id="view_lang_search" model="ir.ui.view">
+            <field name="name">view.lang.search</field>
+            <field name="model">language.language</field>
+            <field name="arch" type="xml">
+                <search string="Language">
+                    <field name="name" string="Name" />
+                    <field name="code" string="Code" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Action of lang -->
+        <record id="action_lang" model="ir.actions.act_window">
+            <field name="name">Language</field>
+            <field name="res_model">language.language</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_lang_search" />
+        </record>
+
+        <!-- Menu of lang -->
+        <menuitem id="menu_lang" action="action_lang"
+            name="language" parent="menu_master" />
+
+        <!-- form view mothertongue -->
+        <record id="view_mothertongue_form" model="ir.ui.view">
+            <field name="name">view.mothertongue.form</field>
+            <field name="model">mother.tongue</field>
+            <field name="arch" type="xml">
+                <form string="Mother Tongue">
+                    <sheet>
+                        <group colspan="2" col="4">
+                            <field name="name" required="1" placeholder="Name" />
+                            <field name="code" placeholder="Code" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view of mothertongue -->
+        <record id="view_mothertongue_tree" model="ir.ui.view">
+            <field name="name">view.mothertongue.tree</field>
+            <field name="model">mother.tongue</field>
+            <field name="arch" type="xml">
+                <tree string="Mother Tongue" >
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search view of Mothr Tounge -->
+        <record id="view_mothertongue_search" model="ir.ui.view">
+            <field name="name">view.mothertongue.search</field>
+            <field name="model">language.language</field>
+            <field name="arch" type="xml">
+                <search string="Mother Tongue">
+                    <field name="name" string="Name" />
+                    <field name="code" string="Code" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Action of mothertongue -->
+        <record id="action_mothertongue" model="ir.actions.act_window">
+            <field name="name">Mothertongue</field>
+            <field name="res_model">mother.tongue</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_mothertongue_search" />
+        </record>
+
+        <!-- Menu of mothertongue -->
+        <menuitem id="menu_mothertongue" action="action_mothertongue"
+            name="Mothertongue" parent="menu_master" />
+
+        <!-- form view Community -->
+        <record id="view_Community_form" model="ir.ui.view">
+            <field name="name">view.community.form</field>
+            <field name="model">community.community</field>
+            <field name="arch" type="xml">
+                <form string="Community">
+                    <sheet>
+                        <group colspan="2" col="4">
+                            <field name="name" required="1" placeholder="Name" />
+                            <field name="code" placeholder="Code" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view of Community -->
+        <record id="view_Community_tree" model="ir.ui.view">
+            <field name="name">view.community.tree</field>
+            <field name="model">community.community</field>
+            <field name="arch" type="xml">
+                <tree string="Community" >
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search view of Community -->
+        <record id="view_Community_search" model="ir.ui.view">
+            <field name="name">view.community.search</field>
+            <field name="model">community.community</field>
+            <field name="arch" type="xml">
+                <search string="Community">
+                    <field name="name" string="Name" />
+                    <field name="code" string="Code" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Action of Community -->
+        <record id="action_community" model="ir.actions.act_window">
+            <field name="name">Community</field>
+            <field name="res_model">community.community</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_Community_search" />
+        </record>
+
+        <!-- Menu of Community -->
+        <menuitem id="menu_Community" action="action_community"
+            name="Community" parent="menu_master" />
+
+        <!-- form view Sub Community -->
+        <record id="view_sub_community_form" model="ir.ui.view">
+            <field name="name">view.sub.community.form</field>
+            <field name="model">sub.community</field>
+            <field name="arch" type="xml">
+                <form string="Sub Community">
+                    <sheet>
+                        <group colspan="2" col="4">
+                            <field name="name" required="1" placeholder="Name" />
+                            <field name="code" placeholder="Code" />
+                            <field name="community_id" placeholder="Community" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view of Sub Community -->
+        <record id="view_sub_community_tree" model="ir.ui.view">
+            <field name="name">view.sub.community.tree</field>
+            <field name="model">sub.community</field>
+            <field name="arch" type="xml">
+                <tree string="Sub Community" >
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="community_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search view of Sub Community -->
+        <record id="view_sub_community_search" model="ir.ui.view">
+            <field name="name">view.sub.community.search</field>
+            <field name="model">community.community</field>
+            <field name="arch" type="xml">
+                <search string="Sub Community">
+                    <field name="name" string="Name" />
+                    <field name="code" string="Code" />
+                    <group expand="0" string="Group By">
+                        <filter name="community_id" string="Community" domain="[]"
+                            context="{'group_by':'community_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action of Sub Community -->
+        <record id="action_sub_community" model="ir.actions.act_window">
+            <field name="name">Sub Community</field>
+            <field name="res_model">sub.community</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_sub_community_search" />
+        </record>
+
+        <!-- Menu of Sub Community -->
+        <menuitem id="menu_sub_community" action="action_sub_community"
+            name="Sub Community" parent="menu_master" />
+
+        <!-- form view Gotra -->
+        <record id="view_gotra_form" model="ir.ui.view">
+            <field name="name">view.gotra.form</field>
+            <field name="model">gotra.gotra</field>
+            <field name="arch" type="xml">
+                <form string="Gotra">
+                    <sheet>
+                        <group colspan="2" col="4">
+                            <field name="name" required="1" placeholder="Name" />
+                            <field name="code" placeholder="Code" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view of Gotra -->
+        <record id="view_gotra_tree" model="ir.ui.view">
+            <field name="name">view.gotra.tree</field>
+            <field name="model">gotra.gotra</field>
+            <field name="arch" type="xml">
+                <tree string="Gotra" >
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search view of Gotra -->
+        <record id="view_gotra_search" model="ir.ui.view">
+            <field name="name">view.gotra.search</field>
+            <field name="model">gotra.gotra</field>
+            <field name="arch" type="xml">
+                <search string="Gotra">
+                    <field name="name" string="Name" />
+                    <field name="code" string="Code" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Action of gotra -->
+        <record id="action_gotra" model="ir.actions.act_window">
+            <field name="name">Gotra</field>
+            <field name="res_model">gotra.gotra</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_gotra_search" />
+        </record>
+
+        <!-- Menu of gotra -->
+        <menuitem id="menu_gotra" action="action_gotra"
+            name="Gotra" parent="menu_master"/>
+
+</odoo>

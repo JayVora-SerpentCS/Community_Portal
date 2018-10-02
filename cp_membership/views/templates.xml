@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="partner_membership" inherit_id="website_community_portal.partner_account" name="Partner Membership">
+        <xpath expr="//div[@id='achievement']" position="after">
+            <t t-if="partner.member_lines">
+                <div id="achievement" class="panel panel-default about_member">
+                    <div class="panel-body">
+                        <span class="fa fa-users fa-2x"/> <b>Membership</b> <span class="fa fa-users fa-2x"/><br />
+                        <t t-set="membership" t-value="partner.member_lines.search([('partner', '=', partner.id)], limit=1, order='date_to desc')"/>
+                        <strong>Membership Name: </strong><t t-esc="membership.category_id.name"/><br />
+                        <strong>Membership Start Date: </strong><t t-esc="membership.date_from"/><br />
+                        <strong>Membership End Date: </strong><t t-esc="membership.date_to"/>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem name="Membership" id="menu_membership"
+              parent="sales_team.menu_base_partner"/>
+    <menuitem name="Membership"
+              id="membership.menu_membership"
+              parent="menu_membership"
+              action="membership.action_membership_members"/>
+
+</odoo>

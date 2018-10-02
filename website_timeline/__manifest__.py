@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+
+{
+    'name': 'Timeline Building Block',
+    'category': 'Website',
+    'summary': 'Building Block that allows you to create timelined content',
+    'version': '10.0.1.0.0',
+    'license': 'AGPL-3',
+    'description': """
+Timeline Building Block
+======================================
+Building Block that allows you to create timelined content
+        """,
+    'author': 'Vihren Kanev <vihren.kanev@gmail.com>,'
+    'Serpent Consulting Services Pvt. Ltd.',
+    'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
+    'website': 'http://www.serpentcs.com',
+    'depends': [
+        'website'
+    ],
+    'data': [
+        'views/assets.xml',
+        'views/snippet.xml',
+    ],
+    'installable': True
+}

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Inherited MenuItem For Sales -->
+        <menuitem name="Members" id="sales_team.menu_base_partner" groups="sales_team.group_sale_manager,sales_team.group_sale_salesman"/>
+        <menuitem name="Members" id="sales_team.menu_sales" parent="sales_team.menu_base_partner" sequence="1"/>
+
+        <!-- Inherited Form View Of Partner -->
+        <record id="view_partner_form_inherited" model="ir.ui.view">
+            <field name="name">res.partner.form.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="city" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <field name="street2" position="after">
+                    <field name="city_id"/>
+                </field>
+                <field name="website" position="after">
+                    <label for="street" string="Office Address"/>
+                    <div>
+                        <field name="office_street" placeholder="Street..."/>
+                        <field name="office_street2"/>
+                        <div class="address_format">
+                            <field name="office_city_id" placeholder="City" style="width: 40%%"/>
+                            <field name="office_state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}'/>
+                            <field name="office_zip" placeholder="ZIP" style="width: 20%%"/>
+                        </div>
+                        <field name="office_country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "no_create": True}'/>
+                    </div>
+                </field>
+                <field name="title" position="after">
+                    <field name="native"/>
+                    <field name="office_phone"/>
+                </field>
+                <xpath expr="//page[@name='internal_notes']" position="attributes">
+                    <attribute name="string">About Me</attribute>
+                </xpath>
+                <xpath expr="//field[@name='comment']" position="attributes">
+                    <attribute name="string">About Me</attribute>
+                    <attribute name="placeholder">About Me...</attribute>
+                </xpath>
+                <xpath expr="//page[@name='sales_purchases']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//page[@name='internal_notes']" position="inside">
+                    <group col="2">
+                        <group string="Life Style">
+                            <field name="diet" widget="radio" />
+                            <field name="drink" widget="radio" />
+                            <field name="smoke" widget="radio" />
+                        </group>
+                        <group string="Astrological Details">
+                            <field name="dob_country"/>
+                            <field name="dob_city"/>
+                            <field name="birth_time"/>
+                            <field name="manglik" widget="radio" />
+                        </group>
+                        <group string="Religious Background">
+                            <field name="religion"/>
+                            <field name="community"/>
+                            <field name="sub_community"/>
+                            <field name="mother_tongue"/>
+                            <field name="can_speak" widget="many2many_tags" />
+                            <field name="gotra_id"/>
+                        </group>
+                     </group>
+                </xpath>
+                <xpath expr="//form/sheet/group" position="after">
+                    <group>
+                        <field name="achievement"/>
+                    </group>
+                </xpath>
+                <xpath expr="//page[@name='sales_purchases']" position="after">
+                    <page string="Basic Information">
+                        <group col="2">
+                            <group string="Status">
+                                <field name="gender" widget="radio" />
+                                <field name="marital"/>
+                                <field name="remarriage" attrs="{'invisible':[('marital','in',['single','married', 'awting_divorced'])]}"/>
+                                <field name="ex_spouse_id" attrs="{'invisible':['|', ('remarriage','!=','yes'), ('marital', 'not in', ['widowed', 'divorced'])]}"/>
+                                <field name="spouse_id" attrs="{'invisible':[('marital','=','single')]}"/>
+                                <field name="children" attrs="{'invisible':[('marital','=','single')]}" />
+                                <field name="no_of_children"
+                                    attrs="{'invisible':['|',('children','=','no'), ('marital','=','single')]}" />
+                            </group>
+                            <group string="Birth">
+                                <field name="dob" />
+                                <field name="age" />
+                            </group>
+                            <group string="Appearance" col="4" colspan="4">
+                                <field name="height" options='{"no_open":True}' widget="selection"/>
+                                <field name="body_type" widget="radio" />
+                                <field name="skin_tone" widget="radio" />
+                                <field name="body_weight" />
+                                <field name="blood_group" />
+                                <field name="any_disability" widget="radio" />
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Family Information">
+                        <group>
+                            <group string="Parent's Status">
+                                <field name="father_id"/>
+                                <field name="father_status" />
+                                <field name="f_company_name"
+                                    attrs="{'invisible':['|', ('father_status','in',['select','business', 'retired', 'not_employed', 'passed_away', 'professional']), ('father_status','=', False)]}" />
+                                <field name="f_job_title"
+                                    attrs="{'invisible':['|', ('father_status','in',['select','business', 'retired', 'not_employed', 'passed_away', 'professional']),('father_status','=', False)]}" />
+                                <field name="f_nature_of_business"
+                                    attrs="{'invisible':['|', ('father_status','in',['select','employed', 'retired', 'not_employed', 'passed_away', 'professional']),('father_status','=', False)]}"
+                                    placeholder="Example : 'Home Decor'" />
+                                <field name="mother_id"/>
+                                <field name="mother_status" />
+                                <field name="m_company_name"
+                                    attrs="{'invisible':[('mother_status','in',['select','homemaker', 'business', 'retired', 'not_employed', 'passed_away', 'professional'])]}" />
+                                <field name="m_job_title"
+                                    attrs="{'invisible':[('mother_status','in',['select', 'homemaker', 'business', 'retired', 'not_employed', 'passed_away', 'professional'])]}" />
+                                <field name="m_nature_of_business"
+                                    attrs="{'invisible':[('mother_status','in',['select', 'homemaker', 'employed', 'retired', 'not_employed', 'passed_away', 'professional'])]}"
+                                    placeholder="Example : 'Home Decor'" />
+                            </group>
+                            <group string="No. of Siblings">
+                                <label for="male_not_married" string="Male" />
+                                <div>
+                                    <field name="male_married" style="width: 50%%" />
+                                    <b>Married</b>
+                                    <field name="male_not_married" style="width: 50%%" />
+                                    <b>Not Married</b>
+                                </div>
+                                <label for="female_not_married" string="Female" />
+                                <div>
+                                    <field name="female_not_married" placeholder="Married"
+                                        style="width: 50%%" />
+                                    <b>Married</b>
+                                    <field name="female_married" placeholder="Not Married"
+                                        style="width: 50%%" />
+                                    <b>Not Married</b>
+                                </div>
+                            </group>
+                            <group string="Sibling's Information" col="4" colspan="4">
+                                <field name="sibling_ids" nolabel="1">
+                                    <tree>
+	                                    <field name="name"/>
+	                                    <field name="gender"/>
+	                                    <field name="age"/>
+	                                    <field name="marital"/>
+	                                     <field name="spouse_id"/>
+	                                    <field name="no_of_children"/>
+	                                </tree>
+                                </field>
+                            </group>
+                            <group string="Children Information" col="4" colspan="4" attrs="{'invisible':[('children','not in',['yes_living', 'yes_not_living'])]}">
+                                <field name="children_ids" nolabel="1" >
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="gender"/>
+                                        <field name="age"/>
+                                        <field name="marital"/>
+                                         <field name="spouse_id"/>
+                                        <field name="no_of_children"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group string="Family Status" col="4" colspan="4">
+                                <field name="family_location" placeholder="Example : Mumbai, India" />
+                                <field name="family_type" widget="radio" />
+                                <field name="family_values" widget="radio" />
+                                <field name="affluence_level" />
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Education &amp; Career">
+                        <group colspan="4">
+                            <label for="education" string="Education"/>
+                            <span>
+                                <field name="education" style="width: 45%;"/> 
+                                <b> In </b>
+                                <field name="education_in_id" style="width: 45%%" options='{"no_open":True}' widget="selection"/>
+                            </span>
+                        </group>
+                        <group col="4">
+                            <field name="work_with" />
+                            <field name="annual_income" />
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Res Partner Filter View Inherited -->
+        <record id="view_res_partner_filter_inherited" model="ir.ui.view">
+            <field name="name">view.res.partner.filter.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='supplier']" position="after">
+                    <filter string="Blood Group" name="blood_group" context="{'group_by':'blood_group'}" domain="[]"/>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

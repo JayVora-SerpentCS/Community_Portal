@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="custom_snippet_news_roller" inherit_id="website.snippets">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <div>
+                <!-- Thumbnail -->
+                <div class="oe_snippet_thumbnail">
+                    <img class="oe_snippet_thumbnail_img" src="/website_news_roller/static/src/img/thumbnail.jpg" />
+                    <span class="oe_snippet_thumbnail_title">News Scroll</span>
+                </div>
+                <section class="oe_snippet_body mt16 mb16">
+                    <div class="container">
+                        <div class="col-md-3">
+                            <div class="page-header">
+                                <h2>News Roller</h2>
+                            </div>
+                            <div class="news_1">
+                                <div class="row">
+                                    <div class="col-md-0 node">
+                                        <div class="holder_1">
+                                            <ul id="ticker_1">
+                                                <li>
+                                                    <p>
+                                                        <br/><b>SerpentCS</b><br/>
+                                                        This snipped shoud be use for News Rolling.<br/>
+                                                        <br/><b>Experience:</b><br/>
+                                                        We have years of vital experience in the field of OpenERP/ODOO.
+                                                        We have been active in the same field since 2007 and around a decade
+                                                        we have been offering our quality assured services to global clientele.
+                                                        <br/><b>Quality:</b><br/>
+                                                        We are well known for providing industry’s superior quality services at an international platform.
+                                                        We know, nothing in the world can beat superior quality services; no matter what and which field.
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

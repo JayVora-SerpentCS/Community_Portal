@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Tree View For Web News -->
+        <record model="ir.ui.view" id="web_news_tree">
+            <field name="name">web.news.tree</field>
+            <field name="model">web.news</field>
+            <field name="arch" type="xml">
+                <tree string="News">
+                    <field name="date_time" />
+                    <field name="back_color" />
+                    <field name="font_color" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View For Web News -->
+        <record model="ir.ui.view" id="web_news_form">
+            <field name="name">web.news.form</field>
+            <field name="model">web.news</field>
+            <field name="arch" type="xml">
+                <form string="News" version="9.0">
+                    <sheet>
+                        <group col="4">
+                            <group string="General Information" colspan="4" col="4">
+                                <field name="date_time" colspan="2"/>
+                                <field name="is_active" colspan="2"/>
+                                <field name="back_color" />
+                                <field name="font_color" />
+                            </group>
+                            <separator string="Description" colspan="4"/>
+                            <field name="description" nolabel="1" colspan="4"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Actions Of Tree & Form Views Of Web News -->
+        <record model="ir.actions.act_window" id="web_news_action">
+            <field name="name">News</field>
+            <field name="res_model">web.news</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="News" id="web_news_menu" action="web_news_action" parent="base_setup.menu_config"/>
+
+</odoo>

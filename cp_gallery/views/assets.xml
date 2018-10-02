@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_frontend_gallery" inherit_id="website.assets_frontend" name="Gallery">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet"
+                  href="/cp_gallery/static/src/css/blueimp-gallery.min.css"/>
+            <script type="text/javascript"
+                    src="/cp_gallery/static/src/js/cycle.js"/>
+            <script type="text/javascript"
+                    src="/cp_gallery/static/src/js/data_table_custom.js"/>
+            <script type="text/javascript"
+                    src="/cp_gallery/static/src/js/own.js"/>
+            <link rel="stylesheet"
+                  href="/cp_gallery/static/src/css/member_grid.css"/>
+            <script src="/cp_gallery/static/src/js/owl.carousel.min.js" type="text/javascript"/>
+            <link href="/cp_gallery/static/src/css/owl.carousel.min.css" rel="stylesheet"/>
+            <link href="/cp_gallery/static/src/css/owl.theme.default.css" rel="stylesheet"/>
+        </xpath>
+    </template>
+
+</odoo>

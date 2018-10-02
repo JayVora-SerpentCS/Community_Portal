@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="business_diary_tree_view_approval" model="ir.ui.view">
+        <field name="name">bdiary.tree.view</field>
+        <field name="model">business.diary</field>
+        <field name="arch" type="xml">
+            <tree string="Business Diary">
+                <field name="name"/>
+                <field name="profession"/>
+                <field name="designation_id"/>
+                <field name="organization"/>
+                <field name="email"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="business_diary_form_view" model="ir.ui.view">
+        <field name="name">bdiary.form.view</field>
+        <field name="model">business.diary</field>
+        <field name="arch" type="xml">
+            <form string="Business Diary">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                    </div>
+                    <field name="photo" widget="image" class="oe_avatar" nolabel="1"/>
+                    <group col="4">
+                        <field name="name" placeholder="Your Name"/>
+                        <field name="profession" placeholder="Business/job/profession"/>
+                        <field name="designation_id" placeholder="Designation"/>
+                        <field name="organization" placeholder="Organization name"/>
+                        <field name="email" placeholder="Email Id"/>
+                        <field name="mobile" placeholder="Mobile Number"/>
+                        <field name="phone" placeholder="Phone Number"/>
+                        <field name="show_to_diary"/>
+                    </group>
+                    <group>
+                        <field name="remarks" placeholder="Remarks"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="business_diary_kanban_view" model="ir.ui.view">
+        <field name="name">bdiary.kanban.view</field>
+        <field name="model">business.diary</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="photo"/>
+                <field name="name"/>
+                <field name="profession"/>
+                <field name="designation_id"/>
+                <field name="organization"/>
+                <field name="email"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+                <field name="show_to_diary"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <t t-set="color" t-value="gray"/>
+                        <div t-att-class="color + (record.designation_id.raw_value == 1 ? ' oe_kanban_color_alert' : '') + ' oe_kanban_global_click'">
+                            <a t-if="!read_only_mode" type="delete" class="fa fa-times pull-right"/>
+                            <div class="o_kanban_image">
+                                <img t-if="record.photo.raw_value" t-att-src="'data:image/png;base64,'+record.photo.raw_value" style="width:200px"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <b>Name: </b><field name="name"/><br/>
+                                <b>Profession: </b><field name="profession"/><br/>
+                                <b>Designation: </b><field name="designation_id"/><br/>
+                                <b>Phone/Office Number: </b><field name="phone"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="business_diary_search_view" model="ir.ui.view">
+        <field name="name">bdiary.search.view</field>
+        <field name="model">business.diary</field>
+        <field name="arch" type="xml">
+            <search string="Business Diary">
+                <field name="name"/>
+                <field name="profession"/>
+                <field name="designation_id"/>
+                <field name="organization"/>
+                <field name="email"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+                <field name="active"/>
+                <filter string="Name" name="name" domain="[]" context="{'group_by' : 'name'}" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_business_diary" model="ir.actions.act_window">
+        <field name="name">Business Diary</field>
+        <field name="res_model">business.diary</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('active','=',False)]</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem name="Business Information Updates Requests"
+              id="business_diary_main_menu_item"
+              parent="sales_team.menu_base_partner"/>
+
+    <menuitem name="Business Information"
+              id="business_diary_menu_item"
+              action="action_business_diary"
+              parent="business_diary_main_menu_item"/>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Layout and common templates -->
+    <template id="assets_frontend" inherit_id="website.assets_frontend"
+        name="Assets Frontend Inherited">
+        <xpath expr="." position="inside">
+            <t t-call="web.less_helpers"/>
+
+            <!-- News Scroll CSS -->
+            <link rel="stylesheet" href="/website_community_portal/static/src/css/news_scroll.css"/>
+
+            <link rel='stylesheet' href='/website_community_portal/static/src/css/custom.css' />
+            <script type="text/javascript" src="/web/static/lib/jquery.ui/jquery-ui.js"></script>
+            <link rel='stylesheet' href="/web/static/lib/jquery.ui/jquery-ui.css"/>
+            <link type="text/less" href="/website_community_portal/static/src/less/website_community_portal.less" rel="stylesheet"/>
+            <link rel="stylesheet" href="/website_community_portal/static/src/css/flexslider.css"/>
+            <link rel="stylesheet" href="/website_community_portal/static/src/lib/jquery.ui/jquery-ui.css"/>
+            <script type="text/javascript" src="/website_community_portal/static/src/lib/jquery.ui/jquery-ui.js"/>
+            <script type="text/javascript" src="/website_community_portal/static/src/js/jquery.flexslider.js" />
+            <script type="text/javascript" src="/website_community_portal/static/src/js/filter.js" />
+            <script type="text/javascript" src="/website_community_portal/static/src/js/jquery.smoothwheel.js" />
+            <script type="text/javascript" src="/website_community_portal/static/src/js/custom.js" />
+            <script type="text/javascript" src="/website_community_portal/static/src/js/d3.min.js" />
+            <script type="text/javascript" src="/website_community_portal/static/src/js/family_tree.js" />
+            <link rel="stylesheet" href="/website_community_portal/static/src/css/member_grid.css"/>
+            <script type="text/javascript" src="/website_community_portal/static/src/js/jq_member_grid.js"/>
+        </xpath>
+    </template>
+
+</odoo>

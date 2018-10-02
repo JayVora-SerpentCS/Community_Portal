@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="category_place_groups" model="ir.module.category">
+        <field name="name">Community Portal Places Rights</field>
+    </record>
+
+    <record id="grp_admin_place" model="res.groups">
+        <field name="name">Place Admin</field>
+        <field name="category_id" ref="cp_places.category_place_groups"/>
+    </record>
+
+    <record id="grp_members_place" model="res.groups">
+        <field name="name">Place Member</field>
+        <field name="category_id" ref="cp_places.category_place_groups"/>
+    </record>
+
+</odoo>

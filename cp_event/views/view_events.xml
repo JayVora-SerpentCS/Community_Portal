@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_event_form_inherit" model="ir.ui.view">
+            <field name="name">event.form.inherit</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_confirm']" position="after">
+                    <button name="%(cp_event.action_view_event_attendees_form)d"
+                            type="action"  string="Import CSV File" class="oe_highlight"/>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>
