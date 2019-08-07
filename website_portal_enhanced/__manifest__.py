@@ -5,7 +5,7 @@
     'category': 'Website',
     'summary': 'Account Management Frontend for your Customers',
     'version': '12.0.1.0.0',
-    'license': 'LGPL-3',
+    'license': 'AGPL-3',
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
