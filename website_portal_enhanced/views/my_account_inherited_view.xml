@@ -2,8 +2,8 @@
 <odoo>
 
 <!-- My Account Page Inherited -->
-    <template id="website_portal.account" name="Account">
-        <t t-call="website.layout">
+    <template id="portal_details_custom" inherit_id="portal.portal_layout" name="Portal Details">
+            <xpath expr="//div[@id='wrap']/div[hasclass('container')]" position="replace">
             <t t-if="partner">
                 <div class="col-md-12" style="background: linear-gradient(to left, #abbaab , #ffffff);">
                     <div class="col-md-3 mt32">
@@ -480,7 +480,7 @@
                     </div>
                 </div>
             </t>
-        </t>
+        </xpath>
     </template>
 
 </odoo>

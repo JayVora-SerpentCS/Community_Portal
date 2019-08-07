@@ -1,12 +1,11 @@
-# -*- coding: utf-8 -*-
 # See LICENSE file for full copyright and licensing details.
 
 from odoo import http
 from odoo.http import request
-from odoo.addons.website_portal.controllers.main import website_account
+from odoo.addons.portal.controllers.portal import CustomerPortal
 
 
-class Account(website_account):
+class Account(CustomerPortal):
 
     @http.route(['/my/account'], type='http', auth='user', method=['post'],
                 website=True, csrf=False)
