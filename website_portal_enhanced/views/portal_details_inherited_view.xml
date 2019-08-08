@@ -2,7 +2,7 @@
 <odoo>
 
 <!--  Inherited Template To Edit profile From Detail View -->
-    <template id="inherited_user_detail_view" inherit_id="website_portal.details">
+    <template id="inherited_user_detail_view" inherit_id="portal.portal_my_details">
         <xpath expr="//form" position="replace">
             <form method="post" id="portal_form">
                 <input type="hidden" name="partner" class="form-control" t-att-value='partner.id'/>
