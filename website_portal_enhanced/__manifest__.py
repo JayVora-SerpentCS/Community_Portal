@@ -14,7 +14,7 @@
     ],
     'data': [
         'views/assets.xml',
-        'views/my_account_inherited_view.xml',
+#         'views/my_account_inherited_view.xml',
         'views/portal_details_inherited_view.xml'
     ],
     'installable': True,
