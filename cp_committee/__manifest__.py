@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # See LICENSE file for full copyright and licensing details.
 
 {
     'name': 'Committees For Community Portal',
     'category': 'website',
     'summary': 'Committees management',
-    'version': '10.0.1.0.0',
+    'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
@@ -17,7 +16,7 @@
         'security/portal_security.xml',
         'security/ir.model.access.csv',
         'data/sequence.xml',
-        'views/menu_details.xml',
+        'data/website_menu.xml',
         'views/res_partner_view.xml',
         'views/job_assign_view.xml',
         'views/template_committee_chart.xml',
