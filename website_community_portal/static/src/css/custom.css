@@ -254,6 +254,10 @@
 .panel_shadow {
     line-height: 2.0;
     box-shadow: 5px 5px 5px #888888;
+    background: #fff;
+    padding: 15px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .birth_panel {
