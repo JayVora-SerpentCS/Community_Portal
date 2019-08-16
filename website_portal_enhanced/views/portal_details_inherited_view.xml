@@ -2,175 +2,181 @@
 <odoo>
 
 <!--  Inherited Template To Edit profile From Detail View -->
-    <template id="inherited_user_detail_view" inherit_id="website_portal.details">
+    <template id="inherited_user_detail_view" inherit_id="portal.portal_my_details">
         <xpath expr="//form" position="replace">
             <form method="post" id="portal_form">
                 <input type="hidden" name="partner" class="form-control" t-att-value='partner.id'/>
-                <div class="col-md-4">
-                    <div class="panel panel-default panel_shadow">
-                        <div class="panel-body">
-                            <h4>Profile Photo</h4>
-                            <hr />
-                            <img id='preview_image' class="saved-image center-block" height='290' width='289'/>
-                            <span class="btn big-btn btn-file center-block">
-                                <span class="fileinput btn btn_change_image">
-                                    <i class="fa fa-camera"/> Change Image
-                                </span>
-                                <input name="profile_photo" id="profile_photo" type="file" class="img img-responsive" accept="image/*" t-att-name="prefix" onchange="handle(this.files)"/>
-                                <input type='hidden' id='image_src' name='image' t-att-value='image or partner.image'></input>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="panel panel-default panel_shadow">
-                        <div class="panel-body">
-                            <h4 style="color: cornflowerblue;">About Me</h4>
-                            <hr />
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label" for="comment">About Me</label>
-                                    <input type="textarea" rows="5" cols="30" name="comment" class="form-control" t-att-value="partner.comment" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default panel_shadow">
-                        <div class="panel-body">
-                            <h4 style="color: cornflowerblue;">Achievement</h4>
-                            <hr />
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label" for="comment">Achievement</label>
-                                    <input type="textarea" rows="5" cols="30" name="achievement" class="form-control" t-att-value="partner.achievement" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="col-md-12">
-                        <div class="panel panel-default panel_shadow">
-                            <div class="panel-body">
-                                <h4>Your Name</h4>
-                                <hr />
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" t-att-value="partner.name" required="true"/>
-                                </div>
-                                <h4>Address</h4>
-                                <hr />
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="street">Street One</label>
-                                        <input type="text" name="street" id="street" t-att-value="partner.street" class="form-control input-sm" placeholder="Street1"/>
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4>Profile Photo</h4>
+                                        <hr />
+                                        <img id='preview_image' class="saved-image center-block" height='290' width='289'/>
+                                        <span class="btn big-btn btn-file center-block">
+                                            <span class="fileinput btn btn_change_image">
+                                                <i class="fa fa-camera"/> Change Image
+                                            </span>
+                                            <input name="profile_photo" id="profile_photo" type="file" class="img img-responsive" accept="image/*" t-att-name="prefix" onchange="handle(this.files)"/>
+                                            <input type='hidden' id='image_src' name='image' t-att-value='image or partner.image'></input>
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="street2">Street Two</label>
-                                        <input type="text" name="street2" id="street2" t-att-value="partner.street2" class="form-control input-sm" placeholder="Street2"/>
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4 style="color: cornflowerblue;">About Me</h4>
+                                        <hr />
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label" for="comment">About Me</label>
+                                                <input type="textarea" rows="5" cols="30" name="comment" class="form-control" t-att-value="partner.comment" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="city">City</label>
-                                        <select name="city_id" class="form-control">
-                                            <t t-foreach="cities" t-as="city">
-                                                <option t-att-value="city.id" style="display:none;" t-att-selected="city.id == partner.city_id.id">
-                                                    <t t-esc="city.name" />
-                                                </option>
-                                                <option t-att-value="city.id">
-                                                    <t t-esc="city.name" />
-                                                </option>
-                                            </t>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="state">State</label>
-                                        <select name="state" class="form-control">
-                                            <t t-foreach="states" t-as="state">
-                                                <option t-att-value="state.id" style="display:none;" t-att-selected="state.id == partner.state_id.id">
-                                                    <t t-esc="state.name" />
-                                                </option>
-                                                <option t-att-value="state.id">
-                                                    <t t-esc="state.name" />
-                                                </option>
-                                            </t>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="country">Country</label>
-                                        <select name="country" class="form-control">
-                                            <t t-foreach="countries" t-as="country">
-                                                <option t-att-value="country.id" style="display:none;" t-att-selected="country.id == partner.country_id.id">
-                                                    <t t-esc="country.name" />
-                                                </option>
-                                                <option t-att-value="country.id">
-                                                    <t t-esc="country.name" />
-                                                </option>
-                                            </t>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="zip">Zip</label>
-                                        <input type="text" name="zip" id="zip" t-att-value="partner.zip" class="form-control input-sm" placeholder="123"/>
+                                <div class="panel panel-default panel_shadow">
+                                    <div class="panel-body">
+                                        <h4 style="color: cornflowerblue;">Achievement</h4>
+                                        <hr />
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label" for="comment">Achievement</label>
+                                                <input type="textarea" rows="5" cols="30" name="achievement" class="form-control" t-att-value="partner.achievement" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="panel panel-default panel_shadow">
-                            <div class="panel-body">
-                                <h4>Personal Details</h4>
-                                <hr />
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="phone">Phone No.</label>
-                                        <input type="text" name="phone" id="phone" t-att-value="partner.phone" class="form-control input-sm" placeholder="Phone No."/>
+                            
+                            
+                            <div class="col-md-8">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default panel_shadow">
+                                        <div class="panel-body">
+                                            <h4>Your Name</h4>
+                                            <hr />
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control" t-att-value="partner.name" required="true"/>
+                                            </div>
+                                            <h4>Address</h4>
+                                            <hr />
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="street">Street One</label>
+                                                    <input type="text" name="street" id="street" t-att-value="partner.street" class="form-control input-sm" placeholder="Street1"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="street2">Street Two</label>
+                                                    <input type="text" name="street2" id="street2" t-att-value="partner.street2" class="form-control input-sm" placeholder="Street2"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="city">City</label>
+                                                    <select name="city_id" class="form-control">
+                                                        <t t-foreach="cities" t-as="city">
+                                                            <option t-att-value="city.id" style="display:none;" t-att-selected="city.id == partner.city_id.id">
+                                                                <t t-esc="city.name" />
+                                                            </option>
+                                                            <option t-att-value="city.id">
+                                                                <t t-esc="city.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="state">State</label>
+                                                    <select name="state" class="form-control">
+                                                        <t t-foreach="states" t-as="state">
+                                                            <option t-att-value="state.id" style="display:none;" t-att-selected="state.id == partner.state_id.id">
+                                                                <t t-esc="state.name" />
+                                                            </option>
+                                                            <option t-att-value="state.id">
+                                                                <t t-esc="state.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="country">Country</label>
+                                                    <select name="country" class="form-control">
+                                                        <t t-foreach="countries" t-as="country">
+                                                            <option t-att-value="country.id" style="display:none;" t-att-selected="country.id == partner.country_id.id">
+                                                                <t t-esc="country.name" />
+                                                            </option>
+                                                            <option t-att-value="country.id">
+                                                                <t t-esc="country.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="zip">Zip</label>
+                                                    <input type="text" name="zip" id="zip" t-att-value="partner.zip" class="form-control input-sm" placeholder="123"/>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="mobile">Mobile No.</label>
-                                        <input type="text" name="mobile" id="mobile" t-att-value="partner.mobile" class="form-control input-sm" placeholder="Mobile No."/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="email">Email</label>
-                                        <input type="email" name="email" id="email" t-att-value="partner.email" class="form-control input-sm" placeholder="abc@abc.com"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="category_id">Tags</label>
-                                        <select name="category_id" class="form-control select_select2" multiple="multiple">
-                                            <t t-if='selected_tags'>
-                                                    <t t-foreach="category_id or []" t-as="tag">
-                                                        <option t-att-value="tag.id" style="display:none;" t-att-selected="tag in selected_tags">
-                                                            <t t-esc="tag.name" />
-                                                        </option>
-                                                    </t>
-                                            </t>
-                                            <t t-if='not selected_tags'>
-                                                <t t-foreach="category_id or []" t-as="tag">
-                                                    <option t-att-value="tag.id" style="display:none;">
-                                                        <t t-esc="tag.name" />
-                                                    </option>
-                                                </t> 
-                                            </t>
-                                        </select>
+                                <div class="col-md-12">
+                                    <div class="panel panel-default panel_shadow">
+                                        <div class="panel-body">
+                                            <h4>Personal Details</h4>
+                                            <hr />
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="phone">Phone No.</label>
+                                                    <input type="text" name="phone" id="phone" t-att-value="partner.phone" class="form-control input-sm" placeholder="Phone No."/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="mobile">Mobile No.</label>
+                                                    <input type="text" name="mobile" id="mobile" t-att-value="partner.mobile" class="form-control input-sm" placeholder="Mobile No."/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="email">Email</label>
+                                                    <input type="email" name="email" id="email" t-att-value="partner.email" class="form-control input-sm" placeholder="abc@abc.com"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="category_id">Tags</label>
+                                                    <select name="category_id" class="form-control select_select2" multiple="multiple">
+                                                        <t t-if='selected_tags'>
+                                                                <t t-foreach="category_id or []" t-as="tag">
+                                                                    <option t-att-value="tag.id" style="display:none;" t-att-selected="tag in selected_tags">
+                                                                        <t t-esc="tag.name" />
+                                                                    </option>
+                                                                </t>
+                                                        </t>
+                                                        <t t-if='not selected_tags'>
+                                                            <t t-foreach="category_id or []" t-as="tag">
+                                                                <option t-att-value="tag.id" style="display:none;">
+                                                                    <t t-esc="tag.name" />
+                                                                </option>
+                                                            </t> 
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="col-md-12">
                     <div class="col-md-12">
                         <div class="panel panel-default panel_shadow">
@@ -626,7 +632,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label" for="birth_time">Date Of Birth</label>
-                                        <input type="datetime-local" name="birth_time" id="birth_time" t-att-value="partner.birth_time" class="form-control" />
+                                        <input type="date" data-date-format="mm/dd/yyyy" name="birth_time" id="birth_time" t-att-value="partner.birth_time" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -729,24 +735,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 mb32">
+                    <div class="row col-md-12 mb32">
                         <t t-if="is_user">
-                            <div class="col-md-6">
+                            <div class="col-md-6 text-center">
                                 <button type="submit" class="btn btn_confirm center-block">Confirm</button>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 text-center">
                                 <a href="/my/home">
                                     <input class="btn btn_decline center-block" type="button" name="decline" value="Decline"/>
                                 </a>
                             </div>
                         </t>
                         <t t-if="not is_user">
-                            <div class="col-md-6">
+                            <div class="col-md-6 text-center">
                                 <a t-attf-href="/edit_partner/#{slug(partner)}" style="text-decoration: none !important;">
                                     <input type="submit" class="btn btn_confirm center-block" value="Confirm User"/>
                                 </a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 text-center">
                                 <a href="/partners" style="text-decoration: none !important;">
                                     <input class="btn btn_decline center-block" type="button" name="decline" value="Decline"/>
                                 </a>
@@ -754,6 +760,9 @@
                         </t>
                     </div>
                 </div>
+                </div>
+                    </div>
+                </section>
             </form>
         </xpath>
     </template>

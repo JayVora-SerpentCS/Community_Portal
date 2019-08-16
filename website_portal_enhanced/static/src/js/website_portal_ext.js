@@ -1,12 +1,11 @@
-odoo.define('website_blog_configuration.website_blog_configuration', function (require) {
+odoo.define('website_portal_enhanced.website_portal_enhanced', function (require) {
 'use strict';
 
 var ajax = require('web.ajax');
 $(document).ready(function(){
-
+	
     $(".select_select2").select2();
     
-
     $('#image_src').change(function(){
         $('#preview_image').attr('src',"data:image/png;base64,"+$('#image_src').val());
     }).change();

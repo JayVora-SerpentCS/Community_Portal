@@ -1,12 +1,11 @@
-# -*- coding: utf-8 -*-
 # See LICENSE file for full copyright and licensing details.
 
 from odoo import http
 from odoo.http import request
-from odoo.addons.website_portal.controllers.main import website_account
+from odoo.addons.portal.controllers.portal import CustomerPortal
 
 
-class Account(website_account):
+class Account(CustomerPortal):
 
     @http.route(['/my/account'], type='http', auth='user', method=['post'],
                 website=True, csrf=False)
@@ -55,7 +54,7 @@ class Account(website_account):
                   'has_check_vat': hasattr(request.env['res.partner'],
                                            'check_vat'),
                   'redirect': redirect}
-        return request.render('website_portal.details', values)
+        return request.render('portal.portal_my_details', values)
 
 #    @http.route(['/lang_speak'], type='json', auth='public', website=True,
 #                csrf=False)
@@ -122,4 +121,4 @@ class Account(website_account):
                   'sales_rep': sales_rep,
                   'company': request.website.company_id,
                   'user': request.env.user}
-        return request.render('website_portal.account', values)
+        return request.render('portal.portal_my_details', values)
