@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # See LICENSE file for full copyright and licensing details.
 
 {
     'name': 'Gallery For Community Portal',
     'category': 'website',
     'summary': 'Gallery management',
-    'version': '10.0.1.0.0',
+    'version': '11.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
@@ -15,9 +14,9 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'data/website_menu.xml',
         'views/assets.xml',
         'views/gallery_view.xml',
-        'views/menu_details.xml',
         'views/template_list_events.xml',
         'views/template_show_event_photos.xml'
     ],

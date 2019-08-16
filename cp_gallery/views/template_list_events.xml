@@ -2,47 +2,26 @@
 <odoo>
     <template id="template_list_events" name="Committee chart assets">
         <t t-call="website.layout">
-            <section class="grid_partner_bg">
-                <div>
-                    <br/>
-                    <br/>
-                    <div class="container" style="background:white; border-radius:20px;">
-                        <t t-foreach="gallery_data" t-as="gal_data">
-                            <br/>
-                            <br/>
-                            <div class="col-md-12">
+            <section>
+                <div class="container" style="background:white; border-radius:20px;">
+                    <div class="row mt32 mb32">
+                        <div class="col-md-12">
+                            <t t-foreach="gallery_data" t-as="gal_data">
                                 <h2>
-                                    <b>
-                                        <span t-field="gal_data.event_id.name"/>
-                                    </b>
+                                    <a t-attf-href="/page/show_photos?id={{gal_data.event_id.name}}">
+                                        <b>
+                                            <span t-field="gal_data.event_id.name"/>
+                                        </b>
+                                    </a>
                                 </h2>
                                 <h4>
-
-                                        <span t-field="gal_data.event_id.date_begin" t-options="{'widget': 'date'}"/>
-
+                                    <span t-field="gal_data.event_id.date_begin" t-options="{'widget': 'date'}"/>
                                 </h4>
-                            </div>
-
-                            <hr/>
-                            <a t-attf-href="/page/show_photos?id={{gal_data.event_id.name}}">
-                                <div class="col-md-12">
-                                    <div class="owl-carousel owl-theme">
-                                        <t t-foreach="gal_data.photo_ids" t-as="image">
-                                            <div class="item">
-                                                <img id="myImg"
-                                                     class=" img_slider images img-thumbnail rounded mx-auto d-block mt16"
-                                                     height="200px" alt="image"
-                                                     t-attf-src="data:image/gif;base64, #{image.images}"
-                                                     style="padding-bottom: 5px width:100%"/>
-                                            </div>
-                                        </t>
-                                    </div>
+                                <div>
                                 </div>
-                            </a>
-                        </t>
+                            </t>
+                        </div>
                     </div>
-                    <br/>
-                    <br/>
                 </div>
             </section>
         </t>
