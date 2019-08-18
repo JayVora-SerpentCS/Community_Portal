@@ -1,16 +1,15 @@
-# -*- coding: utf-8 -*-
+# See LICENSE file for full copyright and licensing details.
 
 {
     'name': 'Website News Roller',
     'category': 'Website',
     'summary': 'Building Block that allows you to create News content',
-    'version': '10.0.1.0.0',
+    'version': '11.0.1.0.0',
     'license': 'AGPL-3',
     'description': """
-News Roller Building Block
-======================================
-Building Block that allows you to create News content
-        """,
+        News Roller Building Block
+        ======================================
+        Building Block that allows you to create News content """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
