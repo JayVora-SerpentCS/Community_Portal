@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # See LICENSE file for full copyright and licensing details.
 
 {
     'name': 'Event Rating For Community Portal',
     'category': 'Website',
     'summary': 'Event Review & Rating Management',
-    'version': '10.0.1.0.0',
+    'version': '11.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
@@ -13,6 +12,7 @@
     'depends': [
         'website_event',
         'website_mail',
+        'website_rating',
         'rating',
     ],
     'data': [
