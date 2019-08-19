@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # See LICENSE file for full copyright and licensing details.
 
 import werkzeug
@@ -185,7 +184,7 @@ class WebsitePartner(http.Controller):
                   'category_id': tags,
                   'has_check_vat': hasattr(request.env['res.partner'],
                                            'check_vat')}
-        return request.render('website_portal.details', values)
+        return request.render('website_portal_enhanced.inherited_user_detail_view', values)
 
     @http.route(['/family_tree'], type='json', auth='public', website=True,
                 csrf=False)
@@ -283,22 +282,3 @@ class WebsitePartner(http.Controller):
         if parents_list:
             return {'_parents': parents_list}
         return {}
-
-#    @http.route(['/children_tree'], type='json', auth='public', website=True,
-#                csrf=False)
-#    def children_tree(self, **kw):
-#        partner_dic = {}
-#        partner = request.env['res.partner'].sudo().browse(
-#                                           kw.get('partner_id'))
-#        partner_dic = {'personFullName': partner.name.capitalize() or '',
-#                       'personId': partner.id,
-#                       'image': partner.image,
-#                       'personGenderId': partner.gender,
-#                       'age': partner.age,
-#                       }
-#        if (partner_dic('personGenderId') == 'male'):
-#            partner_dic.update({'personGenderId': 0})
-#        partner_dic.update(self.get_spouse(partner))
-#        partner_dic.update(self.get_parent(partner))
-#        partner_dic.update(self.get_children(partner))
-#        return partner_dic

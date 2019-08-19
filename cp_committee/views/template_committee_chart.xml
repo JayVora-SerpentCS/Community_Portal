@@ -14,7 +14,7 @@
         </xpath>
     </template>
 
-    <template id="template_committee_chart" name="Committee chart" page="True">
+    <template id="template_committee_chart" name="Committee chart">
         <t t-call="website.layout">
             <div class="container-fluid">
                 <div class="row">

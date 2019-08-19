@@ -54,7 +54,7 @@ class Account(CustomerPortal):
                   'has_check_vat': hasattr(request.env['res.partner'],
                                            'check_vat'),
                   'redirect': redirect}
-        return request.render('website_portal.details', values)
+        return request.render('portal.portal_my_details', values)
 
 #    @http.route(['/lang_speak'], type='json', auth='public', website=True,
 #                csrf=False)
@@ -121,4 +121,4 @@ class Account(CustomerPortal):
                   'sales_rep': sales_rep,
                   'company': request.website.company_id,
                   'user': request.env.user}
-        return request.render('website_portal.account', values)
+        return request.render('portal.portal_my_details', values)

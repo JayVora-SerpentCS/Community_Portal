@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="menu_committees" model="website.menu">
+            <field name="name">Committees</field>
+            <field name="parent_id" ref="website.main_menu" />
+        </record>
+        
+        <record id="menu_committees_tree" model="website.menu">
+            <field name="name">Committees Tree</field>
+            <field name="url">/page/committee</field>
+            <field name="parent_id" ref="menu_committees" />
+        </record>
+        
+        <record id="menu_committees_list" model="website.menu">
+            <field name="name">Committees List</field>
+            <field name="url">/page/committee/list</field>
+            <field name="parent_id" ref="menu_committees" />
+        </record>
+        
+    </data>
+</odoo>
