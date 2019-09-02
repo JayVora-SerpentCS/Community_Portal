@@ -3,7 +3,7 @@
 
     <template id="website_news_roller_assets" inherit_id="website.assets_frontend">
         <xpath expr="." position="inside">
-            <link rel='stylesheet' href='/website_news_roller/static/src/css/snippet.css'/>
+            <link type="text/css" rel='stylesheet' href='/website_news_roller/static/src/css/snippet.css'/>
             <script type="text/javascript" src="/website_news_roller/static/src/js/news_roller.js"/>
         </xpath>
     </template>

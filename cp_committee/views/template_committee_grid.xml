@@ -9,14 +9,11 @@
                   type="text/css"/>
             <link rel="stylesheet"
                   href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"/>
-            <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.0.0-beta.3/dist/css/bootstrap-material-design.min.css"/>-->
-
             <div class="grid_partner_bg">
                 <br/>
                 <br/>
                 <div class="container">
                     <form name="frm">
-
                         <div class="row">
                             <div class="col-md-12">
                                 <t t-foreach="job_pos_data" t-as="jobs">
@@ -44,19 +41,14 @@
                                                          src="/cp_committee/static/img/avtar_img.png"
                                                          style="padding-bottom: 5px width:100%"/>
                                                     </t>
-
                                                 </div>
                                                 <h4 class="card-title text-center">
                                                     <span t-field="jobs.responsible_person_id.name"/>
                                                 </h4>
-
                                             </div>
                                         </div>
-
                                     </div>
                                 </t>
-
-
                             </div>
                         </div>
                     </form>
