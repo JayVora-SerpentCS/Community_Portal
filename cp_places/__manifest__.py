@@ -15,6 +15,7 @@
         'web_google_maps'
     ],
     'data': [
+        'security/portal_security.xml',
         'security/ir.model.access.csv',
         'security/portal_security.xml',
         'views/assets.xml',
