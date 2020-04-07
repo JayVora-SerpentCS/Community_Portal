@@ -7,9 +7,9 @@ class BusinessDiary(models.Model):
     _name = 'business.diary'
     _description = 'Stores Data About Member Profession'
     _rec_name = 'name'
+
     _sql_constraints = [('nam_uniq', 'unique(email)',
                          "This Person's Business Profile Already Exists")]
-
     photo = fields.Binary('Photo')
     name = fields.Many2one(
         'res.partner',
@@ -40,7 +40,7 @@ class BusinessDiary(models.Model):
     )
     email = fields.Char(
         'Email',
-        related='name.email'
+        related='name.email', store=True,
     )
     mobile = fields.Char(
         'Contact Number',
@@ -62,7 +62,7 @@ class BusinessDiary(models.Model):
 
     @api.multi
     @api.onchange('name')
-    def dis_pic(self):
-        ext = self.env['res.partner'].browse(self.name.id)
-        self.photo = ext.image
-        self.email = ext.email
+    def display_image(self):
+        """Onchange method to display image."""
+        if self.name:
+            self.photo = self.name and self.name.image or False

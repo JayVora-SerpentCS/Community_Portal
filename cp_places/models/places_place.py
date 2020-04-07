@@ -84,10 +84,11 @@ class PlaceReport(models.TransientModel):
         string='Place Type'
     )
     choise = fields.Selection(
-        [(01, 'State Wise'),
-         (02, 'Type Wise'),
-         (03, 'Both')
-         ],
+        [
+            ('01', 'State Wise'),
+            ('02', 'Type Wise'),
+            ('03', 'Both')
+        ],
         string='Month'
     )
 

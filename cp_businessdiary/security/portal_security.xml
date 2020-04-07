@@ -13,10 +13,4 @@
 		<field name="category_id"
 			   ref="cp_businessdiary.category_portal_groups"/>
 	</record>
-	<record id="grp_all" model="res.groups">
-		<field name="name">Community Portal Default</field>
-		<field name="category_id"
-			   ref="cp_businessdiary.category_portal_groups"/>
-	</record>
-
 </odoo>
