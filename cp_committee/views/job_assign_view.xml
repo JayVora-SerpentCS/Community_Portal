@@ -8,6 +8,7 @@
                 <field name="sequence" string="Job Sequence Number"/>
                 <field name="name"/>
                 <field name="responsible_person_id"/>
+                <field name="manager_id"/>
             </tree>
         </field>
     </record>
@@ -57,9 +58,4 @@
     <menuitem name="Job Positions" id="allocate_job_pos"
               action="cp_committee.action_job_pos"
               parent="menu_committee_management"/>
-    <menuitem name="Users Management" id="main_menu_users"
-              parent="sales_team.menu_base_partner"/>
-    <menuitem name="Users" id="res_users_show"
-              action="base.action_res_users" parent="main_menu_users"/>
-
 </odoo>
