@@ -25,7 +25,7 @@
                         <field name="responsible_person_id"
                                context="{'custom':True}"/>
                         <field name="manager_id"
-                               options='{"no_open": True, "no_create": True}'/>
+                               />
                     </group>
                     <h1>Job Position History</h1>
                     <group>
