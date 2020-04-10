@@ -2,7 +2,7 @@
 <odoo>
 
     <template id="filter_place">
-        <t t-call="report.external_layout">
+        <t t-call="web.external_layout">
             <div class="page">
                 <div class="header">
                     <br/>
@@ -15,6 +15,7 @@
                     </div>
                 </div>
                 <table class="table table-stripped">
+                    <div><center><h1>Places</h1></center></div>
                     <tr>
                         <th>Place Name</th>
                         <th>Place Type</th>
@@ -53,5 +54,4 @@
             </div>
         </t>
     </template>
-
 </odoo>

@@ -106,32 +106,10 @@ class PlaceReport(models.TransientModel):
         elif self.place_type_id:
             order = place_obj.\
                 search([('place_type_id', '=', self.place_type_id.id)])
-        data['form'] = self.read()[0]
-        data['doc_ids'] = order.ids
-
-        return self.env['report'].get_action(
-            order.ids, 'cp_places.filter_place', data=data)
-
-
-class PlaceReportRender(models.AbstractModel):
-    _name = 'report.cp_places.filter_place'
-
-    @api.model
-    def render_html(self, docids, data=None):
-        Report = self.env['report']
-        place_report = Report._get_report_from_name(
-            'cp_places.filter_place')
-        if not data:
-            data = {}
-        if not docids:
-            docids = data['doc_ids']
-        place_data = self.env[place_report.model].browse(docids)
-        docargs = {
-            'doc_ids': docids,
-            'doc_model': place_report.model,
-            'docs': place_data,
-            'data': data,
-            'age1': 20,
-            'form': data.get('form'),
+        data = {
+            'ids': order.ids,
+            'model': 'places.place',
+            'form': self.read()[0]
         }
-        return Report.render('cp_places.filter_place', docargs)
+        return self.env.ref(
+            'cp_places.filter_place').report_action(data=data)
