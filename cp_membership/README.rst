@@ -8,14 +8,14 @@ Membership For Community Portal
 
 Description
 -----------
-* A member create Membership details.
+* A member can create Membership details.
 
 
 
 Usage
 =====
 How to use it:
-	A member's create a Membership details then afre view in website.
+	A member can create a Membership details then after view in website.
 
 
 Bug Tracker
