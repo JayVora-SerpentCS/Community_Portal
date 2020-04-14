@@ -8,14 +8,14 @@ Places For Community Portal
 
 Description
 -----------
-* A admin cam create community places details.
+* A admin can create community places details.
 
 
 
 Usage
 =====
 How to use it:
-	A admin create a places details who is added a committees member then
+	A admin can create a places details who is added a committees member then
 	after view in website.
 
 
