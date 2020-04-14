@@ -2,9 +2,9 @@
 
 {
     'name': 'Community Portal',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.5',
     'category': 'Website',
-    'license': 'AGPL-3',
+    'license': 'LGPL-3',
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',

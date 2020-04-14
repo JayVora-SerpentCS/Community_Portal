@@ -16,18 +16,11 @@ class WebNews(models.Model):
     date_time = fields.Datetime(string='Date-Time', required=True)
     description = fields.Text(string='Description', required=True)
     is_active = fields.Boolean(string='Active', default=True)
-    back_color = fields.Selection(
-        COLOR,
-        string='Background Color',
-        required=True,
-        default='white'
-    )
+    back_color = fields.Selection(COLOR,
+                                  string='Background Color',
+                                  required=True, default='white')
     font_color = fields.Selection(
-        COLOR,
-        string='Font Color',
-        required=True,
-        default='black'
-    )
+        COLOR, string='Font Color', required=True, default='black')
 
     @api.model
     def get_active_news(self):

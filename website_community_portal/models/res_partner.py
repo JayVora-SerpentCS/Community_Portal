@@ -35,81 +35,47 @@ class ResPartner(models.Model):
                 years = self._calculate_age(born)
                 records.age = years
 
-    city_id = fields.Many2one(
-        'res.city',
-        'City'
-    )
+    city_id = fields.Many2one('res.city', 'City')
     dob = fields.Date('Birthdate')
-    age = fields.Integer(
-        compute="_compute_age",
-        string='Age',
-        store=True
-    )
-    gender = fields.Selection(
-        [('male', 'Male'), ('female', 'Female')],
-        default='male',
-        string='Gender'
-    )
+    age = fields.Integer(compute="_compute_age", string='Age',
+                         store=True)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')],
+                              default='male', string='Gender')
     marital = fields.Selection(
-       [('single', 'Single'), ('married', 'Married'),
-        ('widowed', 'Widowed'), ('divorced', 'Divorced'),
-        ('awting_divorced', 'Awaiting Divorce')
-        ],
-       default='single',
-       string='Marital Status'
-    )
+        [('single', 'Single'), ('married', 'Married'),
+         ('widowed', 'Widowed'), ('divorced', 'Divorced'),
+         ('awting_divorced', 'Awaiting Divorce')
+         ], default='single', string='Marital Status')
     children = fields.Selection(
         [('yes_living', 'Yes, living together'),
          ('yes_not_living', 'Yes, not living together'),
-         ('no', 'No')],
-        string='Have Children',
-        default='no'
-    )
+         ('no', 'No')], string='Have Children', default='no')
     no_of_children = fields.Integer("No. of Children")
-    height = fields.Many2one(
-        'partner.height',
-        string='Height'
-    )
+    height = fields.Many2one('partner.height', string='Height')
     body_weight = fields.Float(string='Body Weight')
     body_type = fields.Selection(
         [('average', 'Average'), ('slim', 'Slim'),
          ('athletic', 'Athletic'), ('heavy', 'Heavy')],
-        string='Body Type',
-        default='average'
-    )
+        string='Body Type', default='average')
     blood_group = fields.Selection(
-       [('a+', 'A+'), ('a-', 'A-'),
-        ('b+', 'B+'), ('b-', 'B-'),
-        ('ab+', 'AB+'), ('ab-', 'AB-'),
-        ('o+', 'O+'), ('o-', 'O-')],
-       string='Blood Group'
-    )
+        [('a+', 'A+'), ('a-', 'A-'),
+         ('b+', 'B+'), ('b-', 'B-'),
+         ('ab+', 'AB+'), ('ab-', 'AB-'),
+         ('o+', 'O+'), ('o-', 'O-')],
+        string='Blood Group')
     any_disability = fields.Selection(
         [('none', 'None'),
          ('disability', 'Physical Disability')],
-        string='Any Disability?',
-        default='none'
-    )
+        string='Any Disability?', default='none')
     skin_tone = fields.Selection(
-       [('very_fair', 'Very Fair'), ('fair', 'Fair'),
-        ('wheatish', 'Wheatish'), ('dark', 'Dark')],
-       string='Skin Tone',
-       default='wheatish'
-    )
+        [('very_fair', 'Very Fair'), ('fair', 'Fair'),
+         ('wheatish', 'Wheatish'), ('dark', 'Dark')],
+        string='Skin Tone', default='wheatish')
 
     # family fields
-    ex_spouse_id = fields.Many2one(
-        'res.partner',
-        string='Ex-spouse'
-    )
-    spouse_id = fields.Many2one(
-        'res.partner',
-        string='Spouse'
-    )
-    father_id = fields.Many2one(
-        'res.partner',
-        string="Father's Name"
-    )
+    ex_spouse_id = fields.Many2one('res.partner', string='Ex-spouse')
+    spouse_id = fields.Many2one('res.partner', string='Spouse')
+    father_id = fields.Many2one('res.partner', string="Father's Name")
     father_status = fields.Selection(
         [('select', 'Select'),
          ('employed', 'Employed'),
@@ -118,35 +84,26 @@ class ResPartner(models.Model):
          ('not_employed', 'Not Employed'),
          ('passed_away', 'Passed Away'),
          ('professional', 'Professional')],
-        string="Father's Status",
-        default="select"
-    )
+        string="Father's Status", default="select")
     f_company_name = fields.Char(string="With")
     f_job_title = fields.Char(string="As")
     f_nature_of_business = fields.Char(string="Nature of Business")
-    mother_id = fields.Many2one(
-        'res.partner',
-        string="Mother's Name"
-    )
+    mother_id = fields.Many2one('res.partner', string="Mother's Name")
     mother_status = fields.Selection(
-       [('select', 'Select'),
-        ('homemaker', 'Homemaker'),
-        ('employed', 'Employed'),
-        ('business', 'Business'),
-        ('retired', 'Retired'),
-        ('not_employed', 'Not Employed'),
-        ('passed_away', 'Passed Away'),
-        ('professional', 'Professional')],
-       string="Mother's Status",
-       default="homemaker"
-    )
+        [('select', 'Select'),
+         ('homemaker', 'Homemaker'),
+         ('employed', 'Employed'),
+         ('business', 'Business'),
+         ('retired', 'Retired'),
+         ('not_employed', 'Not Employed'),
+         ('passed_away', 'Passed Away'),
+         ('professional', 'Professional')],
+        string="Mother's Status", default="homemaker")
     m_company_name = fields.Char(string="With")
     m_job_title = fields.Char(string="As")
     m_nature_of_business = fields.Char(string="Nature of Business")
-    family_location = fields.Many2one(
-        'res.city',
-        string='Family Location'
-    )
+    family_location = fields.Many2one('res.city',
+                                      string='Family Location')
     family_type = fields.Selection(
         [('joint', 'Joint'),
          ('nuclear', 'Nuclear')],
@@ -159,39 +116,27 @@ class ResPartner(models.Model):
         [('traditional', 'Traditional'),
          ('moderate', 'Moderate'),
          ('liberal', 'Liberal')],
-        default="moderate",
-        string="Family values"
-    )
+        default="moderate", string="Family values")
     affluence_level = fields.Selection(
         [('affluent', 'Affluent'),
          ('upper_middle_class', 'Upper Middle Class'),
          ('middle_class', 'Middle Class'),
          ('lower_middle_class', 'Lower Middle Class')],
-        string='Affluence Level',
-        default='middle_class'
-    )
+        string='Affluence Level', default='middle_class')
     male_not_married = fields.Integer(string='Not married')
     male_married = fields.Integer(string='Married')
     female_not_married = fields.Integer(string='Not married')
     female_married = fields.Integer(string='Married')
     remarriage = fields.Selection(
-        [('yes', 'Yes'), ('no', 'No')],
-        string="Remarriage"
-    )
-    sibling_ids = fields.Many2many(
-        'res.partner',
-        'silbling_partner_rel',
-        'res_partner_id',
-        'sibling_id',
-        string='Siblings'
-    )
-    children_ids = fields.Many2many(
-        'res.partner',
-        'children_partner_rel',
-        'res_partner_id',
-        'children_id',
-        string='Siblings'
-    )
+        [('yes', 'Yes'), ('no', 'No')], string="Remarriage")
+    sibling_ids = fields.Many2many('res.partner',
+                                   'silbling_partner_rel',
+                                   'res_partner_id', 'sibling_id',
+                                   string='Siblings')
+    children_ids = fields.Many2many('res.partner',
+                                    'children_partner_rel',
+                                    'res_partner_id', 'children_id',
+                                    string='Siblings')
 
     # Education & Career
     education = fields.Selection(
@@ -202,13 +147,9 @@ class ResPartner(models.Model):
          ('honours_degree', 'Honours degree'),
          ('trade_school', 'Trade school'), ('high_school', 'High School'),
          ('lessthan_highschool', 'Less than high school')],
-        string="Education",
-        default="bachelors"
-    )
-    education_in_id = fields.Many2one(
-        'education.field',
-        string='Education In'
-    )
+        string="Education", default="bachelors")
+    education_in_id = fields.Many2one('education.field',
+                                      string='Education In')
     work_with = fields.Selection(
         [('pvt_company', 'Private Company'),
          ('govt', 'Government/Public Sector'),
@@ -239,50 +180,28 @@ class ResPartner(models.Model):
     # about me & life style
     diet = fields.Selection(
         [('jain', 'Jain'), ('veg', 'Vegetarian')],
-        string="Diet",
-        default="jain"
-    )
+        string="Diet", default="jain")
     drink = fields.Selection(
         [('yes', 'Yes'), ('no', 'No'),
          ('occasionally', 'Occasionally')],
-        string="Drink",
-        default="no"
-    )
+        string="Drink", default="no")
     smoke = fields.Selection(
         [('yes', 'Yes'), ('no', 'No'),
          ('occasionally', 'Occasionally')],
-        string="Smoke",
-        default="no"
-    )
+        string="Smoke", default="no")
     # Astro detail
-    dob_country = fields.Many2one(
-        'res.country',
-        'Country Of Birth'
-    )
-    dob_city = fields.Many2one(
-        'res.city',
-        'City of Birth'
-    )
+    dob_country = fields.Many2one('res.country', 'Country Of Birth')
+    dob_city = fields.Many2one('res.city', 'City of Birth')
     birth_time = fields.Datetime('Time of Birth')
     manglik = fields.Selection(
         [('yes', 'Yes'), ('no', 'No')],
-        string="Manglik",
-        default="no"
-    )
+        string="Manglik", default="no")
     # Religion Background
     religion = fields.Selection(
         [('hindu', 'Hindu')],
-        string="Religion",
-        default="hindu"
-    )
-    community = fields.Many2one(
-        'community.community',
-        'Community'
-    )
-    sub_community = fields.Many2one(
-        'sub.community',
-        'Sub Community'
-    )
+        string="Religion", default="hindu")
+    community = fields.Many2one('community.community', 'Community')
+    sub_community = fields.Many2one('sub.community', 'Sub Community')
     can_speak = fields.Many2many(
         'language.language',
         'lang_res_partner_rel',
@@ -290,33 +209,17 @@ class ResPartner(models.Model):
         'lang_id',
         string='Can Speak'
     )
-    mother_tongue = fields.Many2one(
-        'mother.tongue',
-        string="MotherTongue"
-    )
-    native = fields.Many2one(
-        'res.city',
-        'Native'
-    )
-    gotra_id = fields.Many2one(
-        'gotra.gotra',
-        'Gotra'
-    )
+    mother_tongue = fields.Many2one('mother.tongue',
+                                    string="MotherTongue")
+    native = fields.Many2one('res.city', 'Native')
+    gotra_id = fields.Many2one('gotra.gotra', 'Gotra')
     office_phone = fields.Char('Office Phone')
     # Office address
     office_street = fields.Char('Office Street')
     office_street2 = fields.Char('Office Street2')
-    office_city_id = fields.Many2one(
-        'res.city',
-        'Office City'
-    )
-    office_state_id = fields.Many2one(
-        'res.country.state',
-        'Office State'
-    )
-    office_country_id = fields.Many2one(
-        'res.country',
-        'Office Country'
-    )
+    office_city_id = fields.Many2one('res.city', 'Office City')
+    office_state_id = fields.Many2one('res.country.state',
+                                      'Office State')
+    office_country_id = fields.Many2one('res.country', 'Office Country')
     office_zip = fields.Char('Office Zip')
     achievement = fields.Text("Achievement")
