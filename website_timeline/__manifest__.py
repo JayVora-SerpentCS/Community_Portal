@@ -4,8 +4,8 @@
     'name': 'Timeline Building Block',
     'category': 'Website',
     'summary': 'Building Block that allows you to create timelined content',
-    'version': '12.0.1.0.0',
-    'license': 'AGPL-3',
+    'version': '12.0.1.0.5',
+    'license': 'LGPL-3',
     'description': """
         Timeline Building Block
         ======================================
