@@ -11,10 +11,11 @@ class JobPosition(models.Model):
     _description = 'Stores Job Position'
 
     sequence = fields.Integer('Job sequence')
-    name = fields.Char(string='Job Position')
+    name = fields.Char(string='Job Position', required=True)
     responsible_person_id = fields.Many2one(
         'res.partner',
         string='Responsible Person',
+        required=True
     )
     job_pos_hist_ids = fields.One2many(
         'jobpos.history',
@@ -31,10 +32,10 @@ class JobPosition(models.Model):
         vals['sequence'] = self.env['ir.sequence'].next_by_code('code')
         rec_partner_new = self.env['res.partner'
                                    ].browse(vals.get('responsible_person_id'))
-        self.alloc_date = datetime.datetime.now().date()
         vals['job_pos_hist_ids'] = [(0, 0, {
-            'before': self.env.user.partner_id.name,
-            'before_date': self.alloc_date,
+            'before': self.env.user and self.env.user.partner_id and
+            self.env.user.partner_id.name or False,
+            'before_date': datetime.datetime.now().date(),
             'after': rec_partner_new.name,
             'after_date': datetime.datetime.now().date()
         })]
@@ -49,10 +50,9 @@ class JobPosition(models.Model):
             rec_partner_new = self.env['res.partner'
                                        ].browse(responsible_person)
             rec_partner_new.committee_position = self.id
-            self.alloc_date = datetime.datetime.now().date()
             list_history_data.append(
                 (0, 0, {'before': self.responsible_person_id.name,
-                        'before_date': self.alloc_date,
+                        'before_date': datetime.datetime.now().date(),
                         'after': rec_partner_new.name,
                         'after_date': datetime.datetime.now().date()}))
             self.job_pos_hist_ids = list_history_data
