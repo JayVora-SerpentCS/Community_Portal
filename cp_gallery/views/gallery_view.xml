@@ -20,11 +20,10 @@
                     <group>
                         <field name="event_id" string="Photos For"/>
                         <field name="photo_ids" string="Photos For" mode="tree"
-                               widget="one2many_list">
+                            widget="one2many_list">
                             <tree editable="bottom">
                                 <field name="images"/>
                             </tree>
-
                         </field>
                     </group>
                 </sheet>
