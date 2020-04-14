@@ -13,9 +13,10 @@ class BusinessDiary(models.Model):
     photo = fields.Binary('Photo')
     name = fields.Many2one(
         'res.partner',
-        'Name'
+        'Name',
+        required=True
     )
-    profession = fields.Char('Business/job/profession')
+    profession = fields.Char('Business/job/profession', required=True)
     designation_id = fields.Many2one(
         'designations',
         'Member Designation',
