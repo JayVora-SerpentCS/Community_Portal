@@ -26,7 +26,7 @@
         </t>
     </template>
 
-    <template id="website_portal.custom_panel" inherit_id='website_portal.account' customize_show="True" name="Editable Panel" active="False">
+    <template id="cusom_panel_layout" inherit_id='portal.portal_layout' customize_show="True" name="Editable Panel" active="False">
         <xpath expr="//div[contains(@class,'o_my_sidebar')]" position="inside">
             <div class="oe_structure">
               <h3 class="page-header">Custom Panel</h3>

@@ -4,7 +4,7 @@
 {
     'name': 'Website Menu By User Display',
     'version': '12.0.1.0.5',
-    'author': 'Savoir-faire Linux,Odoo Community Association (OCA)',
+    'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.savoirfairelinux.com',
     'license': 'LGPL-3',
     'category': 'Website',
