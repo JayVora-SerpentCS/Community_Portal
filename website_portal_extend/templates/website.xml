@@ -6,17 +6,17 @@
           
             <link rel="stylesheet" href="/web/static/lib/select2/select2.css"/>
             <script type="text/javascript" src="/web/static/lib/select2/select2.js"></script>
-          <link rel='stylesheet' href='/website_portal/static/src/less/website_portal.less'/>
-          <script type="text/javascript" src="/website_portal/static/src/js/website_portal.js"></script>
+          <link rel='stylesheet' href='/portal/static/src/scss/portal.scss'/>
+          <script type="text/javascript" src="/portal/static/src/js/portal.js"></script>
       </xpath>
     </template>
 
-    <template id="my_account_link" name="Link to frontend portal" inherit_id="website.layout">
-        <xpath expr="//ul[@class='dropdown-menu js_usermenu']" position="replace">
-            <ul class="dropdown-menu js_usermenu" role="menu">
+    <template id="my_account_link" name="Link to frontend portal" inherit_id="portal.frontend_layout">
+        <xpath expr="//div[@class='dropdown-menu js_usermenu']" position="replace">
+            <div class="dropdown-menu js_usermenu" role="menu">
                 <li><a href="/my/home" role="menuitem">My Account</a></li>
                 <li id="o_logout"><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
-            </ul>
+            </div>
         </xpath>
     </template>
 

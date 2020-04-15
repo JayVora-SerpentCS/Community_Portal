@@ -4,8 +4,8 @@
     'name': 'Places For Community Portal',
     'category': 'website',
     'summary': 'Place management',
-    'version': '12.0.1.0.0',
-    'license': 'AGPL-3',
+    'version': '12.0.1.0.5',
+    'license': 'LGPL-3',
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
@@ -14,8 +14,8 @@
         'web_google_maps'
     ],
     'data': [
-        'security/ir.model.access.csv',
         'security/portal_security.xml',
+        'security/ir.model.access.csv',
         'data/website_menu.xml',
         'views/assets.xml',
         'views/template_place_detail.xml',

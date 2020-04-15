@@ -7,7 +7,4 @@ class PlacesPhotos(models.Model):
     _name = 'places.photos'
 
     name = fields.Binary(string="Add image")
-    place_id = fields.Many2one(
-        'places.place',
-        string='Place'
-    )
+    place_id = fields.Many2one('places.place', string='Place')

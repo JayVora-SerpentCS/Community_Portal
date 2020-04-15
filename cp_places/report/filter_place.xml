@@ -2,7 +2,7 @@
 <odoo>
 
     <template id="filter_place">
-        <t t-call="report.external_layout">
+        <t t-call="web.external_layout">
             <div class="page">
                 <div class="header">
                     <br/>
