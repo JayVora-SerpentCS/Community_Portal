@@ -10,10 +10,8 @@ class JobPositionHistory(models.Model):
     before_date = fields.Date(string='Date')
     after = fields.Char(string='New Member')
     after_date = fields.Date(string='Date')
-    position_id = fields.Many2one(
-        'job.position',
-        string='Job Positions'
-    )
+    position_id = fields.Many2one('job.position',
+                                  string='Job Positions')
 
     @api.model
     def create(self, vals):
