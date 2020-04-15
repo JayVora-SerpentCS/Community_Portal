@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 # See LICENSE file for full copyright and licensing details.
-
-from urlparse import urlparse, parse_qs
-from urllib import urlencode
+from urllib.parse import urlparse, parse_qs, urlencode
 from odoo import http
 from odoo.http import request
 from odoo import tools
