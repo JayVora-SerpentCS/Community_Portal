@@ -8,14 +8,14 @@ Committees For Community Portal
 
 Description
 -----------
-* A admin create Committees details.
+* A admin can create Committees details.
 
 
 
 Usage
 =====
 How to use it:
-	A admin create a committees details who is added a committees member then after view in website.
+	A admin can create a committees details who is added a committees member then after view in website.
 
 
 Bug Tracker

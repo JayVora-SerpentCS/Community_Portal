@@ -97,7 +97,7 @@ class EventAttendees (models.TransientModel):
                 f.write(base64.decodestring(self.attendees_csv))
                 f.close()
                 data_reader = csv.reader(open(file_path))
-                fields = data_reader.next()
+                fields = next(data_reader)
                 fixed_list = ['name', 'email', 'phone']
                 for column in fixed_list:
                     if column not in fields:

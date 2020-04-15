@@ -1,4 +1,4 @@
-# See LICENSE file for full copyright and licensing details.
+# -*- coding: utf-8 -*-
 
 from . import places_place
 from . import places_photos

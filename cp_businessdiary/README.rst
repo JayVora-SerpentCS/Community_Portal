@@ -15,8 +15,7 @@ Description
 Usage
 =====
 How to use it:
-	A member's create a Business Diary(portfolio) details who is user and admistater approve a Business Diary details,
-	then afre view in website.
+	A member can create a Business Diary(portfolio) details who is approve by user and administrator and then after view in website.
 
 
 Bug Tracker

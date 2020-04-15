@@ -3,7 +3,7 @@
 
         <!-- MenuItem For Master Data -->
         <menuitem id="menu_master_root" name="Master Data"/>
-        <menuitem id="menu_master" name="Configration" parent="menu_master_root" />
+        <menuitem id="menu_master" name="Configuration" parent="menu_master_root" />
 
         <!-- Tree view of Height -->
         <record id="view_partner_height_tree" model="ir.ui.view">
