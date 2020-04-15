@@ -68,7 +68,8 @@
                         <div t-att-class="color + (record.designation_id.raw_value == 1 ? ' oe_kanban_color_alert' : '') + ' oe_kanban_global_click'">
                             <a t-if="!read_only_mode" type="delete" class="fa fa-times pull-right"/>
                             <div class="o_kanban_image">
-                                <img t-if="record.photo.raw_value" t-att-src="'data:image/png;base64,'+record.photo.raw_value" style="width:200px"/>
+                                <img t-if="record.photo.raw_value" t-att-src="'data:image/png;base64,'+record.photo.raw_value" style="width:200px"
+                                    t-att-alt="record.photo.raw_value"/>
                             </div>
                             <div class="oe_kanban_details">
                                 <b>Name: </b><field name="name"/><br/>
@@ -105,7 +106,7 @@
         <field name="name">Business Diary</field>
         <field name="res_model">business.diary</field>
         <field name="view_type">form</field>
-        <field name="domain">[('active','=',False)]</field>
+        <field name="domain">[('active','=',True)]</field>
         <field name="view_mode">tree,form,kanban</field>
     </record>
 

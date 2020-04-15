@@ -1,5 +1,5 @@
-.. image:: https://img.shields.io/badge/licence-AGPL--3-orange.svg
-    :alt: License: AGPL-3
+.. image:: https://img.shields.io/badge/licence-LGPL--3-orange.svg
+    :alt: License: LGPL-3
 
 ==============
 Website Portal
@@ -26,13 +26,11 @@ This module is particularly useful when external user registration is enabled.
 Credits
 =======
 
+
 Contributors
 ------------
 
-* Odoo SA <https://www.odoo.com>
-* Leonardo Donelli @ MONK Software <donelli@webmonks.it>
-* Rafael Blasco <rafabn@antiun.com>
-* Sergio Teruel <sergio@incaser.es>
+* Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>
 
 Maintainer
 ----------

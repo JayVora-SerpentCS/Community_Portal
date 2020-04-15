@@ -7,8 +7,5 @@ class Gallery(models.Model):
     _name = 'gallery.photos'
     _description = 'Stores community photos'
 
-    gallery_id = fields.Many2one(
-        'gallery.gallery',
-        'Gallery',
-    )
+    gallery_id = fields.Many2one('gallery.gallery', 'Gallery')
     images = fields.Binary(string='Photos')

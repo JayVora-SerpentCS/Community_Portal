@@ -1,6 +1,6 @@
- .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
-   :alt: License: AGPL-3
+ .. image:: https://img.shields.io/badge/licence-LGPL--3-blue.svg
+   :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+   :alt: License: LGPL-3
 
 ==============
 Website Portal
@@ -30,10 +30,7 @@ Credits
 Contributors
 ------------
 
-* Odoo SA <https://www.odoo.com>
-* Leonardo Donelli @ MONK Software <donelli@webmonks.it>
-* Rafael Blasco <rafabn@antiun.com>
-* Sergio Teruel <sergio@incaser.es>
+* Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>
 
 Maintainer
 ----------

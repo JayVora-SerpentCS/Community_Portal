@@ -1,12 +1,12 @@
- .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
-   :alt: License: AGPL-3
+ .. image:: https://img.shields.io/badge/licence-LGPL--3-blue.svg
+   :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+   :alt: License: LGPL-3
 
 ============================
 Gallery For Community Portal
 ============================
 
-* Allows to add Photes to gallery for every Event.
+* Allows to add Photos to gallery for every Event.
 
 
 
@@ -20,7 +20,7 @@ Description
 Usage
 =====
 How to use it:
-	A member's create a Event details and attech csv/xls file formet for Attendees.
+	You can add the photos for every event.
 
 
 Bug Tracker
@@ -33,4 +33,3 @@ Contributors
 ------------
 
 * Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>
-

@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='button_confirm']" position="after">
                     <button name="%(cp_event.action_view_event_attendees_form)d"
-                            type="action"  string="Import CSV File" class="oe_highlight"/>
+                            type="action" string="Import CSV File" class="oe_highlight"/>
                 </xpath>
             </field>
         </record>

@@ -5,8 +5,8 @@
     'name': 'Website Portal',
     'category': 'Website',
     'summary': 'Account Management Frontend for your Customers',
-    'version': '10.0.1.0.0',
-    'license': 'AGPL-3',
+    'version': '12.0.1.0.5',
+    'license': 'LGPL-3',
     'author': 'Odoo SA, MONK Software, Antiun Ingeniería S.L.',
     'website': (
         'https://www.odoo.com/, http://www.wearemonk.com, '
