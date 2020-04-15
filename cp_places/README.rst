@@ -1,6 +1,6 @@
- .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
-   :alt: License: AGPL-3
+ .. image:: https://img.shields.io/badge/licence-LGPL--3-blue.svg
+   :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+   :alt: License: LGPL-3
 
 ===========================
 Places For Community Portal
@@ -8,14 +8,14 @@ Places For Community Portal
 
 Description
 -----------
-* A admin cam create community places details.
+* A admin can create community places details.
 
 
 
 Usage
 =====
 How to use it:
-	A admin create a places details who is added a committees member then
+	A admin can create a places details who is added a committees member then
 	after view in website.
 
 
@@ -35,4 +35,3 @@ Contributors
 ------------
 
 * Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>
-

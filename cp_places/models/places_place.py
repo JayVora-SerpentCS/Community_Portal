@@ -15,36 +15,20 @@ class PlacesPlace(models.Model):
     name = fields.Char(string='location')
     street = fields.Char('Street')
     street2 = fields.Char('Street2')
-    zip = fields.Char(
-        'Zip',
-        change_default=True
-    )
+    zip = fields.Char('Zip', change_default=True)
     city = fields.Char('City')
-    state_id = fields.Many2one(
-        'res.country.state',
-        string='State',
-        ondelete='restrict'
-    )
-    country_id = fields.Many2one(
-        'res.country',
-        string='Country',
-        ondelete='restrict'
-    )
+    state_id = fields.Many2one('res.country.state', string='State',
+                               ondelete='restrict')
+    country_id = fields.Many2one('res.country', string='Country',
+                                 ondelete='restrict')
     place_description = fields.Text('Add Description Here')
-    place_photos_ids = fields.One2many(
-        'places.photos',
-        'place_id',
-        string='Select Photo To Add'
-    )
-    place_type_id = fields.Many2one(
-        'places.type',
-        string='Place Type'
-    )
+    place_photos_ids = fields.One2many('places.photos', 'place_id',
+                                       string='Select Photo To Add')
+    place_type_id = fields.Many2one('places.type',
+                                    string='Place Type')
     # owners infos
-    place_owners_ids = fields.Many2many(
-        'res.partner',
-        string='Responsible Perosn/s'
-    )
+    place_owners_ids = fields.Many2many('res.partner',
+                                        string='Responsible Perosn/s')
     partner_latitude = fields.Char(string='Latitude')
     partner_longitude = fields.Char(string='Longitude')
     phone = fields.Char()
@@ -74,22 +58,11 @@ class PlacesPlace(models.Model):
 class PlaceReport(models.TransientModel):
     _name = 'report.place.types'
 
-    state_id = fields.Many2one(
-        'res.country.state',
-        string='State',
-        ondelete='restrict'
-    )
-    place_type_id = fields.Many2one(
-        'places.type',
-        string='Place Type'
-    )
-    choise = fields.Selection(
-        [(01, 'State Wise'),
-         (02, 'Type Wise'),
-         (03, 'Both')
-         ],
-        string='Month'
-    )
+    state_id = fields.Many2one('res.country.state', string='State',
+                               ondelete='restrict')
+    place_type_id = fields.Many2one('places.type', string='Place Type')
+    choise = fields.Selection([('01', 'State Wise'), ('02', 'Type Wise'),
+                               ('03', 'Both')], string='Month')
 
     @api.multi
     def print_report(self):
