@@ -18,11 +18,4 @@ by editing the html DOM.
 
 Contributors
 ------------
-* Bruno Joliveau <bruno.joliveau@savoirfairelinux.com>
-* Jordi Riera <jordi.riera@savoirfairelinux.com>
-
-More information
-----------------
-Module developed and tested with Odoo version 8.0
-For questions, please contact our support services
-<support@savoirfairelinux.com>
+* Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>

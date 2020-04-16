@@ -4,8 +4,8 @@
 {
     'name': 'Website Menu By User Display',
     'version': '11.0.1.0.0',
-    'author': 'Savoir-faire Linux,Odoo Community Association (OCA)',
-    'website': 'http://www.savoirfairelinux.com',
+    'author': 'Serpent Consulting Services Pvt. Ltd.',
+    'website': 'http://www.serpentcs.com',
     'license': 'AGPL-3',
     'category': 'Website',
     'summary': 'Allow to manage the display of website.menus',
